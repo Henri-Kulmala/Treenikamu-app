@@ -1,26 +1,63 @@
 import { StyleSheet } from "react-native";
+import MainTheme from "./mainTheme";
 
+const componentStyles = StyleSheet.create({
 
-StyleSheet.create({
-buttonContainer: {
-    backgroundColor:'linear-gradient(144deg, rgba(128, 173, 128, 0.60) -24.52%, rgba(75, 100, 75, 0.60) -1.71%, rgba(57, 64, 50, 0.60) 44.6%, rgba(35, 40, 35, 0.60) 113.71%)',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
+    mainContainer: {
+        backgroundColor: MainTheme.colors.dark,
+        flex: 1,
+        padding: 24,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
+  buttonContainer: {
+    width: 139,
+    height: 35,
+    backgroundColor: MainTheme.colors.darkGreen, 
+    justifyContent: "center",
+    alignItems: "center",
     padding: 8,
-    borderRadius: 5,
-},
-buttonText: {
-    color: '#FFFFFF',
-    fontFamily: 'Manrope',
-    fontWeight: '900',
-    fontStyle: 'capitalize',
+    borderRadius: 10,
+    margin: 8,
+  },
+  buttonText: {
+    color: MainTheme.colors.text,
     fontSize: 14,
-    lineHeight: 32,
+    fontWeight: "700", 
+    textTransform: "uppercase",
+  },
+  dangerButton: {
+    backgroundColor: MainTheme.colors.danger,
+  },
+  defaultButton: {
+    backgroundColor: MainTheme.colors.highlightGreen,
+  },
+
+inputFieldContainer: {
+    flexDirection: "column",
+    maxWidth: 248,
+    maxHeight: 64,
+    gap: 16,
+    marginBottom: 16,
+
+},
+inputField: {
+    backgroundColor: MainTheme.colors.inputBackground,
+    borderRadius: 10,
+    padding: 8,
+    color: MainTheme.colors.text,
+
+},
+inputHeader: {
+    color: MainTheme.colors.text,
+    fontSize: 12,
+    fontWeight: "400",
 },
 
 
+});
 
 
-})
+
+export default componentStyles;

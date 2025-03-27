@@ -1,6 +1,8 @@
-import { View, Text, Alert, TouchableWithoutFeedback } from "react-native";
+import { View, Text, Alert, TextInput, TouchableWithoutFeedback } from "react-native";
 import React, { useEffect, useState } from "react";
-import { ButtonComponent } from "../components/ButtonComponent";
+import ButtonComponent  from "../components/ButtonComponent";
+import InputFieldComponent  from "../components/InputFieldComponent";
+import componentStyles from "../constants/componentStyles";
 
 export default function LoginView({ navigation, setIsLoggedIn }) {
   const [email, setEmail] = useState("");
@@ -32,25 +34,33 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
   };
 
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback >
       <View>
         <Text>Login</Text>
         <Text>{error}</Text>
-        <TextInput
-          placeholder="Email"
+        <InputFieldComponent
+          placeholder="Sähköposti"
           value={email}
-          onChangeText={(text) => setEmail(text)}
+          onChangeText={setEmail}
+          header={"Email"}
         />
-        <TextInput
-          placeholder="Password"
+        <InputFieldComponent
+          placeholder="Salasana"
           value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
+          onChangeText={setPassword}
+          header={"Salasana"}
         />
 
-        { /* Propsit ? */ }
-        <ButtonComponent/>
+        <ButtonComponent
+          content = "Kirjaudu sisään"
+          type="default"
+          onPress={handleLogin}
+        />
 
+      </View>
+      
+      <View>
+        
       </View>
     </TouchableWithoutFeedback>
   );
