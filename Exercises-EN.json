@@ -1,0 +1,372 @@
+{
+  "excercises": [
+    {
+      "abs": [
+        {
+          "name": "Crunch",
+          "starting position": "Lying on the ground on your back with bent knees and feet flat on the ground. You can put your hands behind your head or on your chest.",
+          "execution": "Contract your abs by raising your shoulders and upper back toward your knees. Keep your lower back firmly on the ground. Stay in the upright position for a second, then slowly return to the original position.",
+          "equipment": "",
+          "main muscles": "Abs",
+          "secondary muscles": "",
+          "tips": "Avoid pulling on your neck. Focus on slow, controlled movements.",
+          "imgurl": ""
+        },
+        {
+          "name": "Rope Ab Pulldown",
+          "starting position": "Kneeling on the ground facing the high pulley. Grasp one end of the rope in each hand and bring them to the height of your head. Keep your torso slightly bent.",
+          "execution": "Contract your abs by bringing your elbows back toward your knees. Stay in the contraction position for a moment before slowly returning to the initial position.",
+          "equipment": "Cable machine, rope",
+          "main muscles": "Abs",
+          "secondary muscles": "",
+          "tips": "Keep your core tight and avoid using momentum.",
+          "imgurl": ""
+        },
+        {
+          "name": "Plank",
+          "starting position": "Lying face down on the floor. Balance yourself on your forearms and toes, keeping your shoulders and buttocks at the same height.",
+          "execution": "Hold this position for the desired length of time while contracting your abs.",
+          "equipment": "",
+          "main muscles": "Abs",
+          "secondary muscles": "",
+          "tips": "Keep your body in a straight line and do not let your hips sag.",
+          "imgurl": ""
+        },
+        {
+          "name": "Crunch Machine",
+          "starting position": "Sitting on the machine holding the handles.",
+          "execution": "Contract your abs and stay in position for a moment before slowly returning to the starting position.",
+          "equipment": "Crunch machine",
+          "main muscles": "Abs",
+          "secondary muscles": "",
+          "tips": "Use slow, controlled movements and do not rush.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "chest": [
+        {
+          "name": "Push Ups",
+          "starting position": "Face down, arms outstretched, hands wide apart, resting on the floor and aligned with your pectoral muscles. Legs stretched and face pointed toward the ground.",
+          "execution": "Slowly bend your arms, letting your chest come closer to the ground, until your elbows form a 90-degree angle. Then return to the starting position by pushing on your hands.",
+          "equipment": "",
+          "main muscles": "Chest",
+          "secondary muscles": "Deltoids, Triceps, Biceps",
+          "tips": "Keep your core engaged and maintain a neutral spine.",
+          "imgurl": ""
+        },
+        {
+          "name": "Barbell Bench Press",
+          "starting position": "Lying on the bench, your feet flat on the floor. Grasp the bar with a grip wider than shoulder width. Forearms should be perpendicular to the floor.",
+          "execution": "Unhook the bar and slowly lower it to the lower part of your chest. As you contract your pectorals, push the load upwards until your arms are almost straight.",
+          "equipment": "Barbell, Bench",
+          "main muscles": "Chest",
+          "secondary muscles": "Front deltoids, triceps",
+          "tips": "Keep your elbows out and shoulders flat on the bench to minimize shoulder strain.",
+          "imgurl": ""
+        },
+        {
+          "name": "Incline Dumbbell Bench Press",
+          "starting position": "Lying on a sloping bench, feet flat on the ground, a dumbbell in each hand with a pronation grip. Dumbbells at your sides at chest height. Forearms perpendicular to the ground.",
+          "execution": "Contract your pectorals and push the load upward until your arms are almost straight, then return to the initial position.",
+          "equipment": "Dumbbells, Bench",
+          "main muscles": "Chest (especially the clavicular portion)",
+          "secondary muscles": "Front deltoids, triceps",
+          "tips": "Keep elbows out to emphasize your chest rather than shoulders or triceps.",
+          "imgurl": ""
+        },
+        {
+          "name": "Peck Deck",
+          "starting position": "Sitting on the 'Peck deck' machine, back pressed against the backrest, forearms supported against the padded parts. Upper arms parallel to the ground.",
+          "execution": "Bring your arms together following the machine's range. Tighten your chest at the end of the movement, then return slowly to the initial position.",
+          "equipment": "Peck Deck machine",
+          "main muscles": "Chest",
+          "secondary muscles": "Front deltoids",
+          "tips": "Avoid lifting your shoulders; keep them down and stable.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dumbbell Bench Press",
+          "starting position": "Lying on the bench, feet flat on the floor, a dumbbell in each hand, pronation grip. Dumbbells at your sides at chest height. Forearms perpendicular to the ground.",
+          "execution": "Contract your pectorals, pushing the load upward until your arms are almost extended, then return to the initial position.",
+          "equipment": "Dumbbells, Bench",
+          "main muscles": "Chest",
+          "secondary muscles": "Front deltoids, triceps",
+          "tips": "Keep your elbows out to put maximum stress on your chest and avoid arching your back.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "triceps": [
+        {
+          "name": "Bench Dip",
+          "starting position": "Place two flat benches parallel to one another around your legs’ length. With your back straight and arms outstretched, place hands on the edge of one bench at shoulder width and your heels on the edge of the other bench.",
+          "execution": "Keep elbows tucked in and slowly bend them to a 90° angle. Then return to the starting position, squeezing your triceps at the top.",
+          "equipment": "2 benches",
+          "main muscles": "Triceps, front deltoids",
+          "secondary muscles": "",
+          "tips": "Keep your back straight and do not flare your elbows.",
+          "imgurl": ""
+        },
+        {
+          "name": "Triceps Pressdown",
+          "starting position": "Standing facing the pulley, grasping the bar with a pronated grip, hands at shoulder width.",
+          "execution": "Extend your forearms until arms are fully extended. Contract your triceps briefly, then return slowly to the initial position. Keep your elbows close to your body.",
+          "equipment": "Cable Machine, Pressdown Bar",
+          "main muscles": "Triceps",
+          "secondary muscles": "",
+          "tips": "Focus on keeping elbows fixed in place for better isolation.",
+          "imgurl": ""
+        },
+        {
+          "name": "Cable Rope Pushdown",
+          "starting position": "Standing in front of the pulley, grasp one end of the rope in each hand in a neutral grip.",
+          "execution": "Extend your forearms by spreading the rope ends slightly apart until arms are fully extended. Contract your triceps, then return slowly to the initial position.",
+          "equipment": "Cable machine, rope",
+          "main muscles": "Triceps",
+          "secondary muscles": "",
+          "tips": "Keep elbows tucked at your sides and avoid leaning forward.",
+          "imgurl": ""
+        },
+        {
+          "name": "Lying Triceps Extension",
+          "starting position": "Lying on the bench, feet flat on the floor or on the bench. Hold the EZ bar above your chest with a pronated grip, hands slightly narrower than shoulder width.",
+          "execution": "Bend your forearms, bringing the bar toward the top of your head without flaring elbows. Then return to the initial position.",
+          "equipment": "EZ Barbell, Bench",
+          "main muscles": "Triceps",
+          "secondary muscles": "",
+          "tips": "Use controlled movement and avoid letting your elbows drift out.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dip",
+          "starting position": "Grasp the two parallel bars, arms outstretched, knees bent with feet off the floor.",
+          "execution": "Keep elbows tucked in and slowly bend them to a 90° angle. Then return slowly to the starting position, squeezing your triceps at the top. Avoid leaning forward to keep tension on triceps.",
+          "equipment": "Parallel bars",
+          "main muscles": "Triceps, front deltoids, lower chest",
+          "secondary muscles": "",
+          "tips": "Maintain a straight torso and controlled descent.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "legs": [
+        {
+          "name": "Seated Calf Raise",
+          "starting position": "Sitting on the machine with the front of the feet on the wedge and lower thighs under the padded parts.",
+          "execution": "Contract the calves by raising your heels as high as possible. Pause briefly, then slowly lower to the initial position.",
+          "equipment": "Seated Calf Raise Machine",
+          "main muscles": "Calves",
+          "secondary muscles": "",
+          "tips": "Focus on the full range of motion and a strong contraction at the top.",
+          "imgurl": ""
+        },
+        {
+          "name": "Standing Calf Raise",
+          "starting position": "Standing with the front of the feet on the wedge and the shoulders under the padded parts of the machine.",
+          "execution": "Raise your heels as high as possible by contracting the calves. Pause, then slowly return to the initial position.",
+          "equipment": "Standing Calf Raise machine",
+          "main muscles": "Calves",
+          "secondary muscles": "",
+          "tips": "Keep your knees slightly bent and avoid bouncing.",
+          "imgurl": ""
+        },
+        {
+          "name": "Leg Press",
+          "starting position": "Sitting on the press bench, feet flat on the platen, shoulder width apart.",
+          "execution": "Release the safety and lower the load by bending your knees. Pause at about 90°, then press back up without fully locking your legs.",
+          "equipment": "Leg press machine",
+          "main muscles": "Thigh and buttock muscles",
+          "secondary muscles": "",
+          "tips": "Keep your lower back on the seat and avoid locking knees at the top.",
+          "imgurl": ""
+        },
+        {
+          "name": "Leg Extension",
+          "starting position": "Adjust the machine so your knees are at the seat edge and ankles just below the footrest. Sit with your back firmly against the backrest.",
+          "execution": "Extend your legs until fully extended. Contract your quadriceps briefly, then return to the lowered position.",
+          "equipment": "Leg Extension machine",
+          "main muscles": "Quadriceps",
+          "secondary muscles": "",
+          "tips": "Avoid using momentum and keep your back against the seat.",
+          "imgurl": ""
+        },
+        {
+          "name": "Squat",
+          "starting position": "Standing with the bar resting on your trapezius and shoulders. Grasp the bar securely. Keep your head up.",
+          "execution": "Bend your knees and hips as if sitting down. Keep your back straight. Once thighs are parallel to the ground, push back up. Seek proper coaching if new.",
+          "equipment": "Barbell",
+          "main muscles": "Thigh and buttock muscles",
+          "secondary muscles": "Abs, lumbar muscles",
+          "tips": "Maintain a neutral spine and avoid letting knees cave in.",
+          "imgurl": ""
+        },
+        {
+          "name": "Seated Leg Curl",
+          "starting position": "Adjust the seated leg curl machine so knees align with the pivot point and ankles rest just beyond the footrest. Sit back firmly and hold the handles.",
+          "execution": "Bend your legs as far as possible, contracting your hamstrings. Pause, then return slowly to the initial position.",
+          "equipment": "Seated leg curl machine",
+          "main muscles": "Hamstrings",
+          "secondary muscles": "Calves",
+          "tips": "Control the movement and avoid jerking the weight.",
+          "imgurl": ""
+        },
+        {
+          "name": "Seated Hip Abduction Machine",
+          "starting position": "Sit on the machine with knees against the pads. Pull the pin to release the pads and grip the handles at the sides.",
+          "execution": "Push your knees outward against the pads. When hips are fully abducted, pause briefly, then return to the initial position.",
+          "equipment": "Hip Abduction Machine",
+          "main muscles": "Hip Abductors",
+          "secondary muscles": "Glute Muscles",
+          "tips": "Avoid leaning back and keep movement slow and controlled.",
+          "imgurl": ""
+        },
+        {
+          "name": "Smith Machine Hip Thrust",
+          "starting position": "Position a bench parallel to the bar. Sit under the bar with it on your hip crease. Upper back against the bench, feet shoulder-width and slightly outward.",
+          "execution": "Unrack the bar by extending your hips. Let your hips drop slightly, then thrust up until your torso is parallel with the floor. Squeeze glutes at the top.",
+          "equipment": "Smith Machine, Bench, Squat Pad or towel",
+          "main muscles": "Thigh and Glute Muscles",
+          "secondary muscles": "Core Muscles",
+          "tips": "Keep your chin tucked and avoid overarching your lower back.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "back": [
+        {
+          "name": "Wide Grip Pulldown",
+          "starting position": "Seated, thighs under the pads, bar grasped in pronation with hands wider than shoulder width. Keep back straight.",
+          "execution": "Pull the bar down to your chin. Pause briefly, then slowly let it rise back to the start. Do not let elbows drift forward.",
+          "equipment": "Lat Pulldown Machine, Lat Bar",
+          "main muscles": "Back",
+          "secondary muscles": "Biceps",
+          "tips": "Keep your chest lifted and avoid swinging.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dumbbell Shrugs",
+          "starting position": "Standing with arms hanging by your sides, a dumbbell in each hand.",
+          "execution": "Raise your shoulders as high as possible. Contract the trapezius at the top, then slowly lower.",
+          "equipment": "Dumbbells",
+          "main muscles": "Trapezius muscles",
+          "secondary muscles": "",
+          "tips": "Keep arms straight and avoid rolling your shoulders.",
+          "imgurl": ""
+        },
+        {
+          "name": "Barbell Deadlift",
+          "starting position": "Barbell on the ground in front of you. Feet slightly less than shoulder width, knees bent. Grasp the bar with arms extended, back straight, shoulders back.",
+          "execution": "Lift the bar by extending your legs and hips to a standing position. Exhale at the top, then reverse slowly.",
+          "equipment": "Barbell, plates",
+          "main muscles": "Back, legs",
+          "secondary muscles": "",
+          "tips": "Never round your back. Keep the bar close to your body.",
+          "imgurl": ""
+        },
+        {
+          "name": "Pull Up",
+          "starting position": "Grasp the pull-up bar with a pronated grip, hands wider than shoulders, elbows slightly bent.",
+          "execution": "Pull up until your chin is near the bar, then slowly lower to the start. Range of motion depends on strength and mobility.",
+          "equipment": "Pull bar",
+          "main muscles": "Back",
+          "secondary muscles": "Biceps",
+          "tips": "Focus on pulling your elbows down and back; avoid swinging.",
+          "imgurl": ""
+        },
+        {
+          "name": "Rope Pulldown",
+          "starting position": "Standing facing a high pulley, knees slightly bent, torso leaning slightly forward. Grasp one end of the rope in each hand with a neutral grip.",
+          "execution": "Pull the rope down toward your hips in a wide arc. Keep elbows slightly bent and close to your body. Contract your back, then return slowly.",
+          "equipment": "Cable Machine, Rope",
+          "main muscles": "Back",
+          "secondary muscles": "Triceps",
+          "tips": "Maintain tension in your lats; do not let your back round.",
+          "imgurl": ""
+        },
+        {
+          "name": "Close Grip Pulldown",
+          "starting position": "Seated, thighs under the pads, holding a close-grip handle with both hands. Back straight.",
+          "execution": "Pull the handle down to your upper chest, keeping elbows close to your body. Pause, then return slowly.",
+          "equipment": "Lat Pulldown Machine, Close-grip handle",
+          "main muscles": "Back",
+          "secondary muscles": "Biceps",
+          "tips": "Keep your shoulders down and back; avoid shrugging.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "biceps": [
+        {
+          "name": "EZ Barbell Curl",
+          "starting position": "Standing with knees slightly bent, back straight, holding an EZ bar in supination.",
+          "execution": "Raise the bar by bending at the elbows. Contract your biceps at the top, then lower slowly. Keep elbows close to your body.",
+          "equipment": "EZ Barbell",
+          "main muscles": "Biceps",
+          "secondary muscles": "",
+          "tips": "Avoid swinging your torso and keep your wrists neutral.",
+          "imgurl": ""
+        },
+        {
+          "name": "Straight Bar Low Pulley Cable Curl",
+          "starting position": "Stand facing the low pulley, legs shoulder width apart. Grasp the straight bar with an underhand grip at about shoulder width.",
+          "execution": "Keeping your elbows tucked in, curl the bar up toward your chest. Squeeze at the top, then lower slowly.",
+          "equipment": "Straight bar, low pulley cable",
+          "main muscles": "Biceps",
+          "secondary muscles": "",
+          "tips": "Focus on controlled movement without letting elbows drift forward.",
+          "imgurl": ""
+        },
+        {
+          "name": "Alternating Dumbbell Curl",
+          "starting position": "Standing with knees slightly bent, back straight, dumbbells in hands in a neutral grip along your sides.",
+          "execution": "Raise one dumbbell by bending your forearm, rotating your wrist outwards to a supinated position at the top. Return slowly and alternate arms.",
+          "equipment": "Dumbbells",
+          "main muscles": "Biceps",
+          "secondary muscles": "",
+          "tips": "Keep elbows pinned to your sides and avoid rocking.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "shoulders": [
+        {
+          "name": "Cable One-Arm Lateral Raise",
+          "starting position": "Stand with feet shoulder-width apart, side close to the pulley. Handle in your outside hand, arm by your thigh.",
+          "execution": "Raise your arm outward in an arc to shoulder level, elbow slightly bent. Pause, then lower slowly.",
+          "equipment": "Cable machine",
+          "main muscles": "Deltoids (mostly the lateral/middle head)",
+          "secondary muscles": "",
+          "tips": "Don’t shrug your shoulder; keep the motion controlled.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dumbbell Shoulder Press",
+          "starting position": "Sitting on a bench with back support. Hold dumbbells at shoulder height, pronation grip, elbows out.",
+          "execution": "Push the dumbbells straight upward until arms are extended, then return slowly to start.",
+          "equipment": "Dumbbells, bench",
+          "main muscles": "Deltoids",
+          "secondary muscles": "Triceps",
+          "tips": "Keep your core engaged and avoid arching your lower back.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dumbbell Lateral Raise",
+          "starting position": "Standing with feet shoulder-width apart, arms by your sides holding dumbbells.",
+          "execution": "Raise your arms sideways to shoulder level, keeping elbows slightly bent. Pause, then lower slowly.",
+          "equipment": "Dumbbells",
+          "main muscles": "Deltoids (middle head)",
+          "secondary muscles": "Trapezius muscles",
+          "tips": "Lead with the elbows and don’t swing the weights.",
+          "imgurl": ""
+        }
+      ]
+    }
+  ]
+}
