@@ -35,12 +35,9 @@ const componentStyles = StyleSheet.create({
   },
 
 inputFieldContainer: {
-    flexDirection: "column",
-    maxWidth: 248,
-    maxHeight: 64,
-    gap: 16,
-    marginBottom: 16,
-
+  width: "100%",
+  gap: 8,
+  alignSelf: "stretch"
 },
 inputField: {
     backgroundColor: MainTheme.colors.inputBackground,

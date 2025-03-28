@@ -1,6 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { auth } from "../constants/firebaseConfig"; 
 
-const auth = getAuth();
+
 
 const AuthContext = {
   handleRegister: async (email, password, username) => {

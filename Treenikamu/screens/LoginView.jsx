@@ -3,6 +3,10 @@ import React, { useEffect, useState } from "react";
 import ButtonComponent  from "../components/ButtonComponent";
 import InputFieldComponent  from "../components/InputFieldComponent";
 import componentStyles from "../constants/componentStyles";
+import screensStyles from "../constants/screensStyles";
+import Frame from "../components/GoogleIconFrame";
+import TextFrame from "../components/SigninText";
+import AuthContext from "../constants/AuthContext";
 
 export default function LoginView({ navigation, setIsLoggedIn }) {
   const [email, setEmail] = useState("");
@@ -35,8 +39,8 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
 
   return (
     <TouchableWithoutFeedback >
-      <View>
-        <Text>Login</Text>
+
+      <View style={screensStyles.loginView}>
         <Text>{error}</Text>
         <InputFieldComponent
           placeholder="Sähköposti"
@@ -50,18 +54,18 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
           onChangeText={setPassword}
           header={"Salasana"}
         />
-
         <ButtonComponent
           content = "Kirjaudu sisään"
           type="default"
           onPress={handleLogin}
         />
 
+        <Frame />
+        <TextFrame />
       </View>
+
       
-      <View>
-        
-      </View>
+      
     </TouchableWithoutFeedback>
   );
 }
