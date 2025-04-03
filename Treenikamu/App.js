@@ -1,15 +1,19 @@
-import { View } from 'react-native';
-import  LoginView  from './screens/LoginView'; 
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginView from './screens/LoginView';
+import RegisterView from './screens/RegisterView';
 import componentStyles from './constants/componentStyles';
-import screensStyles from './constants/screensStyles';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={componentStyles.mainContainer}>
-      <LoginView />
-    </View>
+    <NavigationContainer >
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={LoginView} />
+        <Stack.Screen name="Register" component={RegisterView} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
-
