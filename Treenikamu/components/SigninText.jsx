@@ -1,20 +1,23 @@
 import * as React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 
-const TextFrame = () => {
+const TextFrame = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.default}>
         <Text style={styles.colored}>Salasana </Text>
         <Text>hukassa?</Text>
       </Text>
-      <Text style={styles.default}>
-        <Text >Ei vielä tiliä?</Text>
-        <Text style={styles.colored}>Rekisteröidy nyt!</Text>
-      </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        <Text style={styles.default}>
+          <Text>Ei vielä tiliä? </Text>
+          <Text style={styles.colored}>Rekisteröidy nyt!</Text>
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
 

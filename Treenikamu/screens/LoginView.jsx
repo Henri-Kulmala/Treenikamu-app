@@ -38,8 +38,10 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
   };
 
   return (
-    <TouchableWithoutFeedback >
-
+    <TouchableWithoutFeedback  >
+      <View style={componentStyles.mainContainer}>
+      
+      
       <View style={screensStyles.loginView}>
         <Text>{error}</Text>
         <InputFieldComponent
@@ -61,10 +63,10 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
         />
 
         <Frame />
-        <TextFrame />
+        <TextFrame navigation={navigation} />
       </View>
 
-      
+      </View>
       
     </TouchableWithoutFeedback>
   );

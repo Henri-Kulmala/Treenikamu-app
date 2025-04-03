@@ -4,11 +4,11 @@ import MainTheme from "./mainTheme";
 const componentStyles = StyleSheet.create({
 
     mainContainer: {
-        backgroundColor: MainTheme.colors.dark,
         flex: 1,
+        backgroundColor: MainTheme.colors.dark,
         padding: 24,
-        justifyContent: "center",
-        alignItems: "center",
+
+        
     },
 
   buttonContainer: {
