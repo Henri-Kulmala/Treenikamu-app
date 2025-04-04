@@ -1,21 +1,29 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { auth } from "../constants/firebaseConfig"; 
-
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../constants/firebaseConfig";
+import { getDatabase, ref, set } from "firebase/database";
 
 const AuthContext = {
-  handleRegister: async (email, password, username) => {
+  handleRegister: async ({ email, password, ...profile }) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password); 
+      // 1. Create auth user
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      if (username) {
-        await updateProfile(user, { displayName: username });
-      }
+      // 2. Save extra user data to Realtime Database
+      const db = getDatabase();
+      await set(ref(db, "users/" + user.uid), {
+        email,
+        ...profile,
+        createdAt: new Date().toISOString(),
+      });
 
       return {
         success: true,
-        user: user,
+        user,
       };
     } catch (error) {
       return {
