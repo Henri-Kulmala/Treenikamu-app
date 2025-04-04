@@ -1,11 +1,11 @@
 import { View, Text, Alert, TextInput, TouchableWithoutFeedback } from "react-native";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonComponent  from "../components/ButtonComponent";
 import InputFieldComponent  from "../components/InputFieldComponent";
 import componentStyles from "../constants/componentStyles";
 import screensStyles from "../constants/screensStyles";
 import Frame from "../components/GoogleIconFrame";
-import TextFrame from "../components/SigninText";
+import TextFrame from "../components/TextFrame";
 import AuthContext from "../constants/AuthContext";
 
 export default function LoginView({ navigation, setIsLoggedIn }) {
@@ -28,7 +28,7 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
       if (response.success) {
         setEmail("");
         setPassword("");
-        setIsLoggedIn(true);
+        navigation.reset({ index: 0, routes: [{ name: 'Landing' }] });
       } else {
         setError(response.error);
       }

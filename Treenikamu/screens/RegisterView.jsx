@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
+import { View, Text, TouchableOpacity, LayoutAnimation, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Slider } from 'react-native-elements';
 import InputFieldComponent from '../components/InputFieldComponent';
 import screensStyles from '../constants/screensStyles';
 import componentStyles from '../constants/componentStyles';
 import MainTheme from '../constants/mainTheme';
-
-if (Platform.OS === 'android') {
-  UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+import TextThemed from '../components/TextThemed';
+import textStyles from '../constants/textStyles';
+import ButtonComponent from '../components/ButtonComponent';
+import AuthContext from '../constants/AuthContext';
 
 const CheckHeader = ({ title, isOpen, completed, toggleOpen }) => (
   <TouchableOpacity
     onPress={toggleOpen}
     style={[styles.header, { opacity: isOpen ? 1 : 0.4 }]}
   >
-    <Text style={styles.headerText}>{title}</Text>
+    <TextThemed style={textStyles.sliderLabel}>{title}</TextThemed>
     <Ionicons
       name={completed ? 'checkmark-circle' : 'close-circle'}
       size={24}
@@ -28,6 +28,7 @@ const CheckHeader = ({ title, isOpen, completed, toggleOpen }) => (
 
 const RegisterView = ({ navigation }) => {
   const [openSection, setOpenSection] = useState(null);
+  const [error, setError] = useState(null);
 
   const [form1, setForm1] = useState({ email: '', password: '', confirm: '' });
   const [form2, setForm2] = useState({ first: '', last: '', gender: '', address: '', zip: '', city: '' });
@@ -42,6 +43,57 @@ const RegisterView = ({ navigation }) => {
   const isForm2Complete = form2.first && form2.last && form2.gender && form2.address && form2.zip && form2.city;
   const isForm3Complete = form3.weight && form3.age && form3.height;
 
+  const validateInputs = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+    const numberRegex = /^\d+$/;
+    const genderOptions = ['mies', 'nainen', 'muu'];
+
+    if (!emailRegex.test(form1.email)) return 'Virheellinen sähköpostiosoite.';
+    if (!passwordRegex.test(form1.password)) return 'Salasanan tulee olla vähintään 8 merkkiä, sisältää ison kirjaimen ja erikoismerkin.';
+    if (form1.password !== form1.confirm) return 'Salasanat eivät täsmää.';
+
+    if (!numberRegex.test(form3.age)) return 'Ikä pitää olla numero.';
+    if (!numberRegex.test(form3.height)) return 'Pituus pitää olla numero.';
+    if (!numberRegex.test(form3.weight)) return 'Paino pitää olla numero.';
+    if (!numberRegex.test(form2.zip)) return 'Postinumero pitää olla numero.';
+
+    if (!genderOptions.includes(form2.gender.toLowerCase())) return 'Sukupuolen tulee olla mies, nainen tai muu.';
+
+    return null;
+  };
+
+  const handleRegister = async () => {
+    const validationError = validateInputs();
+    if (validationError) {
+      Alert.alert('Virhe', validationError);
+      return;
+    }
+
+    try {
+      const newUser = {
+        email: form1.email,
+        password: form1.password,
+        ...form2,
+        ...form3
+      };
+      const response = await AuthContext.handleRegister(newUser);
+
+      if (response.success) {
+        navigation.reset({ index: 0, routes: [{ name: 'Landing' }] });
+      } else {
+        Alert.alert('Rekisteröinti epäonnistui', response.error || 'Tuntematon virhe');
+      }
+    } catch (err) {
+      console.log(err);
+      Alert.alert('Virhe', 'Jotain meni pieleen. Yritä myöhemmin uudelleen.');
+    }
+  };
+
+  const updateForm3 = (field, value) => {
+    setForm3((prev) => ({ ...prev, [field]: value }));
+  };
+
   return (
     <View style={componentStyles.mainContainer}>  
     <View style={screensStyles.loginView}>
@@ -53,9 +105,9 @@ const RegisterView = ({ navigation }) => {
       />
       {openSection === 1 && (
         <View style={styles.section}>
-          <InputFieldComponent header="Sähköpostiosoite" placeholder="example@email.com" value={form1.email} onChangeText={(email) => setForm1({ ...form1, email })} />
-          <InputFieldComponent header="Salasana" placeholder="********" value={form1.password} onChangeText={(password) => setForm1({ ...form1, password })} />
-          <InputFieldComponent header="Syötä salasana uudelleen" placeholder="********" value={form1.confirm} onChangeText={(confirm) => setForm1({ ...form1, confirm })} />
+          <InputFieldComponent header="Sähköpostiosoite" placeholder="example@email.com" value={form1.email} onChangeText={(email) => setForm1({ ...form1, email })} onBlur={validateInputs} />
+          <InputFieldComponent header="Salasana" placeholder="********" value={form1.password} onChangeText={(password) => setForm1({ ...form1, password })} onBlur={validateInputs} />
+          <InputFieldComponent header="Syötä salasana uudelleen" placeholder="********" value={form1.confirm} onChangeText={(confirm) => setForm1({ ...form1, confirm })} onBlur={validateInputs} />
         </View>
       )}
 
@@ -69,9 +121,9 @@ const RegisterView = ({ navigation }) => {
         <View style={styles.section}>
           <InputFieldComponent header="Etunimi" placeholder="Etunimi" value={form2.first} onChangeText={(first) => setForm2({ ...form2, first })} />
           <InputFieldComponent header="Sukunimi" placeholder="Sukunimi" value={form2.last} onChangeText={(last) => setForm2({ ...form2, last })} />
-          <InputFieldComponent header="Sukupuoli" placeholder="mies/nainen/muu" value={form2.gender} onChangeText={(gender) => setForm2({ ...form2, gender })} />
+          <InputFieldComponent header="Sukupuoli" placeholder="mies/nainen/muu" value={form2.gender} onChangeText={(gender) => setForm2({ ...form2, gender })} onBlur={validateInputs} />
           <InputFieldComponent header="Katuosoite" placeholder="Katuosoite" value={form2.address} onChangeText={(address) => setForm2({ ...form2, address })} />
-          <InputFieldComponent header="Postinumero" placeholder="12345" value={form2.zip} onChangeText={(zip) => setForm2({ ...form2, zip })} />
+          <InputFieldComponent header="Postinumero" placeholder="12345" value={form2.zip} onChangeText={(zip) => setForm2({ ...form2, zip })} onBlur={validateInputs} />
           <InputFieldComponent header="Kaupunki" placeholder="Kaupunki" value={form2.city} onChangeText={(city) => setForm2({ ...form2, city })} />
         </View>
       )}
@@ -84,36 +136,45 @@ const RegisterView = ({ navigation }) => {
       />
       {openSection === 3 && (
         <View style={styles.section}>
-          <InputFieldComponent header="Paino" placeholder="Paino (kg)" value={form3.weight} onChangeText={(weight) => setForm3({ ...form3, weight })} />
-          <InputFieldComponent header="Ikä" placeholder="esim. 25-30" value={form3.age} onChangeText={(age) => setForm3({ ...form3, age })} />
-          <InputFieldComponent header="Pituus" placeholder="cm" value={form3.height} onChangeText={(height) => setForm3({ ...form3, height })} />
+          <InputFieldComponent header="Paino" placeholder="Paino (kg)" value={form3.weight} onChangeText={(weight) => updateForm3('weight', weight)} onBlur={validateInputs} />
+          <InputFieldComponent header="Ikä" placeholder="esim. 25-30" value={form3.age} onChangeText={(age) => updateForm3('age', age)} onBlur={validateInputs} />
+          <InputFieldComponent header="Pituus" placeholder="cm" value={form3.height} onChangeText={(height) => updateForm3('height', height)} onBlur={validateInputs} />
 
-          <Text style={styles.sliderLabel}>Kunto: {['huono', 'keskitaso', 'hyvä'][form3.fitness - 1]}</Text>
+          <TextThemed style={textStyles.sliderLabel}>Kunto: {['huono', 'keskitaso', 'hyvä'][form3.fitness - 1]}</TextThemed>
           <Slider
             minimumValue={1}
             maximumValue={3}
             step={1}
             value={form3.fitness}
-            onValueChange={(val) => setForm3({ ...form3, fitness: val })}
+            onValueChange={(val) => updateForm3('fitness', val)}
             thumbTintColor="#638063"
           />
 
-          <Text style={styles.sliderLabel}>Taso: {['Aloittelija', 'Kokenut', 'Ammattilainen'][form3.level - 1]}</Text>
+          <TextThemed style={textStyles.sliderLabel}>Taso: {['Aloittelija', 'Kokenut', 'Ammattilainen'][form3.level - 1]}</TextThemed>
           <Slider
             minimumValue={1}
             maximumValue={3}
             step={1}
             value={form3.level}
-            onValueChange={(val) => setForm3({ ...form3, level: val })}
-            thumbTintColor="#638063"
+            onValueChange={(val) => updateForm3('level', val)}
+            thumbTintColor={MainTheme.colors.highlightGreen}
           />
         </View>
       )}
 
+      <ButtonComponent
+        content="Luo tili"
+        type="success"
+        onPress={handleRegister}
+      />
+
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text style={{ marginTop: 16, color: '#638063', fontWeight: 'bold' }}>
-          Onko sinulla jo tili? Kirjaudu sisään.
-        </Text>
+        <TextThemed style={ {marginTop: 16, color: '#FFFFFF', fontWeight: 'bold'}}>
+          Onko sinulla jo tili? 
+        </TextThemed>
+        <TextThemed style={{ color: '#638063', fontWeight: 'bold' }}>
+          Kirjaudu sisään.
+        </TextThemed>
       </TouchableOpacity>
     </View>
     </View>  
@@ -142,6 +203,7 @@ const styles = {
     width: '100%',
   },
   sliderLabel: {
+    color: "#FFFFFF",
     fontSize: 16,
     marginTop: 12,
     marginBottom: 4,
