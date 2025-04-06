@@ -7,6 +7,11 @@ const textStyles = StyleSheet.create({
     fontSize: MainTheme.fontSizes.bodySmall,
     color: MainTheme.colors.text,
   },
+  bodySmallDark: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    color: MainTheme.colors.dark,
+  },
   bodyLarge: {
     fontFamily: "Manrope-R",
     fontSize: MainTheme.fontSizes.bodyLarge,
@@ -17,6 +22,12 @@ const textStyles = StyleSheet.create({
     fontFamily: "Manrope-R",
     fontSize: MainTheme.fontSizes.bodyLarge,
     color: MainTheme.colors.text,
+    fontWeight: MainTheme.fontWeights.regular,
+  },
+  bodyLargeBDark: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.bodyLarge,
+    color: MainTheme.colors.dark,
     fontWeight: MainTheme.fontWeights.regular,
   },
   buttonText: {
@@ -38,11 +49,35 @@ const textStyles = StyleSheet.create({
     color: MainTheme.colors.text,
     fontWeight: MainTheme.fontWeights.bold,
   },
+  titleLargeBDark: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.titleLarge,
+    color: MainTheme.colors.dark,
+    fontWeight: MainTheme.fontWeights.bold,
+  },
   titleSmall: {
     fontFamily: "Manrope-R",
     fontSize: MainTheme.fontSizes.titleSmall,
     color: MainTheme.colors.text,
     fontWeight: MainTheme.fontWeights.regular,
+  },
+  titleSmallDark: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.titleSmall,
+    color: MainTheme.colors.dark,
+    fontWeight: MainTheme.fontWeights.regular,
+  },
+  titleSmallBDark: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.titleSmall,
+    color: MainTheme.colors.dark,
+    fontWeight: MainTheme.fontWeights.bold,
+  },
+  titleSmallB: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.titleSmall,
+    color: MainTheme.colors.text,
+    fontWeight: MainTheme.fontWeights.bold,
   },
   sliderLabel: {
     fontFamily: "Manrope-R",
@@ -51,7 +86,19 @@ const textStyles = StyleSheet.create({
     fontWeight: MainTheme.fontWeights.regular,
     marginTop: 16,
     marginBottom: 8,
-  }
+  },
+  inputLabel: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    color: MainTheme.colors.text,
+    fontWeight: MainTheme.fontWeights.regular,
+  },
+  inputLabelDark: {
+    fontFamily: "Manrope-R",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    color: MainTheme.colors.dark,
+    fontWeight: MainTheme.fontWeights.regular,
+  },
 });
 
 export default textStyles;

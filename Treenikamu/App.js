@@ -1,9 +1,11 @@
 import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { auth } from "./constants/firebaseConfig";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { auth } from "./configuration/firebaseConfig";
 import AppStack from './screens/AppStack';
 import AuthStack from './screens/AuthStack';
 
@@ -38,8 +40,15 @@ export default function App() {
   if (!fontsLoaded || initializing) return null;
 
   return (
-    <NavigationContainer>
-      {user ? <AppStack /> : <AuthStack />}
-    </NavigationContainer>
+    <GestureHandlerRootView style={styles.root}>
+      <NavigationContainer>
+        {user ? <AppStack /> : <AuthStack />}
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+});

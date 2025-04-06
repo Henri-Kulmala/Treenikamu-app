@@ -4,7 +4,7 @@ const MainTheme = {
   dark: true,
   colors: {
     highlightGreen: '#638063',
-    darkGreen: "rgba(35, 40, 35, 0.40)",
+    darkGreen: "#394032",
     dark: '#070807',
     text: '#FFFFFF',
     textMuted: 'rgba(255, 255, 255, 0.60)',
