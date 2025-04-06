@@ -1,7 +1,13 @@
-import { View, Text, Alert, TextInput, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  Alert,
+  TextInput,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { useEffect, useState } from "react";
-import ButtonComponent  from "../components/ButtonComponent";
-import InputFieldComponent  from "../components/InputFieldComponent";
+import ButtonComponent from "../components/ButtonComponent";
+import InputFieldComponent from "../components/InputFieldComponent";
 import componentStyles from "../constants/componentStyles";
 import screensStyles from "../constants/screensStyles";
 import Frame from "../components/GoogleIconFrame";
@@ -28,7 +34,7 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
       if (response.success) {
         setEmail("");
         setPassword("");
-        navigation.reset({ index: 0, routes: [{ name: 'Landing' }] });
+        navigation.reset({ index: 0, routes: [{ name: "Landing" }] });
       } else {
         setError(response.error);
       }
@@ -38,36 +44,40 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
   };
 
   return (
-    <TouchableWithoutFeedback  >
+    <TouchableWithoutFeedback>
       <View style={componentStyles.mainContainer}>
-      
-      
-      <View style={screensStyles.loginView}>
-        <Text>{error}</Text>
-        <InputFieldComponent
-          placeholder="Sähköposti"
-          value={email}
-          onChangeText={setEmail}
-          header={"Email"}
-        />
-        <InputFieldComponent
-          placeholder="Salasana"
-          value={password}
-          onChangeText={setPassword}
-          header={"Salasana"}
-        />
-        <ButtonComponent
-          content = "Kirjaudu sisään"
-          type="default"
-          onPress={handleLogin}
-        />
+        <View style={screensStyles.loginView}>
+          <Text>{error}</Text>
+          <InputFieldComponent
+            placeholder="Sähköposti"
+            value={email}
+            onChangeText={setEmail}
+            header={"Email"}
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            autoComplete="email"
+            autoCapitalize="none"
+          />
+          <InputFieldComponent
+            placeholder="Salasana"
+            value={password}
+            onChangeText={setPassword}
+            header={"Salasana"}
+            secureTextEntry={true}
+            textContentType="password"
+            autoComplete="password"
+            autoCapitalize="none"
+          />
+          <ButtonComponent
+            content="Kirjaudu sisään"
+            type="default"
+            onPress={handleLogin}
+          />
 
-        <Frame />
-        <TextFrame navigation={navigation} />
+          <Frame />
+          <TextFrame navigation={navigation} />
+        </View>
       </View>
-
-      </View>
-      
     </TouchableWithoutFeedback>
   );
 }
