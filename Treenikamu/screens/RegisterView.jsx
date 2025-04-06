@@ -9,13 +9,13 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { Slider } from "react-native-elements";
 import InputFieldComponent from "../components/InputFieldComponent";
-import screensStyles from "../constants/screensStyles";
-import componentStyles from "../constants/componentStyles";
-import MainTheme from "../constants/mainTheme";
+import screensStyles from "../styles/screensStyles";
+import componentStyles from "../styles/componentStyles";
+import MainTheme from "../styles/mainTheme";
 import TextThemed from "../components/TextThemed";
-import textStyles from "../constants/textStyles";
+import textStyles from "../styles/textStyles";
 import ButtonComponent from "../components/ButtonComponent";
-import AuthContext from "../constants/AuthContext";
+import AuthContext from "../configuration/AuthContext";
 
 const CheckHeader = ({ title, isOpen, completed, toggleOpen }) => (
   <TouchableOpacity

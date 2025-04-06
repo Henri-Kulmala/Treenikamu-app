@@ -8,11 +8,11 @@ import {
 import { useEffect, useState } from "react";
 import ButtonComponent from "../components/ButtonComponent";
 import InputFieldComponent from "../components/InputFieldComponent";
-import componentStyles from "../constants/componentStyles";
-import screensStyles from "../constants/screensStyles";
+import componentStyles from "../styles/componentStyles";
+import screensStyles from "../styles/screensStyles";
 import Frame from "../components/GoogleIconFrame";
 import TextFrame from "../components/TextFrame";
-import AuthContext from "../constants/AuthContext";
+import AuthContext from "../configuration/AuthContext";
 
 export default function LoginView({ navigation, setIsLoggedIn }) {
   const [email, setEmail] = useState("");

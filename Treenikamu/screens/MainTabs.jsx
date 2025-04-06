@@ -1,0 +1,57 @@
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import LandingView from './LandingView';
+import WorkoutPlanView from './WorkoutPlanView';
+import { View } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+const Tab = createBottomTabNavigator();
+
+const TabBarIcon = ({ name, focused }) => (
+  <Ionicons
+    name={name}
+    size={32}
+    color={focused ? '#ffffff' : '#7c7c7c'}
+    style={{ height: 32 }}
+  />
+);
+
+const MainTabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: '#070807',
+          height: 80,
+          padding: 24,
+        },
+        headerShown: false,
+        tabBarShowLabel: false,
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={LandingView}
+        options={{
+          tabBarIcon: ({ focused }) => <TabBarIcon name="home-outline" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Workout"
+        component={WorkoutPlanView}
+        options={{
+          tabBarIcon: ({ focused }) => <TabBarIcon name="barbell-outline" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={() => <View><Text style={{ color: 'white' }}>Profile Placeholder</Text></View>}
+        options={{
+          tabBarIcon: ({ focused }) => <TabBarIcon name="person-outline" focused={focused} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
+export default MainTabs;
