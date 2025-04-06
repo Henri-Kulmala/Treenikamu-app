@@ -1,16 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, Modal, TextInput, Button } from 'react-native';
-import { fetchAllExercises } from '../configuration/fetchExercises';
-import WorkoutDaySection from './WorkoutDaySection';
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Modal,
+  TextInput,
+  Button,
+  ScrollView,KeyboardAvoidingView, Platform
+} from "react-native";
+import { fetchAllExercises } from "../configuration/fetchExercises";
+import WorkoutDaySection from "./WorkoutDaySection";
 
 const SPLIT_TEMPLATES = {
-  1: {
-    'Selkä ja hauikset': { group: 'selkä', keys: ['leuanveto', 'leveä_taljaveto'] },
-    'Rinta ja ojentajat': { group: 'rinta', keys: ['penkkipunnerrus_tangolla'] },
-    'Jalat': { group: 'jalat', keys: ['kyykky'] }
-  },
-  // Add #2 and #3 if needed
-};
+    1: {
+      "Selkä ja hauikset": [
+        { group: "selkä", keys: ["leuanveto", "leveä_taljaveto"] },
+        { group: "hauikset", keys: ["hauiskääntö_ez_tanko"] }
+      ],
+      "Rinta ja ojentajat": [
+        { group: "rinta", keys: ["penkkipunnerrus_tangolla"] },
+        { group: "ojentajat", keys: ["dippi"] }
+      ],
+      Jalat: [
+        { group: "jalat", keys: ["kyykky"] }
+      ]
+    },
+    
+  };
+  
 
 const GeneratedPlanStep = ({ selectedSplit }) => {
   const [exerciseData, setExerciseData] = useState(null);
@@ -33,22 +50,37 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
     const split = SPLIT_TEMPLATES[selectedSplit];
     const plan = {};
 
-    for (const [dayName, { group, keys }] of Object.entries(split)) {
-      plan[dayName] = keys.map((key, i) => {
-        const base = exerciseData?.[group]?.[key];
-        return base
-          ? { ...base, id: `${group}-${key}-${i}`, reps: base.reps || 10, sets: base.sets || 3, weight: base.weight || 0 }
-          : null;
-      }).filter(Boolean);
-    }
+    for (const [dayName, groups] of Object.entries(split)) {
+        const allExercises = [];
+      
+        groups.forEach(({ group, keys }) => {
+          keys.forEach((key, i) => {
+            const base = exerciseData?.[group]?.[key];
+            if (base) {
+              allExercises.push({
+                ...base,
+                id: `${group}-${key}-${i}`,
+                reps: base.reps || 10,
+                sets: base.sets || 3,
+                weight: base.weight || 0,
+              });
+            }
+          });
+        });
+      
+        plan[dayName] = allExercises;
+      }
+      
 
     setWorkoutPlan(plan);
   }, [exerciseData, selectedSplit]);
 
   const handleUpdateExercise = (dayName, updatedExercise) => {
-    setWorkoutPlan(prev => ({
+    setWorkoutPlan((prev) => ({
       ...prev,
-      [dayName]: prev[dayName].map(ex => ex.id === updatedExercise.id ? updatedExercise : ex)
+      [dayName]: prev[dayName].map((ex) =>
+        ex.id === updatedExercise.id ? updatedExercise : ex
+      ),
     }));
     setActiveExercise(null);
   };
@@ -57,23 +89,60 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
   if (!workoutPlan) return <Text>No exercises</Text>;
 
   return (
-    <View>
-      {Object.entries(workoutPlan).map(([day, exercises]) => (
-        <WorkoutDaySection
-          key={day}
-          dayName={day}
-          exercises={exercises}
-          onEditExercise={setActiveExercise}
-          setExercises={(updated) =>
-            setWorkoutPlan(prev => ({ ...prev, [day]: updated }))
-          }
-        />
-      ))}
-
-      <Modal visible={!!activeExercise} transparent animationType="slide">
+    <>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 120, paddingHorizontal: 16 }}
+        showsVerticalScrollIndicator={false}
+      >
+        {Object.entries(workoutPlan).map(([day, exercises]) => (
+          <WorkoutDaySection
+            key={day}
+            dayName={day}
+            exercises={exercises}
+            onEditExercise={setActiveExercise}
+            setExercises={(updater) =>
+              setWorkoutPlan((prev) => {
+                const prevExercises = Array.isArray(prev[day]) ? prev[day] : [];
+                const updated =
+                  typeof updater === "function"
+                    ? updater(prevExercises)
+                    : updater;
+                return {
+                  ...prev,
+                  [day]: updated,
+                };
+              })
+            }
+            exerciseData={exerciseData}
+          />
+        ))}
+      </ScrollView>
+  
+      <Modal visible={!!activeExercise} animationType="slide" transparent>
+  <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : undefined}
+    style={{ flex: 1 }}
+  >
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.5)",
+        justifyContent: "center",
+        padding: 20,
+      }}
+    >
+      <ScrollView
+        contentContainerStyle={{
+          backgroundColor: "#fff",
+          borderRadius: 12,
+          padding: 20,
+        }}
+      >
         {activeExercise && (
-          <View style={{ backgroundColor: '#fff', padding: 20, margin: 40, borderRadius: 12 }}>
-            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{activeExercise.name}</Text>
+          <>
+            <Text style={{ fontWeight: "bold", fontSize: 18, marginBottom: 8 }}>
+              {activeExercise.name}
+            </Text>
             <Text>{activeExercise.startingPosition}</Text>
             <Text>{activeExercise.execution}</Text>
             <Text>{activeExercise.tips}</Text>
@@ -82,27 +151,48 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
               placeholder="Sets"
               keyboardType="numeric"
               value={String(activeExercise.sets)}
-              onChangeText={(text) => setActiveExercise({ ...activeExercise, sets: Number(text) })}
+              onChangeText={(text) =>
+                setActiveExercise({ ...activeExercise, sets: Number(text) })
+              }
+              style={{ marginVertical: 6, borderBottomWidth: 1 }}
             />
             <TextInput
               placeholder="Reps"
               keyboardType="numeric"
               value={String(activeExercise.reps)}
-              onChangeText={(text) => setActiveExercise({ ...activeExercise, reps: Number(text) })}
+              onChangeText={(text) =>
+                setActiveExercise({ ...activeExercise, reps: Number(text) })
+              }
+              style={{ marginVertical: 6, borderBottomWidth: 1 }}
             />
             <TextInput
               placeholder="Weight (kg)"
               keyboardType="numeric"
               value={String(activeExercise.weight)}
-              onChangeText={(text) => setActiveExercise({ ...activeExercise, weight: Number(text) })}
+              onChangeText={(text) =>
+                setActiveExercise({ ...activeExercise, weight: Number(text) })
+              }
+              style={{ marginVertical: 6, borderBottomWidth: 1 }}
             />
-            <Button title="Save" onPress={() => handleUpdateExercise(activeExercise.dayName, activeExercise)} />
+
+            <Button
+              title="Save"
+              onPress={() =>
+                handleUpdateExercise(activeExercise.dayName, activeExercise)
+              }
+            />
+            <View style={{ height: 12 }} />
             <Button title="Cancel" onPress={() => setActiveExercise(null)} />
-          </View>
+          </>
         )}
-      </Modal>
+      </ScrollView>
     </View>
+  </KeyboardAvoidingView>
+</Modal>
+
+    </>
   );
-};
+}
+  
 
 export default GeneratedPlanStep;
