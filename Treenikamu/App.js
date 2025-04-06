@@ -3,16 +3,14 @@ import { useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginView from './screens/LoginView';
-import RegisterView from './screens/RegisterView';
-import componentStyles from './constants/componentStyles';
-import LandingView from './screens/LandingView';
+import { auth } from "./constants/firebaseConfig";
+import AppStack from './screens/AppStack';
+import AuthStack from './screens/AuthStack';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [fontsLoaded] = Font.useFonts({
     'Manrope-R': require('./assets/fonts/manrope-regular.otf'),
     'Manrope-B': require('./assets/fonts/manrope-bold.otf'),
@@ -20,22 +18,28 @@ export default function App() {
     'Manrope-EB': require('./assets/fonts/manrope-extrabold.otf'),
   });
 
+  const [user, setUser] = useState(null);
+  const [initializing, setInitializing] = useState(true);
+
   useEffect(() => {
-    if (fontsLoaded) {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+      if (initializing) setInitializing(false);
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (fontsLoaded && !initializing) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [fontsLoaded, initializing]);
 
-  if (!fontsLoaded) return null;
-
+  if (!fontsLoaded || initializing) return null;
 
   return (
-    <NavigationContainer >
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={LoginView} />
-        <Stack.Screen name="Register" component={RegisterView} />
-        <Stack.Screen name="Landing" component={LandingView} />
-      </Stack.Navigator>
+    <NavigationContainer>
+      {user ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 }
