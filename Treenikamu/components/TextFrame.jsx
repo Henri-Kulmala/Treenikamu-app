@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import TextThemed from './TextThemed';
-import textStyles from '../constants/textStyles';
+import textStyles from '../styles/textStyles';
 
 const TextFrame = ({ navigation }) => {
   return (

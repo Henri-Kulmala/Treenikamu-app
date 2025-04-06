@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../constants/firebaseConfig";
+import { auth } from "./firebaseConfig";
 import { getDatabase, ref, set } from "firebase/database";
 
 const AuthContext = {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { auth } from '../constants/firebaseConfig'; 
-import componentStyles from '../constants/componentStyles';
+import { auth } from '../configuration/firebaseConfig'; 
+import componentStyles from '../styles/componentStyles';
 import TextThemed from '../components/TextThemed';
-import textStyles from '../constants/textStyles';
+import textStyles from '../styles/textStyles';
 
 
 const LandingView = () => {

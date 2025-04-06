@@ -1,8 +1,9 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import componentStyles from "../constants/componentStyles";
+import componentStyles from "../styles/componentStyles";
 
-export default function ButtonComponent({ content, type = "default", onPress }) {
+
+export default function ButtonComponent({ content, type = "default", onPress, ...props }) {
  
   const getButtonStyle = () => {
     switch (type) {
@@ -14,7 +15,7 @@ export default function ButtonComponent({ content, type = "default", onPress }) 
   };
 
   return (
-    <TouchableOpacity style={[componentStyles.buttonContainer, getButtonStyle()]} onPress={onPress}>
+    <TouchableOpacity style={[componentStyles.buttonContainer, getButtonStyle()]} onPress={onPress} {...props}>
       <Text style={componentStyles.buttonText}>{content}</Text>
     </TouchableOpacity>
   );

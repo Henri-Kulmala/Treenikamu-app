@@ -1,6 +1,6 @@
 import { View, Text, TextInput } from "react-native";
 import React from "react";
-import componentStyles from "../constants/componentStyles";
+import componentStyles from "../styles/componentStyles";
 
 export default function InputFieldComponent({ placeholder, value, onChangeText, header, ...props }) {
   return (
