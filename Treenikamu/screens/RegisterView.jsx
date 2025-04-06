@@ -6,7 +6,7 @@ import {
   LayoutAnimation,
   Alert,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+
 import { Slider } from "react-native-elements";
 import InputFieldComponent from "../components/InputFieldComponent";
 import screensStyles from "../styles/screensStyles";
@@ -16,21 +16,9 @@ import TextThemed from "../components/TextThemed";
 import textStyles from "../styles/textStyles";
 import ButtonComponent from "../components/ButtonComponent";
 import AuthContext from "../configuration/AuthContext";
+import CheckHeader from "../components/CheckHeader";
 
-const CheckHeader = ({ title, isOpen, completed, toggleOpen }) => (
-  <TouchableOpacity
-    onPress={toggleOpen}
-    style={[styles.header, { opacity: isOpen ? 1 : 0.4 }]}
-  >
-    <TextThemed style={textStyles.sliderLabel}>{title}</TextThemed>
-    <Ionicons
-      name={completed ? "checkmark-circle" : "close-circle"}
-      size={24}
-      color={completed ? "green" : "red"}
-      style={{ marginLeft: 10 }}
-    />
-  </TouchableOpacity>
-);
+
 
 const RegisterView = ({ navigation }) => {
   const [openSection, setOpenSection] = useState(null);
@@ -134,7 +122,7 @@ const RegisterView = ({ navigation }) => {
           toggleOpen={() => toggleSection(1)}
         />
         {openSection === 1 && (
-          <View style={styles.section}>
+          <View style={componentStyles.section}>
             <InputFieldComponent
               header="Sähköpostiosoite"
               placeholder="example@email.com"
@@ -178,7 +166,7 @@ const RegisterView = ({ navigation }) => {
           toggleOpen={() => toggleSection(2)}
         />
         {openSection === 2 && (
-          <View style={styles.section}>
+          <View style={componentStyles.section}>
             <InputFieldComponent
               header="Etunimi"
               placeholder="Etunimi"
@@ -227,7 +215,7 @@ const RegisterView = ({ navigation }) => {
           toggleOpen={() => toggleSection(3)}
         />
         {openSection === 3 && (
-          <View style={styles.section}>
+          <View style={componentStyles.section}>
             <InputFieldComponent
               header="Paino"
               placeholder="Paino (kg)"
@@ -298,33 +286,5 @@ const RegisterView = ({ navigation }) => {
   );
 };
 
-const styles = {
-  header: {
-    backgroundColor: "#FFFFFF",
-    padding: 12,
-    borderRadius: 8,
-    marginVertical: 6,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  headerText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  section: {
-    backgroundColor: MainTheme.colors.background,
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-    width: "100%",
-  },
-  sliderLabel: {
-    color: "#FFFFFF",
-    fontSize: 16,
-    marginTop: 12,
-    marginBottom: 4,
-  },
-};
 
 export default RegisterView;

@@ -9,11 +9,10 @@ import { getDatabase, ref, set } from "firebase/database";
 const AuthContext = {
   handleRegister: async ({ email, password, ...profile }) => {
     try {
-      // 1. Create auth user
+
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // 2. Save extra user data to Realtime Database
       const db = getDatabase();
       await set(ref(db, "users/" + user.uid), {
         email,

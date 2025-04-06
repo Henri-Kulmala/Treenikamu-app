@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import GroupedExerciseSection from "./GroupedExerciseSection";
+import TextThemed from "./TextThemed";
+import textStyles from "../styles/textStyles";
 
 const WorkoutDaySection = ({
   dayName,
@@ -11,7 +13,7 @@ const WorkoutDaySection = ({
 }) => {
   const groups = {};
 
-  // ✅ Dev-time safety check
+
   if (!Array.isArray(exercises)) {
     console.warn(
       `WorkoutDaySection: 'exercises' for ${dayName} is not an array`,
@@ -21,7 +23,7 @@ const WorkoutDaySection = ({
   }
 
   exercises.forEach((ex) => {
-    const key = ex.id?.split("-")[0]; // Defensive access in case id is missing
+    const key = ex.id?.split("-")[0]; 
     if (!key) return;
     if (!groups[key]) groups[key] = [];
     groups[key].push(ex);
@@ -40,9 +42,9 @@ const WorkoutDaySection = ({
 
   return (
     <View style={{ marginBottom: 24 }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 8 }}>
+      <TextThemed style={textStyles.titleLargeB}>
         {dayName}
-      </Text>
+      </TextThemed>
       {Object.entries(groups).map(([groupName, groupExercises]) => (
         <GroupedExerciseSection
           key={groupName}
@@ -50,7 +52,9 @@ const WorkoutDaySection = ({
           muscleGroup={groupName}
           currentExercises={groupExercises}
           allExercises={exerciseData}
-          onEditExercise={onEditExercise}
+          onEditExercise={(exercise) =>
+            onEditExercise({ ...exercise, dayName })
+          }
           onAddExercise={handleAddExercise}
           onReorder={(data) => handleReorder(groupName, data)}
         />

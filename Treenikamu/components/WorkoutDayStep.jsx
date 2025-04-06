@@ -1,5 +1,10 @@
 import React from 'react';
 import { View, Text, Pressable, Button } from 'react-native';
+import componentStyles from '../styles/componentStyles';
+import textStyles from '../styles/textStyles';
+import TextThemed from '../components/TextThemed';
+import ButtonComponent from '../components/ButtonComponent';
+
 
 const days = ['MA', 'TI', 'KE', 'TO', 'PE', 'LA', 'SU'];
 
@@ -14,23 +19,21 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays, onNext }) => {
 
   return (
     <View>
-      <Text>Choose workout days:</Text>
+      <TextThemed style={textStyles.titleLarge}>Valitse treenipäivät</TextThemed>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {days.map(day => (
-          <Pressable
+          <ButtonComponent
             key={day}
             onPress={() => toggleDay(day)}
-            style={{
-              padding: 10,
-              margin: 5,
-              backgroundColor: selectedDays.includes(day) ? 'green' : 'gray'
-            }}
+            type={selectedDays.includes(day) ? 'danger' : 'default'}
+
+            content={day}
           >
-            <Text>{day}</Text>
-          </Pressable>
+           
+          </ButtonComponent>
         ))}
       </View>
-      <Button title="Next" disabled={selectedDays.length === 0} onPress={onNext} />
+      <ButtonComponent content="Seuraava" disabled={selectedDays.length === 0} onPress={onNext} />
     </View>
   );
 };

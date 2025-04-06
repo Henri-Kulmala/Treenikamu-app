@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import CreatePlanForm from '../components/CreatePlanForm';
+import componentStyles from '../styles/componentStyles';
+import textStyles from '../styles/textStyles';
+import TextThemed from '../components/TextThemed';
+import ButtonComponent from '../components/ButtonComponent';
 
 const WorkoutPlanView = () => {
   const [hasProgram, setHasProgram] = useState(false);
 
   return (
-    <View>
+    <View style={componentStyles.mainContainer}>
       {hasProgram ? (
-        <Text>Your program will go here...</Text>
+        <Text></Text>
       ) : (
-        <View>
-          <Text style={{ fontSize: 24 }}>Create your training program</Text>
-          <Button title="Create" onPress={() => setHasProgram(true)} />
+        <View style={componentStyles.childContainer}> 
+          <TextThemed style={textStyles.titleLargeB}>Luo treeniohjelma!</TextThemed>
+          <ButtonComponent content="luo" onPress={() => setHasProgram(true)} />
         </View>
       )}
 
