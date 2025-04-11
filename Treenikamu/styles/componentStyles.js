@@ -39,6 +39,25 @@ const componentStyles = StyleSheet.create({
     borderRadius: 10,
     margin: 8,
   },
+  buttonSelectDisabled: {
+    backgroundColor: MainTheme.colors.highlightGreenMuted,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 8,
+    width: 35,
+    height: 35,
+    borderRadius: 50,
+  },
+  buttonSelectEnabled: {
+    backgroundColor: MainTheme.colors.highlightGreen,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 8,
+    width: 35,
+    height: 35,
+    borderRadius: 50,
+  },
+
   buttonText: {
     color: MainTheme.colors.text,
     fontSize: 14,
@@ -51,6 +70,18 @@ const componentStyles = StyleSheet.create({
   defaultButton: {
     backgroundColor: MainTheme.colors.highlightGreen,
   },
+  prevButton: {
+    borderRadius: 10,
+    padding: 8,
+    backgroundColor: MainTheme.colors.highlightGreen,
+
+  },
+  nextButton: {
+    borderRadius: 10,
+    padding: 8,
+    backgroundColor: MainTheme.colors.highlightGreenMuted,
+
+  },
   weekdayButton: {
 
   },
@@ -62,7 +93,7 @@ const componentStyles = StyleSheet.create({
   },
 
   inputField: {
-    backgroundColor: MainTheme.colors.inputBackground,
+    backgroundColor: MainTheme.colors.dark20,
     borderRadius: 10,
     padding: 8,
     color: MainTheme.colors.text,
@@ -88,6 +119,14 @@ const componentStyles = StyleSheet.create({
 
   // Exercise styles
 
+
+  workoutDayStepContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 16,
+    marginVertical: 16,
+  },
+
   itemCardmd: {
     flexDirection: "row",
     height: 80,
@@ -103,7 +142,18 @@ const componentStyles = StyleSheet.create({
     borderRadius: 16,
     padding: 24,
     gap: 8,
+  },
+
+
+  // StepControl styles
+
+  stepContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 24,
   }
 });
+
 
 export default componentStyles;

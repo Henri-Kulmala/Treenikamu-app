@@ -4,11 +4,13 @@ const MainTheme = {
   dark: true,
   colors: {
     highlightGreen: '#638063',
+    highlightGreenMuted: '#63806333',
     darkGreen: "#394032",
     dark: '#070807',
+    dark40:'#07080766', 
+    dark20: '#07080733',
     text: '#FFFFFF',
-    textMuted: 'rgba(255, 255, 255, 0.60)',
-    inputBackground: 'rgba(255, 255, 255, 0.20)',
+    textMuted: '#FFFFFF66',
     highlightDanger: "#935E55",
     danger: '#54332D',
   },
@@ -18,12 +20,7 @@ const MainTheme = {
     titleSmall: 16,
     titleLarge: 24,
   },
-  fontWeights: {
-    light: '300',
-    regular: '400',
-    bold: '700',
-    extrabold: '800',
-  },
+
   
   
 };
