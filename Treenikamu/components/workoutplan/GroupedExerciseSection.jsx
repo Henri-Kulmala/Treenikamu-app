@@ -4,9 +4,9 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 import ExerciseItem from "./ExerciseItem";
 import AddExerciseModal from "./AddExerciseModal";
 import { MaterialIcons } from "@expo/vector-icons";
-import MainTheme from "../styles/mainTheme";
-import textStyles from "../styles/textStyles";
-import TextThemed from "./TextThemed";
+import MainTheme from "../../styles/mainTheme";
+import textStyles from "../../styles/textStyles";
+import TextThemed from "../TextThemed";
 
 const GroupedExerciseSection = ({
   title,

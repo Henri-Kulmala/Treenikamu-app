@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, Animated } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
-import TextThemed from "./TextThemed";
-import componentStyles from "../styles/componentStyles";
-import textStyles from "../styles/textStyles";
+import TextThemed from "../TextThemed";
+import componentStyles from "../../styles/componentStyles";
+import textStyles from "../../styles/textStyles";
 
 const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
   if (!exercise) return null;

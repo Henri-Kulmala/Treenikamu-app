@@ -10,15 +10,15 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
-import { fetchAllExercises } from "../configuration/fetchExercises";
+import { fetchAllExercises } from "../../configuration/fetchExercises";
 import WorkoutDaySection from "./WorkoutDaySection";
-import componentStyles from "../styles/componentStyles";
-import textStyles from "../styles/textStyles";
-import TextThemed from "./TextThemed";
-import InputFieldComponent from "./InputFieldComponent";
-import ButtonComponent from "./ButtonComponent";
-import InstructionsFrame from "./InstructionsFrame";
-import StepControls from "./StepControls";
+import componentStyles from "../../styles/componentStyles";
+import textStyles from "../../styles/textStyles";
+import TextThemed from "../TextThemed";
+import InputFieldComponent from "../InputFieldComponent";
+import ButtonComponent from "../ButtonComponent";
+import InstructionsFrame from "../InstructionsFrame";
+import StepControls from "../StepControls";
 
 const SPLIT_TEMPLATES = {
   1: {

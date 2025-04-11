@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-import CreatePlanForm from '../components/CreatePlanForm';
+import CreatePlanForm from '../components/workoutplan/CreatePlanForm';
 import componentStyles from '../styles/componentStyles';
 import textStyles from '../styles/textStyles';
 import TextThemed from '../components/TextThemed';
