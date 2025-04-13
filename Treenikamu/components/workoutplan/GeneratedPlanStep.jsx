@@ -20,6 +20,7 @@ import ButtonComponent from "../ButtonComponent";
 import InstructionsFrame from "../InstructionsFrame";
 import StepControls from "../StepControls";
 
+
 const SPLIT_TEMPLATES = {
   1: {
     "Selkä ja hauikset": [
@@ -156,49 +157,57 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
                       header="Vinkit"
                     />
                   </View>
+                  <View style={componentStyles.editExerciseInputContainer}>
 
-                  <InputFieldComponent
-                    styleType="dark"
-                    header="sarjat"
-                    keyboardType="numeric"
-                    value={String(activeExercise.sets)}
-                    onChangeText={(text) =>
-                      setActiveExercise({
-                        ...activeExercise,
-                        sets: Number(text),
-                      })
-                    }
-                    style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                  />
-                  <InputFieldComponent
-                    styleType="dark"
-                    header="toistot"
-                    keyboardType="numeric"
-                    value={String(activeExercise.reps)}
-                    onChangeText={(text) =>
-                      setActiveExercise({
-                        ...activeExercise,
-                        reps: Number(text),
-                      })
-                    }
-                    style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                  />
-                  <InputFieldComponent
-                    styleType="dark"
-                    header="paino (kg)"
-                    keyboardType="numeric"
-                    value={String(activeExercise.weight)}
-                    onChangeText={(text) =>
-                      setActiveExercise({
-                        ...activeExercise,
-                        weight: Number(text),
-                      })
-                    }
-                    style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                  />
+                    <InputFieldComponent
+                      styleType="dark"
+                      header="sarjat"
+                      keyboardType="numeric"
+                      inputStyle="number"
+                      value={String(activeExercise.sets)}
+                      onChangeText={(text) =>
+                        setActiveExercise({
+                          ...activeExercise,
+                          sets: Number(text),
+                        })
+                      }
+                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
+                    />
+                    <InputFieldComponent
+                      styleType="dark"
+                      header="toistot"
+                      keyboardType="numeric"
+                      inputStyle="number"
+                      value={String(activeExercise.reps)}
+                      onChangeText={(text) =>
+                        setActiveExercise({
+                          ...activeExercise,
+                          reps: Number(text),
+                        })
+                      }
+                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
+                    />
+                    
+                    <InputFieldComponent
+                      styleType="dark"
+                      header="paino (kg)"
+                      keyboardType="numeric"
+                      inputStyle="number"
+                      step={2.5}
+                      value={String(activeExercise.weight)}
+                      onChangeText={(text) =>
+                        setActiveExercise({
+                          ...activeExercise,
+                          weight: Number(text),
+                        })
+                      }
+                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
+                    />
+                  </View>
+
                   <View style={componentStyles.buttonWrapper}>
                     <ButtonComponent
-                      content="Save"
+                      content="tallenna"
                       onPress={() =>
                         handleUpdateExercise(
                           activeExercise.dayName,
@@ -208,7 +217,7 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
                     />
                     <View style={{ height: 12 }} />
                     <ButtonComponent
-                      content="Cancel"
+                      content="poistu"
                       type="danger"
                       onPress={() => setActiveExercise(null)}
                     />
@@ -219,7 +228,6 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
           </View>
         </KeyboardAvoidingView>
       </Modal>
-      
     </>
   );
 };

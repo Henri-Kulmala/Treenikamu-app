@@ -41,7 +41,7 @@ const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
         <View style={componentStyles.itemCardmd}>
           <Image
             source={{ uri: exercise.imgurl }}
-            style={{ width: 72, height: 56, marginRight: 12, borderRadius: 8 }}
+            style={{ width: 112, height: 96,  marginRight: 12, borderRadius: 8 }}
           />
           <View>
             <TextThemed style={textStyles.bodyLargeB}>{exercise.name}</TextThemed>

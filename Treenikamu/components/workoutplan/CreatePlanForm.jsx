@@ -52,8 +52,7 @@ const CreatePlanForm = () => {
         <View>
           <StepControls
             onBack={handleBack}
-            onNext={handleNext}
-            nextContent="Takaisin"
+            nextContent="Tallenna"
             prevContent="Takaisin"
             nextStyle={componentStyles.buttonWrapper}
             prevStyle={componentStyles.buttonWrapper}

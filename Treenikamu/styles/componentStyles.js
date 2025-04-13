@@ -22,6 +22,7 @@ const componentStyles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
   },
+  
 
   buttonWrapper: {
     flexDirection: "row",
@@ -86,18 +87,30 @@ const componentStyles = StyleSheet.create({
 
   },
 
-  inputFieldContainer: {
-    width: "100%",
-    gap: 8,
-    alignContent: "flex-end",
-  },
 
   inputField: {
-    backgroundColor: MainTheme.colors.dark20,
-    borderRadius: 10,
     padding: 8,
     color: MainTheme.colors.text,
   },
+  numberPickerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  
+  iconButtonDanger: {
+    borderRadius: 8,
+    padding: 10,
+    backgroundColor: MainTheme.colors.danger,
+  },
+  iconButtonSuccess: {
+    borderRadius: 8,
+    padding: 10,
+    backgroundColor: MainTheme.colors.highlightGreen,
+  },
+  inputFieldNumber: {
+
+  },
+  
   // RegisterView
 
   header: {
@@ -127,9 +140,17 @@ const componentStyles = StyleSheet.create({
     marginVertical: 16,
   },
 
+  editExerciseInputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 8,
+
+  },
+
   itemCardmd: {
     flexDirection: "row",
-    height: 80,
+    height: 120,
     marginVertical: 16,
     backgroundColor: MainTheme.colors.highlightGreen,
     borderRadius: 16,
