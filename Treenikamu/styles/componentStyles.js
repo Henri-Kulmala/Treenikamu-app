@@ -164,6 +164,9 @@ const componentStyles = StyleSheet.create({
     padding: 24,
     gap: 8,
   },
+  splitItem: {
+
+  },
 
 
   // StepControl styles
