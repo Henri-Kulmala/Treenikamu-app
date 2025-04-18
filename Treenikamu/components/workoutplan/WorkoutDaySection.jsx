@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import GroupedExerciseSection from "./GroupedExerciseSection";
-import TextThemed from "./TextThemed";
-import textStyles from "../styles/textStyles";
+import TextThemed from "../TextThemed";
+import textStyles from "../../styles/textStyles";
 
 const WorkoutDaySection = ({
   dayName,

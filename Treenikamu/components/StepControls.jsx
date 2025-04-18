@@ -1,22 +1,24 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import componentStyles from "../styles/componentStyles";
+import textStyles from "../styles/textStyles";
 
-const StepControls = ({ onBack, onSave }) => {
+const StepControls = ({
+  onBack,
+  onNext,
+  nextContent,
+  prevContent,
+  nextStyle,
+  prevStyle,
+}) => {
   return (
-    <View style={componentStyles.buttonWrapper}>
-      <TouchableOpacity
-        onPress={onBack}
-        style={[componentStyles.buttonContainer, componentStyles.defaultButton]}
-      >
-        <Text style={componentStyles.buttonText}>Back</Text>
+    <View style={componentStyles.stepContainer}>
+      <TouchableOpacity onPress={onBack} style={componentStyles.prevButton}>
+        <Text style={textStyles.buttonText}>{prevContent}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={onSave}
-        style={[componentStyles.buttonContainer, componentStyles.dangerButton]}
-      >
-        <Text style={componentStyles.buttonText}>Save</Text>
+      <TouchableOpacity onPress={onNext} style={componentStyles.nextButton}>
+        <Text style={textStyles.buttonTextMuted}>{nextContent}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, Animated } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
-import TextThemed from "./TextThemed";
-import componentStyles from "../styles/componentStyles";
-import textStyles from "../styles/textStyles";
+import TextThemed from "../TextThemed";
+import componentStyles from "../../styles/componentStyles";
+import textStyles from "../../styles/textStyles";
 
 const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
   if (!exercise) return null;
@@ -41,7 +41,7 @@ const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
         <View style={componentStyles.itemCardmd}>
           <Image
             source={{ uri: exercise.imgurl }}
-            style={{ width: 72, height: 56, marginRight: 12, borderRadius: 8 }}
+            style={{ width: 112, height: 96,  marginRight: 12, borderRadius: 8 }}
           />
           <View>
             <TextThemed style={textStyles.bodyLargeB}>{exercise.name}</TextThemed>

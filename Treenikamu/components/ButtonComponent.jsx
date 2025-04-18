@@ -9,6 +9,10 @@ export default function ButtonComponent({ content, type = "default", onPress, ..
     switch (type) {
       case "danger":
         return componentStyles.dangerButton;
+      case "prev":
+        return componentStyles.prevButton;
+      case "next":
+        return componentStyles.nextButton;
       default:
         return componentStyles.defaultButton;
     }
