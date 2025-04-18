@@ -15,7 +15,7 @@ const CreatePlanForm = () => {
   const handleBack = () => setStep(step - 1);
 
   return (
-    <View>
+    <View style={componentStyles.formContainer}>
       {step === 1 && (
         <View>
           <StepControls
@@ -49,7 +49,7 @@ const CreatePlanForm = () => {
         </View>
       )}
       {step === 3 && (
-        <View>
+        <View style={componentStyles.formContainer}>
           <StepControls
             onBack={handleBack}
             nextContent="Tallenna"

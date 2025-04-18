@@ -4,6 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import componentStyles from "../styles/componentStyles";
 import textStyles from "../styles/textStyles";
 import MainTheme from "../styles/mainTheme";
+import TextThemed from "./TextThemed";
 
 export default function InputFieldComponent({
   placeholder,
@@ -43,13 +44,13 @@ export default function InputFieldComponent({
   if (inputStyle === "number") {
     return (
       <View >
-        <Text style={[textStyles.inputHeader, getInputType()]}>{header}</Text>
+        <TextThemed style={[textStyles.inputHeader, getInputType()]}>{header}</TextThemed>
         <View style={componentStyles.numberPickerContainer}>
           <TouchableOpacity onPress={handleDecrease} style={componentStyles.iconButtonDanger}>
             <AntDesign name="minus" size={16} color={MainTheme.colors.text} />
           </TouchableOpacity>
           <TextInput
-            style={componentStyles.inputField}
+            style={componentStyles.inputFieldNumber}
             value={String(value)}
             keyboardType="numeric"
             editable={false}
@@ -65,7 +66,7 @@ export default function InputFieldComponent({
 
   return (
     <View style={componentStyles.inputFieldContainer}>
-      <Text style={[textStyles.inputHeader, getInputType()]}>{header}</Text>
+      <TextThemed style={[textStyles.inputHeader, getInputType()]}>{header}</TextThemed>
       <TextInput
         placeholder={placeholder}
         value={value}

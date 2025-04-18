@@ -11,6 +11,7 @@ const MainTheme = {
     dark20: '#07080733',
     text: '#FFFFFF',
     textMuted: '#FFFFFF66',
+    text20: '#FFFFFF33',
     highlightDanger: "#935E55",
     danger: '#54332D',
   },

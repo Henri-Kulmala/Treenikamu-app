@@ -4,6 +4,8 @@ import LandingView from './LandingView';
 import WorkoutPlanView from './WorkoutPlanView';
 import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MainTheme from '../styles/mainTheme';
+import tabStyles from '../styles/tabStyles';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,7 +13,7 @@ const TabBarIcon = ({ name, focused }) => (
   <Ionicons
     name={name}
     size={32}
-    color={focused ? '#ffffff' : '#7c7c7c'}
+    color={focused ? MainTheme.colors.highlightGreen : MainTheme.colors.highlightGreenMuted}
     style={{ height: 32 }}
   />
 );
@@ -21,7 +23,11 @@ const MainTabs = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#070807',
+          backgroundColor: MainTheme.colors.dark,
+          borderTopWidth: 0,
+          position: 'absolute',
+          bottom: 0,
+          paddingTop: 16,
           height: 80,
           padding: 24,
         },

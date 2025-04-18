@@ -89,8 +89,21 @@ const componentStyles = StyleSheet.create({
   inputField: {
     padding: 8,
     color: MainTheme.colors.text,
+    backgroundColor: MainTheme.colors.text20,
+    borderRadius: 10,
   },
-  inputFieldNumber: {},
+  inputFieldContainer: {
+    width: "100%",
+    alignContent: "flex-end",
+    gap: 8,
+  },
+
+  inputFieldNumber: {
+    padding: 8,
+    color: MainTheme.colors.text,
+    backgroundColor: MainTheme.colors.textMuted,
+    borderRadius: 8,
+  },
 
   // Number Picker
   numberPickerContainer: {
@@ -114,6 +127,7 @@ const componentStyles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
+    width: "100%",
     padding: 12,
     marginVertical: 6,
     borderRadius: 8,
@@ -183,10 +197,15 @@ const componentStyles = StyleSheet.create({
 
   // StepControl styles
   stepContainer: {
+    backgroundColor: "none",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 24,
+  },
+
+  formContainer: {
+    justifyContent: "center",
+    marginTop: 20,
+    height: "100%",
   },
 });
 
