@@ -90,6 +90,12 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
     setActiveExercise(null);
   };
 
+  const handleSaveProgram = () => {
+    
+    
+
+  };
+
   if (loading) return <ActivityIndicator size="large" color="gray" />;
   if (!workoutPlan)
     return <TextThemed style={textStyles.bodyLarge}>No exercises</TextThemed>;
@@ -122,6 +128,13 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
             exerciseData={exerciseData}
           />
         ))}
+
+        <ButtonComponent
+          content="Tallenna ohjelma"
+          onPress={() => console.log("Save program", workoutPlan)}
+
+
+        />
       </ScrollView>
 
       <Modal visible={!!activeExercise} animationType="slide" transparent>

@@ -23,6 +23,11 @@ const componentStyles = StyleSheet.create({
     gap: 8,
     borderRadius: 16,
   },
+  titleWithDescription: {
+    gap: 8,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+  },
 
   // Button Groups
   buttonWrapper: {
@@ -73,16 +78,6 @@ const componentStyles = StyleSheet.create({
   defaultButton: {
     backgroundColor: MainTheme.colors.highlightGreen,
   },
-  prevButton: {
-    padding: 8,
-    borderRadius: 10,
-    backgroundColor: MainTheme.colors.highlightGreen,
-  },
-  nextButton: {
-    padding: 8,
-    borderRadius: 10,
-    backgroundColor: MainTheme.colors.highlightGreenMuted,
-  },
   weekdayButton: {},
 
   // Input Fields
@@ -101,27 +96,59 @@ const componentStyles = StyleSheet.create({
   inputFieldNumber: {
     padding: 8,
     color: MainTheme.colors.text,
-    backgroundColor: MainTheme.colors.textMuted,
+    backgroundColor: MainTheme.colors.text20,
     borderRadius: 8,
+
+  },
+  selectableWithTitle: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 8,
+    gap: 16,
+    paddingHorizontal: 16,
   },
 
   // Number Picker
   numberPickerContainer: {
+
+    gap: 8,
     flexDirection: "row",
-    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
   },
 
   // Icon Buttons
   iconButtonDanger: {
-    padding: 10,
+    padding: 8,
     borderRadius: 8,
     backgroundColor: MainTheme.colors.danger,
   },
   iconButtonSuccess: {
-    padding: 10,
+    padding: 8,
     borderRadius: 8,
     backgroundColor: MainTheme.colors.highlightGreen,
   },
+  iconButtonStep: {
+    height: 40,
+    width: 40,
+    borderRadius: 50,
+  },
+  iconButtonContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
+  },
+  iconButtonDisabled: {
+    
+    backgroundColor: MainTheme.colors.highlightGreenMuted,
+    borderRadius: 50,
+
+  },
+  iconButtonEnabled: {
+    backgroundColor: MainTheme.colors.highlightGreen,
+    borderRadius: 50,
+  },
+
 
   // RegisterView
   header: {
@@ -146,6 +173,14 @@ const componentStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     gap: 16,
+    marginVertical: 16,
+  },
+  workoutWeekRepeatContainer: {
+    backgroundColor: MainTheme.colors.darkGreen20,
+    borderRadius: 16,
+    padding: 16,
+    justifyContent: "space-between",
+    alignItems: "center",
     marginVertical: 16,
   },
   editExerciseInputContainer: {
@@ -208,5 +243,7 @@ const componentStyles = StyleSheet.create({
     height: "100%",
   },
 });
+
+
 
 export default componentStyles;

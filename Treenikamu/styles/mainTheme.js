@@ -6,6 +6,7 @@ const MainTheme = {
     highlightGreen: '#638063',
     highlightGreenMuted: '#63806333',
     darkGreen: "#394032",
+    darkGreen20: "#39403233",
     dark: '#070807',
     dark40:'#07080766', 
     dark20: '#07080733',

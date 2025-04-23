@@ -44,13 +44,13 @@ export default function InputFieldComponent({
   if (inputStyle === "number") {
     return (
       <View >
-        <TextThemed style={[textStyles.inputHeader, getInputType()]}>{header}</TextThemed>
+        <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
         <View style={componentStyles.numberPickerContainer}>
           <TouchableOpacity onPress={handleDecrease} style={componentStyles.iconButtonDanger}>
             <AntDesign name="minus" size={16} color={MainTheme.colors.text} />
           </TouchableOpacity>
           <TextInput
-            style={componentStyles.inputFieldNumber}
+            style={[componentStyles.inputFieldNumber, textStyles.titleSmallB] }
             value={String(value)}
             keyboardType="numeric"
             editable={false}
@@ -66,7 +66,7 @@ export default function InputFieldComponent({
 
   return (
     <View style={componentStyles.inputFieldContainer}>
-      <TextThemed style={[textStyles.inputHeader, getInputType()]}>{header}</TextThemed>
+      <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
       <TextInput
         placeholder={placeholder}
         value={value}
