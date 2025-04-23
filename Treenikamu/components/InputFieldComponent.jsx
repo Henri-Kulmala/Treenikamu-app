@@ -7,6 +7,7 @@ import MainTheme from "../styles/mainTheme";
 import TextThemed from "./TextThemed";
 
 export default function InputFieldComponent({
+  isError = "false",
   placeholder,
   styleType,
   value,
@@ -41,6 +42,15 @@ export default function InputFieldComponent({
     }
   };
 
+  const isFieldError = () => {
+    switch (isError) {
+      case "true":
+        return componentStyles.inputError;
+      case "false":
+        return componentStyles.inputField;
+    }
+  }
+
   if (inputStyle === "number") {
     return (
       <View >
@@ -53,9 +63,11 @@ export default function InputFieldComponent({
             style={[componentStyles.inputFieldNumber, textStyles.titleSmallB] }
             value={String(value)}
             keyboardType="numeric"
-            editable={false}
+            editable={true}
+            onChangeText={onChangeText}
             {...props}
           />
+          
           <TouchableOpacity onPress={handleIncrease} style={componentStyles.iconButtonSuccess}>
             <AntDesign name="plus" size={16} color={MainTheme.colors.text} />
           </TouchableOpacity>
@@ -64,16 +76,35 @@ export default function InputFieldComponent({
     );
   }
 
+  if (isError === "true") {
+
+
   return (
     <View style={componentStyles.inputFieldContainer}>
-      <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
+      <TextThemed style={[textStyles.inputLabelError]}>{header}</TextThemed>
       <TextInput
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
-        style={componentStyles.inputField}
+        style={componentStyles.inputError}
         {...props}
       />
     </View>
   );
+
+}
+
+return (
+  <View style={componentStyles.inputFieldContainer}>
+    <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
+    <TextInput
+      placeholder={placeholder}
+      value={value}
+      onChangeText={onChangeText}
+      style={componentStyles.inputField}
+      {...props}
+    />
+  </View>
+);
+
 }

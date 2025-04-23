@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MainTheme from '../styles/mainTheme';
 import tabStyles from '../styles/tabStyles';
+import ProfileView from './ProfileView';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +52,7 @@ const MainTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={() => <View><Text style={{ color: 'white' }}>Profile Placeholder</Text></View>}
+        component={ProfileView}
         options={{
           tabBarIcon: ({ focused }) => <TabBarIcon name="person-outline" focused={focused} />,
         }}

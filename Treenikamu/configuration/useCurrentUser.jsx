@@ -9,6 +9,17 @@ const useCurrentUser = () => {
   const [userId, setUserId]   = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const defaultUserData = {
+    name: "",
+    firstName: "",
+    lastName: "",
+    age: 0,
+    height: 0,
+    weight: 0,
+    
+  };
+
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (!currentUser) {
