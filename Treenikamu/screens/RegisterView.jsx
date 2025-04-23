@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   LayoutAnimation,
-  Alert,
 } from "react-native";
 
 import { Slider } from "react-native-elements";
@@ -17,13 +16,16 @@ import textStyles from "../styles/textStyles";
 import ButtonComponent from "../components/ButtonComponent";
 import AuthContext from "../configuration/AuthContext";
 import CheckHeader from "../components/CheckHeader";
+import Alert from "../components/Alert";
 
 
 
 const RegisterView = ({ navigation }) => {
   const [openSection, setOpenSection] = useState(null);
   const [error, setError] = useState(null);
+  const [errorVisible, setErrorVisible] = useState(false);
 
+  
   const [form1, setForm1] = useState({ email: "", password: "", confirm: "" });
   const [form2, setForm2] = useState({
     first: "",
@@ -62,18 +64,18 @@ const RegisterView = ({ navigation }) => {
     const numberRegex = /^\d+$/;
     const genderOptions = ["mies", "nainen", "muu"];
 
-    if (!emailRegex.test(form1.email)) return "Virheellinen sähköpostiosoite.";
+    if (!emailRegex.test(form1.email)) setError("Virheellinen sähköpostiosoite.") ;
     if (!passwordRegex.test(form1.password))
-      return "Salasanan tulee olla vähintään 8 merkkiä, sisältää ison kirjaimen ja erikoismerkin.";
-    if (form1.password !== form1.confirm) return "Salasanat eivät täsmää.";
+      setError("Salasanan tulee olla vähintään 8 merkkiä, sisältää ison kirjaimen ja erikoismerkin.");
+    if (form1.password !== form1.confirm) setError("Salasanat eivät täsmää.");
 
-    if (!numberRegex.test(form3.age)) return "Ikä pitää olla numero.";
-    if (!numberRegex.test(form3.height)) return "Pituus pitää olla numero.";
-    if (!numberRegex.test(form3.weight)) return "Paino pitää olla numero.";
-    if (!numberRegex.test(form2.zip)) return "Postinumero pitää olla numero.";
+    if (!numberRegex.test(form3.age)) setError("Ikä pitää olla numero.");
+    if (!numberRegex.test(form3.height)) setError("Pituus pitää olla numero.");
+    if (!numberRegex.test(form3.weight)) setError("Paino pitää olla numero.");
+    if (!numberRegex.test(form2.zip)) setError("Postinumero pitää olla numero.");
 
     if (!genderOptions.includes(form2.gender.toLowerCase()))
-      return "Sukupuolen tulee olla mies, nainen tai muu.";
+      setError("Sukupuolen tulee olla mies, nainen tai muu.");
 
     return null;
   };
@@ -81,7 +83,7 @@ const RegisterView = ({ navigation }) => {
   const handleRegister = async () => {
     const validationError = validateInputs();
     if (validationError) {
-      Alert.alert("Virhe", validationError);
+      setError(validationError);
       return;
     }
 
@@ -97,14 +99,14 @@ const RegisterView = ({ navigation }) => {
       if (response.success) {
         navigation.reset({ index: 0, routes: [{ name: "Landing" }] });
       } else {
-        Alert.alert(
+        setError(
           "Rekisteröinti epäonnistui",
           response.error || "Tuntematon virhe"
         );
       }
     } catch (err) {
       console.log(err);
-      Alert.alert("Virhe", "Jotain meni pieleen. Yritä myöhemmin uudelleen.");
+      setError("Jotain meni pieleen. Yritä myöhemmin uudelleen.");
     }
   };
 
@@ -121,6 +123,15 @@ const RegisterView = ({ navigation }) => {
           completed={!!isForm1Complete}
           toggleOpen={() => toggleSection(1)}
         />
+        <Alert
+          title="Virhe"
+          message={error}
+          isVisible={!!error}
+          onRequestClose={() => setError(null)}
+          actions={[{ text: "OK", onPress: () => setError(null) }]}
+        
+        />
+
         {openSection === 1 && (
           <View style={componentStyles.section}>
             <InputFieldComponent

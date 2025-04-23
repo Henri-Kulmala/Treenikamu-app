@@ -7,16 +7,7 @@ import textStyles from "../styles/textStyles";
 import ButtonComponent from "../components/ButtonComponent";
 
 const LandingView = () => {
-  const handleLogout = () => {
-    auth
-      .signOut()
-      .then(() => {
-        console.log("User signed out!");
-      })
-      .catch((error) => {
-        console.error("Sign out error:", error);
-      });
-  };
+  
 
   return (
     <View style={componentStyles.mainContainer}>
@@ -27,7 +18,6 @@ const LandingView = () => {
         <TextThemed style={textStyles.bodyLarge}>
           Tälle sivulle tulee näkymä treeneistä ja tilastoista
         </TextThemed>
-        <ButtonComponent content="kirjaudu ulos" onPress={handleLogout} />
       </View>
     </View>
   );

@@ -98,6 +98,12 @@ const textStyles = StyleSheet.create({
     fontSize: MainTheme.fontSizes.bodySmall,
     color: MainTheme.colors.dark,
   },
+  inputLabelError: {
+    marginBottom: 8,
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    color: MainTheme.colors.highlightDanger,
+  },
   
 });
 

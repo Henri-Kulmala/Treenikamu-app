@@ -5,6 +5,7 @@ const MainTheme = {
   colors: {
     highlightGreen: '#638063',
     highlightGreenMuted: '#63806333',
+    highlightGreen60: '#63806399',
     darkGreen: "#394032",
     darkGreen20: "#39403233",
     dark: '#070807',
@@ -15,6 +16,7 @@ const MainTheme = {
     text20: '#FFFFFF33',
     highlightDanger: "#935E55",
     danger: '#54332D',
+    danger60: '#54332D60',
   },
   fontSizes: {
     bodySmall: 12,

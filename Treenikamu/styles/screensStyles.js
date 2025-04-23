@@ -9,6 +9,7 @@ const screensStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  
   registerSection: {
     backgroundColor: "#f0f0f0",
     borderRadius: 8,
