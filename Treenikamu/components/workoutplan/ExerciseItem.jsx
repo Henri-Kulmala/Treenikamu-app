@@ -43,7 +43,7 @@ const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
             source={{ uri: exercise.imgurl }}
             style={{ width: 112, height: 96,  marginRight: 12, borderRadius: 8 }}
           />
-          <View>
+          <View style={{ flex: 1 }}>
             <TextThemed style={textStyles.bodyLargeB}>{exercise.name}</TextThemed>
             <TextThemed style={textStyles.bodySmall}>
               {exercise.reps} x {exercise.sets}{" "}

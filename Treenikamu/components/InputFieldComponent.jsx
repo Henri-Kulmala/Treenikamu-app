@@ -22,9 +22,9 @@ export default function InputFieldComponent({
   const getInputType = () => {
     switch (styleType) {
       case "dark":
-        return textStyles.inputHeaderDark;
+        return textStyles.inputLabelDark;
       default:
-        return textStyles.inputHeader;
+        return textStyles.inputLabel;
     }
   };
 
@@ -42,14 +42,7 @@ export default function InputFieldComponent({
     }
   };
 
-  const isFieldError = () => {
-    switch (isError) {
-      case "true":
-        return componentStyles.inputError;
-      case "false":
-        return componentStyles.inputField;
-    }
-  }
+
 
   if (inputStyle === "number") {
     return (

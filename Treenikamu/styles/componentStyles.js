@@ -13,7 +13,7 @@ const componentStyles = StyleSheet.create({
   scrollView: {
     paddingTop: 48,
     paddingBottom: 120,
-    paddingHorizontal: 16,
+    paddingHorizontal: 0,
     backgroundColor: MainTheme.colors.dark,
   },
   childContainer: {
@@ -127,7 +127,7 @@ const componentStyles = StyleSheet.create({
   inputFieldNumber: {
     padding: 8,
     color: MainTheme.colors.text,
-    backgroundColor: MainTheme.colors.text20,
+    backgroundColor: MainTheme.colors.dark40,
     borderRadius: 8,
 
   },
@@ -155,7 +155,7 @@ const componentStyles = StyleSheet.create({
 
   // Number Picker
   numberPickerContainer: {
-
+    backgroundColor: MainTheme.colors.text20,
     gap: 8,
     flexDirection: "row",
     alignContent: "center",
@@ -251,6 +251,30 @@ const componentStyles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: MainTheme.colors.text,
   },
+  exerciseListContainer: {
+    gap: 8,
+    marginBottom: 16,
+
+  },
+ 
+  modalImage:{
+    width: 250,
+    height: "auto",
+    aspectRatio:1,
+    padding: 8,
+    borderRadius: 24,
+  },
+  modalImageWrapper:{
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 8,
+
+  },
+  editExerciseModalContainer: {
+    padding: 16,
+    borderRadius: 16,
+  },
+
 
   splitItemOpen: {
     width: 336,

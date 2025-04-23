@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
-  Image,
   View,
-  Text,
   ActivityIndicator,
-  Modal,
-  TextInput,
-  Button,
   ScrollView,
-  KeyboardAvoidingView,
-  Platform,
 } from "react-native";
 import { fetchAllExercises } from "../../configuration/fetchExercises";
 import WorkoutDaySection from "./WorkoutDaySection";
@@ -21,8 +14,11 @@ import ButtonComponent from "../ButtonComponent";
 import InstructionsFrame from "../InstructionsFrame";
 import StepControls from "../StepControls";
 import useCurrentUser from "../../configuration/useCurrentUser";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getDatabase } from "firebase/database";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { ref, set } from "firebase/database";
+import { database } from "../../configuration/firebaseConfig";
+import { Alert } from "react-native";
+import EditExerciseModal from './EditExerciseModal';
 
 const SPLIT_TEMPLATES = {
   1: {
@@ -39,8 +35,7 @@ const SPLIT_TEMPLATES = {
 };
 
 const GeneratedPlanStep = ({ selectedSplit }) => {
-  const database = getDatabase();
-  const { userId, loading: authLoading } = useCurrentUser();  
+  const { userId, loading: authLoading } = useCurrentUser();
   const [exerciseData, setExerciseData] = useState(null);
   const [workoutPlan, setWorkoutPlan] = useState({});
   const [loading, setLoading] = useState(true);
@@ -95,10 +90,22 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
     setActiveExercise(null);
   };
 
-  const handleSaveProgram = () => {
+  const handleSaveProgram = async () => {
+    if (!userId) return;
 
-    
+    const payload = {
+      split: selectedSplit,
+      days: workoutPlan,
+      savedAt: Date.now(),
+    };
 
+    try {
+      await set(ref(database, `users/${userId}/workoutplan`), payload);
+      Alert.alert("Tallennettu", "Treeniohjelmasi on tallennettu.");
+    } catch (err) {
+      console.error(err);
+      Alert.alert("Virhe", "Treeniohjelman tallennus epäonnistui.");
+    }
   };
 
   if (loading) return <ActivityIndicator size="large" color="gray" />;
@@ -111,9 +118,12 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
         contentContainerStyle={componentStyles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        <TextThemed style={textStyles.titleLarge}>
-          {user.first}
-        </TextThemed>
+        <View>
+          <ButtonComponent
+            content="Tallenna ohjelma"
+            onPress={handleSaveProgram}
+          />
+        </View>
 
         {Object.entries(workoutPlan).map(([day, exercises]) => (
           <WorkoutDaySection
@@ -137,130 +147,14 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
             exerciseData={exerciseData}
           />
         ))}
-
-        <ButtonComponent
-          content="Tallenna ohjelma"
-          onPress={() => console.log("Save program", workoutPlan)}
-
-
-        />
       </ScrollView>
 
-      <Modal visible={!!activeExercise} animationType="slide" transparent>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : undefined}
-          style={{ flex: 1 }}
-        >
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: "rgba(0,0,0,0.5)",
-              justifyContent: "center",
-              padding: 20,
-            }}
-          >
-            <ScrollView contentContainerStyle={componentStyles.modalContainer}>
-              {activeExercise && (
-                <>
-                  <View style={{ alignItems: "center", marginBottom: 24 }}>
-                    <Image
-                      source={{ uri: activeExercise.imgurl }}
-                      style={{
-                        width: 250,
-                        height: "auto",
-                        aspectRatio: 1,
-                        marginRight: 12,
-                        borderRadius: 32,
-                      }}
-                    />
-                  </View>
-                  <View style={{ marginBottom: 24, gap: 8 }}>
-                    <TextThemed style={textStyles.titleLargeBDark}>
-                      {activeExercise.name}
-                    </TextThemed>
-                    <InstructionsFrame
-                      content={activeExercise.startingPosition}
-                      header="Alkuasento"
-                    />
-                    <InstructionsFrame
-                      content={activeExercise.execution}
-                      header="Toteutus"
-                    />
-                    <InstructionsFrame
-                      content={activeExercise.tips}
-                      header="Vinkit"
-                    />
-                  </View>
-                  <View style={componentStyles.editExerciseInputContainer}>
-                    <InputFieldComponent
-                      styleType="dark"
-                      header="sarjat"
-                      keyboardType="numeric"
-                      inputStyle="number"
-                      value={String(activeExercise.sets)}
-                      onChangeText={(text) =>
-                        setActiveExercise({
-                          ...activeExercise,
-                          sets: Number(text),
-                        })
-                      }
-                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                    />
-                    <InputFieldComponent
-                      styleType="dark"
-                      header="toistot"
-                      keyboardType="numeric"
-                      inputStyle="number"
-                      value={String(activeExercise.reps)}
-                      onChangeText={(text) =>
-                        setActiveExercise({
-                          ...activeExercise,
-                          reps: Number(text),
-                        })
-                      }
-                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                    />
-
-                    <InputFieldComponent
-                      styleType="dark"
-                      header="paino (kg)"
-                      keyboardType="numeric"
-                      inputStyle="number"
-                      step={2.5}
-                      value={String(activeExercise.weight)}
-                      onChangeText={(text) =>
-                        setActiveExercise({
-                          ...activeExercise,
-                          weight: Number(text),
-                        })
-                      }
-                      style={{ marginVertical: 6, borderBottomWidth: 1 }}
-                    />
-                  </View>
-
-                  <View style={componentStyles.buttonWrapper}>
-                    <ButtonComponent
-                      content="tallenna"
-                      onPress={() =>
-                        handleUpdateExercise(
-                          activeExercise.dayName,
-                          activeExercise
-                        )
-                      }
-                    />
-                    <View style={{ height: 12 }} />
-                    <ButtonComponent
-                      content="poistu"
-                      type="danger"
-                      onPress={() => setActiveExercise(null)}
-                    />
-                  </View>
-                </>
-              )}
-            </ScrollView>
-          </View>
-        </KeyboardAvoidingView>
-      </Modal>
+      <EditExerciseModal
+        visible={!!activeExercise}
+        exercise={activeExercise}
+        onSave={(updated) => handleUpdateExercise(updated.dayName, updated)}
+        onCancel={() => setActiveExercise(null)}
+      />
     </>
   );
 };
