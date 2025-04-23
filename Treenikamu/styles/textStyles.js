@@ -22,6 +22,11 @@ const textStyles = StyleSheet.create({
     fontSize: MainTheme.fontSizes.bodyLarge,
     color: MainTheme.colors.text,
   },
+  bodyLargeBGreen: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.bodyLarge,
+    color: MainTheme.colors.highlightGreen,
+  },
   bodyLargeBDark: {
     fontFamily: "Manrope-B",
     fontSize: MainTheme.fontSizes.bodyLarge,
@@ -83,6 +88,7 @@ const textStyles = StyleSheet.create({
     marginBottom: 8,
   },
   inputLabel: {
+    marginBottom: 8,
     fontFamily: "Manrope-B",
     fontSize: MainTheme.fontSizes.bodySmall,
     color: MainTheme.colors.text,

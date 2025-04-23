@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Image,
   View,
   Text,
   ActivityIndicator,
@@ -19,7 +20,6 @@ import InputFieldComponent from "../InputFieldComponent";
 import ButtonComponent from "../ButtonComponent";
 import InstructionsFrame from "../InstructionsFrame";
 import StepControls from "../StepControls";
-
 
 const SPLIT_TEMPLATES = {
   1: {
@@ -90,6 +90,12 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
     setActiveExercise(null);
   };
 
+  const handleSaveProgram = () => {
+    
+    
+
+  };
+
   if (loading) return <ActivityIndicator size="large" color="gray" />;
   if (!workoutPlan)
     return <TextThemed style={textStyles.bodyLarge}>No exercises</TextThemed>;
@@ -122,6 +128,13 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
             exerciseData={exerciseData}
           />
         ))}
+
+        <ButtonComponent
+          content="Tallenna ohjelma"
+          onPress={() => console.log("Save program", workoutPlan)}
+
+
+        />
       </ScrollView>
 
       <Modal visible={!!activeExercise} animationType="slide" transparent>
@@ -140,6 +153,18 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
             <ScrollView contentContainerStyle={componentStyles.modalContainer}>
               {activeExercise && (
                 <>
+                  <View style={{ alignItems: "center", marginBottom: 24 }}>
+                    <Image
+                      source={{ uri: activeExercise.imgurl }}
+                      style={{
+                        width: 250,
+                        height: "auto",
+                        aspectRatio: 1,
+                        marginRight: 12,
+                        borderRadius: 32,
+                      }}
+                    />
+                  </View>
                   <View style={{ marginBottom: 24, gap: 8 }}>
                     <TextThemed style={textStyles.titleLargeBDark}>
                       {activeExercise.name}
@@ -158,7 +183,6 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
                     />
                   </View>
                   <View style={componentStyles.editExerciseInputContainer}>
-
                     <InputFieldComponent
                       styleType="dark"
                       header="sarjat"
@@ -187,7 +211,7 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
                       }
                       style={{ marginVertical: 6, borderBottomWidth: 1 }}
                     />
-                    
+
                     <InputFieldComponent
                       styleType="dark"
                       header="paino (kg)"
