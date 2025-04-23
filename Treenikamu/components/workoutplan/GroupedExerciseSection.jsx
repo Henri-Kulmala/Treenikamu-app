@@ -7,6 +7,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import MainTheme from "../../styles/mainTheme";
 import textStyles from "../../styles/textStyles";
 import TextThemed from "../TextThemed";
+import { ScrollView } from "react-native-gesture-handler";
+import componentStyles from "../../styles/componentStyles";
 
 const GroupedExerciseSection = ({
   title,
@@ -31,7 +33,7 @@ const GroupedExerciseSection = ({
     }));
 
   return (
-    <View style={{ marginBottom: 16 }}>
+    <View style={componentStyles.exerciseListContainer}>
       <TextThemed style={textStyles.titleSmall}>{title}</TextThemed>
 
       <DraggableFlatList

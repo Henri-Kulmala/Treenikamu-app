@@ -1,28 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import CreatePlanForm from '../components/workoutplan/CreatePlanForm';
-import componentStyles from '../styles/componentStyles';
-import textStyles from '../styles/textStyles';
-import TextThemed from '../components/TextThemed';
-import ButtonComponent from '../components/ButtonComponent';
+import React from "react";
+import { View } from "react-native";
+import WorkoutPlanWrapper from "../components/workoutplan/WorkoutPlanWrapper";
+import componentStyles    from "../styles/componentStyles";
 
-const WorkoutPlanView = () => {
-  const [hasProgram, setHasProgram] = useState(false);
-
+export default function WorkoutPlanView() {
   return (
     <View style={componentStyles.mainContainer}>
-      {hasProgram ? (
-        <Text></Text>
-      ) : (
-        <View style={componentStyles.childContainer}> 
-          <TextThemed style={textStyles.titleLargeB}>Luo treeniohjelma!</TextThemed>
-          <ButtonComponent content="luo" onPress={() => setHasProgram(true)} />
-        </View>
-      )}
-
-      {hasProgram && <CreatePlanForm />}
+      <WorkoutPlanWrapper />
     </View>
   );
-};
-
-export default WorkoutPlanView;
+}
