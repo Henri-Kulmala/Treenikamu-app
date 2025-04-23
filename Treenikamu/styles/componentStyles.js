@@ -37,11 +37,10 @@ const componentStyles = StyleSheet.create({
     marginTop: 16,
   },
   buttonContainer: {
-    width: 139,
-    height: 35,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    padding: 8,
+    padding: 12,
     margin: 8,
     borderRadius: 10,
     backgroundColor: MainTheme.colors.darkGreen,
@@ -80,6 +79,29 @@ const componentStyles = StyleSheet.create({
   },
   weekdayButton: {},
 
+  logoutButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+    margin: 8,
+    gap: 16,
+    borderRadius: 10,
+    backgroundColor: MainTheme.colors.danger60,
+  },
+
+  loginButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 16,
+    margin: 8,
+    gap: 16,
+    borderRadius: 10,
+    backgroundColor: MainTheme.colors.highlightGreen60,
+  },
+
+
   // Input Fields
   inputField: {
     padding: 8,
@@ -87,6 +109,15 @@ const componentStyles = StyleSheet.create({
     backgroundColor: MainTheme.colors.text20,
     borderRadius: 10,
   },
+  inputError: {
+    padding: 8,
+    color: MainTheme.colors.text,
+    backgroundColor: MainTheme.colors.text20,
+    borderColor: MainTheme.colors.danger,
+    borderBottomWidth: 4,
+    borderRadius: 10,
+  },
+
   inputFieldContainer: {
     width: "100%",
     alignContent: "flex-end",
@@ -106,6 +137,20 @@ const componentStyles = StyleSheet.create({
     paddingVertical: 8,
     gap: 16,
     paddingHorizontal: 16,
+  },
+  loginInputWrapper: {
+    width: "100%",
+    padding: 12,
+    marginVertical: 6,
+    gap: 8,
+
+  },
+  loginFooterWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 12,
+    marginVertical: 6,
+
   },
 
   // Number Picker
@@ -242,7 +287,20 @@ const componentStyles = StyleSheet.create({
     marginTop: 20,
     height: "100%",
   },
+
+  // Profile Styles
+
+  userInfoContainer: {
+    alignItems: "center",
+    marginVertical: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: MainTheme.colors.text20,
+  }
 });
+
+
 
 
 
