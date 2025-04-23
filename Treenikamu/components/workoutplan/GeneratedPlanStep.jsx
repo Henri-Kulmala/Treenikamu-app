@@ -20,6 +20,9 @@ import InputFieldComponent from "../InputFieldComponent";
 import ButtonComponent from "../ButtonComponent";
 import InstructionsFrame from "../InstructionsFrame";
 import StepControls from "../StepControls";
+import useCurrentUser from "../../configuration/useCurrentUser";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getDatabase } from "firebase/database";
 
 const SPLIT_TEMPLATES = {
   1: {
@@ -36,6 +39,8 @@ const SPLIT_TEMPLATES = {
 };
 
 const GeneratedPlanStep = ({ selectedSplit }) => {
+  const database = getDatabase();
+  const { userId, loading: authLoading } = useCurrentUser();  
   const [exerciseData, setExerciseData] = useState(null);
   const [workoutPlan, setWorkoutPlan] = useState({});
   const [loading, setLoading] = useState(true);
@@ -91,7 +96,7 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
   };
 
   const handleSaveProgram = () => {
-    
+
     
 
   };
@@ -106,6 +111,10 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
         contentContainerStyle={componentStyles.scrollView}
         showsVerticalScrollIndicator={false}
       >
+        <TextThemed style={textStyles.titleLarge}>
+          {user.first}
+        </TextThemed>
+
         {Object.entries(workoutPlan).map(([day, exercises]) => (
           <WorkoutDaySection
             key={day}
