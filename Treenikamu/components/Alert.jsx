@@ -11,17 +11,17 @@ import textStyles from '../styles/textStyles';
 export default function Alert({
   isVisible,
   onRequestClose,
-  // content
+
   title,
   message,
-  renderContent,       // optional custom body
-  actions,             // array of { text, onPress, style }
-  // animation
+  renderContent,       
+  actions,             
+
   animationIn     = 'zoomIn',
   animationOut    = 'zoomOut',
   animationInTiming  = 300,
   animationOutTiming = 300,
-  // overlay
+
   backdropColor   = 'rgba(0,0,0,0.5)',
   backdropOpacity = 1.0,
 

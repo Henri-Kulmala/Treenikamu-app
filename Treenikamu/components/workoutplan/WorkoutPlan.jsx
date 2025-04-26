@@ -12,7 +12,6 @@ export default function WorkoutPlan({ days = {}, exerciseData = {}, onEditExerci
         <View key={dayName} style={{ marginBottom: 24 }}>
           <TextThemed style={textStyles.titleLargeB}>{dayName}</TextThemed>
           <WorkoutDaySection
-            dayName={dayName}
             exercises={exercises}
             exerciseData={exerciseData}
             onEditExercise={(ex) => onEditExercise(ex, dayName)}

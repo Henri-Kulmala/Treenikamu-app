@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  ActivityIndicator,
-  ScrollView,
-} from "react-native";
+import { View, ActivityIndicator, ScrollView } from "react-native";
 import { fetchAllExercises } from "../../configuration/fetchExercises";
 import WorkoutDaySection from "./WorkoutDaySection";
 import componentStyles from "../../styles/componentStyles";
@@ -18,7 +14,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ref, set } from "firebase/database";
 import { database } from "../../configuration/firebaseConfig";
 import { Alert } from "react-native";
-import EditExerciseModal from './EditExerciseModal';
+import EditExerciseModal from "./EditExerciseModal";
+import { useNavigation } from "@react-navigation/native";
+
 
 const SPLIT_TEMPLATES = {
   1: {
@@ -40,6 +38,7 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
   const [workoutPlan, setWorkoutPlan] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeExercise, setActiveExercise] = useState(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const loadExercises = async () => {
@@ -101,7 +100,16 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
 
     try {
       await set(ref(database, `users/${userId}/workoutplan`), payload);
-      Alert.alert("Tallennettu", "Treeniohjelmasi on tallennettu.");
+      Alert.alert(
+        "Tallennettu",
+        "Treeniohjelmasi on tallennettu.",
+        [
+          {
+            text: "OK",
+            onPress: () => navigation.navigate("Workout"),
+          },
+        ]
+      );
     } catch (err) {
       console.error(err);
       Alert.alert("Virhe", "Treeniohjelman tallennus epäonnistui.");
@@ -114,17 +122,19 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
 
   return (
     <>
+      <View style={componentStyles.stepTabTop}>
+        <StepControls
+          onSave={handleSaveProgram}
+          saveStyle="enabled"
+          nextStyle="null"
+          deleteStyle="null"
+          backStyle="null"
+        />
+      </View>
       <ScrollView
         contentContainerStyle={componentStyles.scrollView}
         showsVerticalScrollIndicator={false}
       >
-        <View>
-          <ButtonComponent
-            content="Tallenna ohjelma"
-            onPress={handleSaveProgram}
-          />
-        </View>
-
         {Object.entries(workoutPlan).map(([day, exercises]) => (
           <WorkoutDaySection
             key={day}

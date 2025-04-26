@@ -60,6 +60,7 @@ const WorkoutDaySection = ({
         />
       ))}
     </View>
+    
   );
 };
 

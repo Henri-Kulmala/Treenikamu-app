@@ -6,7 +6,7 @@ import GeneratedPlanStep from "./GeneratedPlanStep";
 import StepControls from "../StepControls";
 import componentStyles from "../../styles/componentStyles";
 
-const CreatePlanForm = () => {
+const CreatePlanForm = ({handleSave}) => {
   const [step, setStep] = useState(1);
   const [selectedSplit, setSelectedSplit] = useState(null);
   const [selectedDays, setSelectedDays] = useState([]);
@@ -20,11 +20,10 @@ const CreatePlanForm = () => {
         <View>
           <StepControls
             onBack={handleBack}
-            onNext={handleNext}
-            nextContent="Seuraava"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonContainer}
-            prevStyle={componentStyles.buttonContainer}
+            onNext={handleNext}  
+            nextStyle="enabled"
+            deleteStyle="null"
+            saveStyle="null"
           />
           <WorkoutSplitStep
             selectedSplit={selectedSplit}
@@ -36,11 +35,10 @@ const CreatePlanForm = () => {
         <View>
           <StepControls
             onBack={handleBack}
-            onNext={handleNext}
-            nextContent="Seuraava"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonWrapper}
-            prevStyle={componentStyles.buttonWrapper}
+            onNext={handleNext}  
+            nextStyle="enabled"
+            deleteStyle="null"
+            saveStyle="null"
           />
           <WorkoutDaysStep
             selectedDays={selectedDays}
@@ -50,16 +48,17 @@ const CreatePlanForm = () => {
       )}
       {step === 3 && (
         <View style={componentStyles.formContainer}>
-          <StepControls
+         <StepControls
             onBack={handleBack}
-            nextContent="Tallenna"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonWrapper}
-            prevStyle={componentStyles.buttonWrapper}
+            handleSave={handleSave}
+            nextStyle="null"
+            deleteStyle="null"
+            saveStyle="null"
           />
           <GeneratedPlanStep
             selectedSplit={selectedSplit}
             selectedDays={selectedDays}
+            
           />
         </View>
       )}

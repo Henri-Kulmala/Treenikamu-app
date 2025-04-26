@@ -16,6 +16,7 @@ const componentStyles = StyleSheet.create({
     paddingHorizontal: 0,
     backgroundColor: MainTheme.colors.dark,
   },
+  
   childContainer: {
     alignContent: "center",
     alignItems: "center",
@@ -155,7 +156,6 @@ const componentStyles = StyleSheet.create({
 
   // Number Picker
   numberPickerContainer: {
-    backgroundColor: MainTheme.colors.text20,
     gap: 8,
     flexDirection: "row",
     alignContent: "center",
@@ -301,7 +301,16 @@ const componentStyles = StyleSheet.create({
 
   // StepControl styles
   stepContainer: {
+    paddingTop: 24,
+    paddingBottom: 16,
     backgroundColor: "none",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  stepTabTop: {
+    position: "absolute",
+    top: 0,
+    right: 0,
     flexDirection: "row",
     justifyContent: "space-between",
   },

@@ -7,7 +7,7 @@ import MainTheme from "../styles/mainTheme";
 import TextThemed from "./TextThemed";
 
 export default function InputFieldComponent({
-  isError = "false",
+  isError = false,
   placeholder,
   styleType,
   value,
@@ -42,26 +42,32 @@ export default function InputFieldComponent({
     }
   };
 
-
-
   if (inputStyle === "number") {
     return (
-      <View >
-        <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
+      <View>
+        <TextThemed style={[textStyles.inputLabel, getInputType()]}>
+          {header}
+        </TextThemed>
         <View style={componentStyles.numberPickerContainer}>
-          <TouchableOpacity onPress={handleDecrease} style={componentStyles.iconButtonDanger}>
+          <TouchableOpacity
+            onPress={handleDecrease}
+            style={componentStyles.iconButtonDanger}
+          >
             <AntDesign name="minus" size={16} color={MainTheme.colors.text} />
           </TouchableOpacity>
           <TextInput
-            style={[componentStyles.inputFieldNumber, textStyles.titleSmallB] }
+            style={[componentStyles.inputFieldNumber, textStyles.titleSmallB]}
             value={String(value)}
             keyboardType="numeric"
             editable={true}
             onChangeText={onChangeText}
             {...props}
           />
-          
-          <TouchableOpacity onPress={handleIncrease} style={componentStyles.iconButtonSuccess}>
+
+          <TouchableOpacity
+            onPress={handleIncrease}
+            style={componentStyles.iconButtonSuccess}
+          >
             <AntDesign name="plus" size={16} color={MainTheme.colors.text} />
           </TouchableOpacity>
         </View>
@@ -69,35 +75,33 @@ export default function InputFieldComponent({
     );
   }
 
-  if (isError === "true") {
-
+  if (isError) {
+    return (
+      <View style={componentStyles.inputFieldContainer}>
+        <TextThemed style={[textStyles.inputLabelError]}>{header}</TextThemed>
+        <TextInput
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          style={componentStyles.inputError}
+          {...props}
+        />
+      </View>
+    );
+  }
 
   return (
     <View style={componentStyles.inputFieldContainer}>
-      <TextThemed style={[textStyles.inputLabelError]}>{header}</TextThemed>
+      <TextThemed style={[textStyles.inputLabel, getInputType()]}>
+        {header}
+      </TextThemed>
       <TextInput
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
-        style={componentStyles.inputError}
+        style={componentStyles.inputField}
         {...props}
       />
     </View>
   );
-
-}
-
-return (
-  <View style={componentStyles.inputFieldContainer}>
-    <TextThemed style={[textStyles.inputLabel, getInputType()]}>{header}</TextThemed>
-    <TextInput
-      placeholder={placeholder}
-      value={value}
-      onChangeText={onChangeText}
-      style={componentStyles.inputField}
-      {...props}
-    />
-  </View>
-);
-
 }
