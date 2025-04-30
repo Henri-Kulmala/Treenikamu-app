@@ -1,8 +1,8 @@
 // File: components/workoutplan/WorkoutPlanWrapper.jsx
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { View, ScrollView, Alert } from "react-native";
 import useCurrentUser from "../configuration/useCurrentUser";
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused } from "@react-navigation/native";
 import { ref, get, set } from "firebase/database";
 import { database } from "../configuration/firebaseConfig";
 import WorkoutPlan from "../components/workoutplan/WorkoutPlan";
@@ -18,6 +18,8 @@ import MainTheme from "../styles/mainTheme";
 import StepControls from "../components/StepControls";
 import screensStyles from "../styles/screensStyles";
 import { fetchAllExercises } from "../configuration/fetchExercises";
+import { generateWorkoutDates } from "../configuration/dateHelper";
+import { Calendar } from "react-native-calendars";
 
 export default function WorkoutPlanView() {
   const { userId, loading: authLoading } = useCurrentUser();
@@ -28,14 +30,33 @@ export default function WorkoutPlanView() {
   const [activeExercise, setActiveExercise] = useState(null);
   const [activeDay, setActiveDay] = useState(null);
   const [isCreating, setIsCreating] = useState(null);
-  const isFocused = useIsFocused();  
+  const [weekDays, setWeekDays] = useState(null);
+  const [repeatWeeks, setRepeatWeeks] = useState(null);
+  const isFocused = useIsFocused();
+  const dates = generateWorkoutDates({
+    weekdays: weekDays,
+    startDate: new Date(),
+    weeks: repeatWeeks === Infinity ? 52 : repeatWeeks,
+  });
+
+  const marked = dates.reduce((acc, d) => {
+    const key = d.toISOString().slice(0, 10);
+    acc[key] = { selected: true, marked: true };
+    return acc;
+  }, {});
 
   useEffect(() => {
     if (authLoading || !userId) return;
 
     setLoadingPlan(true);
     get(ref(database, `users/${userId}/workoutplan`))
-      .then((snap) => snap.exists() && setPlan(snap.val()))
+      .then((snap) => {
+        if (!snap.exists()) return;
+        const data = snap.val();
+        setPlan(data);
+        setWeekDays(data.selectedDays || []);
+        setRepeatWeeks(data.repeatWeeks ?? Infinity);
+      })
       .catch((err) => {
         console.error(err);
         Alert.alert("Virhe", "Treeniohjelman lataus epäonnistui");
@@ -74,6 +95,9 @@ export default function WorkoutPlanView() {
       return { ...prev, days };
     });
   };
+
+    // Show Calendar function
+
 
   const handleSavePlan = async () => {
     if (!userId || !plan) return;
@@ -150,20 +174,23 @@ export default function WorkoutPlanView() {
     <View style={screensStyles.workoutPlanView}>
       <View>
         <StepControls
-          onSave={handleSavePlan}
           onDelete={handleDeleteWorkoutPlan}
           deleteStyle="danger"
-          saveStyle="enabled"
+          saveStyle="null"
           nextStyle="null"
           backStyle="null"
         />
+        <Calendar markedDates={marked} />
       </View>
 
-      <ScrollView contentContainerStyle={componentStyles.scrollView} nestedScrollEnabled={true}>
+      <ScrollView
+        contentContainerStyle={componentStyles.scrollView}
+        nestedScrollEnabled={true}
+      >
         <WorkoutPlan
           days={plan.days}
           exerciseData={exerciseData}
-          nestedScrollEnabled={true} 
+          nestedScrollEnabled={true}
           onEditExercise={(ex, day) => {
             setActiveExercise(ex);
             setActiveDay(day);
