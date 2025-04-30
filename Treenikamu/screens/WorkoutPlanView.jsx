@@ -1,7 +1,8 @@
 // File: components/workoutplan/WorkoutPlanWrapper.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { View, ScrollView, Alert } from "react-native";
 import useCurrentUser from "../configuration/useCurrentUser";
+import { useIsFocused } from '@react-navigation/native';
 import { ref, get, set } from "firebase/database";
 import { database } from "../configuration/firebaseConfig";
 import WorkoutPlan from "../components/workoutplan/WorkoutPlan";
@@ -27,6 +28,7 @@ export default function WorkoutPlanView() {
   const [activeExercise, setActiveExercise] = useState(null);
   const [activeDay, setActiveDay] = useState(null);
   const [isCreating, setIsCreating] = useState(null);
+  const isFocused = useIsFocused();  
 
   useEffect(() => {
     if (authLoading || !userId) return;
@@ -39,7 +41,7 @@ export default function WorkoutPlanView() {
         Alert.alert("Virhe", "Treeniohjelman lataus epäonnistui");
       })
       .finally(() => setLoadingPlan(false));
-  }, [authLoading, userId]);
+  }, [authLoading, userId, isFocused]);
 
   useEffect(() => {
     setLoadingExercises(true);
@@ -85,17 +87,34 @@ export default function WorkoutPlanView() {
     }
   };
 
-  const handleDeleteWorkoutPlan = async () => {
-    if (!userId) return;
-    const planRef = ref(database, `users/${userId}/workoutplan`);
-    try {
-      await set(planRef, null);
-      setPlan(null);
-      Alert.alert("Poistettu", "Treeniohjelma on poistettu.");
-    } catch (err) {
-      console.error(err);
-      Alert.alert("Virhe", "Poisto epäonnistui.");
-    }
+  const handleDeleteWorkoutPlan = () => {
+    Alert.alert(
+      "Varmistus",
+      "Haluatko poistaa treeniohjelman?",
+      [
+        {
+          text: "Ei",
+          style: "cancel",
+        },
+        {
+          text: "Ok",
+          style: "destructive",
+          onPress: async () => {
+            if (!userId) return;
+            const planRef = ref(database, `users/${userId}/workoutplan`);
+            try {
+              await set(planRef, null);
+              setPlan(null);
+              Alert.alert("Poistettu", "Treeniohjelma on poistettu.");
+            } catch (err) {
+              console.error(err);
+              Alert.alert("Virhe", "Poisto epäonnistui.");
+            }
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   if (authLoading || loadingPlan || loadingExercises) {
@@ -140,10 +159,11 @@ export default function WorkoutPlanView() {
         />
       </View>
 
-      <ScrollView contentContainerStyle={componentStyles.scrollView}>
+      <ScrollView contentContainerStyle={componentStyles.scrollView} nestedScrollEnabled={true}>
         <WorkoutPlan
           days={plan.days}
           exerciseData={exerciseData}
+          nestedScrollEnabled={true} 
           onEditExercise={(ex, day) => {
             setActiveExercise(ex);
             setActiveDay(day);

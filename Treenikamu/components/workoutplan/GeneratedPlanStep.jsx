@@ -5,9 +5,6 @@ import WorkoutDaySection from "./WorkoutDaySection";
 import componentStyles from "../../styles/componentStyles";
 import textStyles from "../../styles/textStyles";
 import TextThemed from "../TextThemed";
-import InputFieldComponent from "../InputFieldComponent";
-import ButtonComponent from "../ButtonComponent";
-import InstructionsFrame from "../InstructionsFrame";
 import StepControls from "../StepControls";
 import useCurrentUser from "../../configuration/useCurrentUser";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -16,7 +13,6 @@ import { database } from "../../configuration/firebaseConfig";
 import { Alert } from "react-native";
 import EditExerciseModal from "./EditExerciseModal";
 import { useNavigation } from "@react-navigation/native";
-
 
 const SPLIT_TEMPLATES = {
   1: {
@@ -32,7 +28,7 @@ const SPLIT_TEMPLATES = {
   },
 };
 
-const GeneratedPlanStep = ({ selectedSplit }) => {
+const GeneratedPlanStep = ({ selectedSplit, selectedDays, repeatWeeks }) => {
   const { userId, loading: authLoading } = useCurrentUser();
   const [exerciseData, setExerciseData] = useState(null);
   const [workoutPlan, setWorkoutPlan] = useState({});
@@ -95,21 +91,19 @@ const GeneratedPlanStep = ({ selectedSplit }) => {
     const payload = {
       split: selectedSplit,
       days: workoutPlan,
+      selectedDays,
+      repeatWeeks,
       savedAt: Date.now(),
     };
 
     try {
       await set(ref(database, `users/${userId}/workoutplan`), payload);
-      Alert.alert(
-        "Tallennettu",
-        "Treeniohjelmasi on tallennettu.",
-        [
-          {
-            text: "OK",
-            onPress: () => navigation.navigate("Workout"),
-          },
-        ]
-      );
+      Alert.alert("Tallennettu", "Treeniohjelmasi on tallennettu.", [
+        {
+          text: "OK",
+          onPress: () => navigation.navigate("Workout"),
+        },
+      ]);
     } catch (err) {
       console.error(err);
       Alert.alert("Virhe", "Treeniohjelman tallennus epäonnistui.");
