@@ -22,19 +22,19 @@ export default function StatsSection({
       <InputFieldComponent
         header="Paino (kg)"
         inputStyle="number"
-        value={form3.weight}
+        value={form3?.weight || ""}
         onChangeText={(weight) => setForm3(prev => ({ ...prev, weight }))}
       />
       <InputFieldComponent
         header="Ikä"
         inputStyle="number"
-        value={form3.age}
+        value={form3?.age || 20}
         onChangeText={(age) => setForm3(prev => ({ ...prev, age }))}
       />
       <InputFieldComponent
         header="Pituus (cm)"
         inputStyle="number"
-        value={form3.height}
+        value={form3?.height || 170}
         onChangeText={(height) => setForm3(prev => ({ ...prev, height }))}
       />
 

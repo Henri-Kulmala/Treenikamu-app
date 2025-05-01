@@ -50,8 +50,6 @@ Jokaiset liikkeet ovat opastettuja ja jokaiselle liikkeelle voi erikseen valita 
 Kirjoita tähän lyhyet kuvaukset ja liitä halutessasi kuvakaappauksia:
 
 - Kirjautumisnäkymä  
-
-
 - Profiilinäkymä  
 - Treeniohjelmanäkymä  
 - Liike- ja ohjenäkymät  
