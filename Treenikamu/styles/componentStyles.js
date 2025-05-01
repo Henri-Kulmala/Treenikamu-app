@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import MainTheme from "./mainTheme";
 
+
 const componentStyles = StyleSheet.create({
   // General Layouts
   mainContainer: {
@@ -11,9 +12,9 @@ const componentStyles = StyleSheet.create({
     backgroundColor: MainTheme.colors.dark,
   },
   scrollView: {
-    paddingTop: 48,
+    paddingTop: 0,
     paddingBottom: 120,
-    paddingHorizontal: 0,
+    paddingHorizontal: 36,
     backgroundColor: MainTheme.colors.dark,
   },
     
@@ -73,17 +74,21 @@ const componentStyles = StyleSheet.create({
     color: MainTheme.colors.text,
   },
   floatingButton: {
-    position: "absolute",
-    bottom: 100,
-    width: 250,
-    height: 50,
-    left: 50,
-    right: 50,
+    position: "fixed",
+    bottom: 50,
+    height: 60,
+    left: 0,
+    right: 0,
     justfifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
     padding: 16,
     elevation: 5,
+  },
+  floatingButtonContainer: {
+    flexDirection: "row", 
+    paddingBottom: 16,
+    justifyContent: "space-between",
   },
 
   // Button Color Variants
@@ -232,12 +237,34 @@ const componentStyles = StyleSheet.create({
   },
 
   // Exercise Styles
+  
+  
+  
   workoutDayStepContainer: {
     flexDirection: "row",
     justifyContent: "center",
     gap: 16,
     marginVertical: 16,
   },
+  addExerciseModal: {
+   flex: 1,
+   borderRadius: 16,
+   justifyContent: "center",
+  },
+  addExerciseModalContainer: {
+   backgroundColor: MainTheme.colors.text,
+   padding: 16,
+   marginVertical: 16,
+   borderRadius: 16,
+   gap: 12,
+   justifyContent: "center",
+  },
+  addExerciseModalList: {
+    maxHeight: 300,
+    padding: 16,
+    
+  },
+  
   workoutWeekRepeatContainer: {
     backgroundColor: MainTheme.colors.darkGreen20,
     borderRadius: 16,
@@ -256,14 +283,22 @@ const componentStyles = StyleSheet.create({
 
   itemCardmd: {
     flexDirection: "row",
+    justifyContent: "center",
+    alignContent: "center",
     alignItems: "center",
     height: 120,
     marginVertical: 16,
-    padding: 16,
+    padding: 10,
     borderRadius: 16,
-    backgroundColor: MainTheme.colors.highlightGreen,
+    backgroundColor: MainTheme.colors.text20,
   },
-  cardGroupContainer: {},
+  itemCardText: {
+    flex: 1,
+    height: "100%",
+    gap: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   modalContainer: {
     padding: 24,
@@ -271,8 +306,16 @@ const componentStyles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: MainTheme.colors.text,
   },
+  modalActions: {
+    marginTop: 16,
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
   workoutDaySectionContainer: {
-    paddingHorizontal: 16,
+    width: "100%",
     marginBottom: 64,
   },
 
@@ -280,6 +323,32 @@ const componentStyles = StyleSheet.create({
     gap: 4,
     marginTop: 16,
 
+  },
+
+  groupedExerciseHeader: {
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    marginBottom: 8,
+    paddingHorizontal: 24,
+  },
+
+  listItem: {
+    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: MainTheme.colors.darkGreen,
+    padding: 8,
+    marginVertical: 8,
+  },
+
+  noPlanView: {
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    flex:1,
+    gap: 8,
+    backgroundColor: MainTheme.colors.dark,
   },
  
   modalImage:{
@@ -326,18 +395,36 @@ const componentStyles = StyleSheet.create({
 
   // StepControl styles
   stepContainer: {
-    paddingTop: 24,
-    paddingBottom: 16,
-    backgroundColor: "none",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 40,
+    elevation: 5,
+    paddingHorizontal: 32,
     flexDirection: "row",
+    backgroundColor: MainTheme.colors.dark20,
     justifyContent: "space-between",
   },
 
 
   formContainer: {
-    justifyContent: "center",
-    marginTop: 20,
     height: "100%",
+    paddingBottom: 120,
+    paddingTop: 40,
+    justifyContent: "space-between",
+    alignContent: "center",
+
+    backgroundColor: MainTheme.colors.dark,
+  },
+  createdPlanView: {
+    flex: 1,
+    paddingBottom: 120,
+    paddingTop: 40,
+    justifyContent: "space-between",
+    alignContent: "center",
+
+    backgroundColor: MainTheme.colors.dark,
   },
 
   // Profile Styles

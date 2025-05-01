@@ -7,6 +7,17 @@ const textStyles = StyleSheet.create({
     fontSize: MainTheme.fontSizes.bodySmall,
     color: MainTheme.colors.text,
   },
+  bodySmallB: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    color: MainTheme.colors.text,
+  },
+  bodySmallBCaps: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.bodySmall,
+    textTransform: "uppercase",
+    color: MainTheme.colors.text,
+  },
   bodySmallDark: {
     fontFamily: "Manrope-R",
     fontSize: MainTheme.fontSizes.bodySmall,

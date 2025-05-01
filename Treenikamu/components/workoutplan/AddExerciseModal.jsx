@@ -1,32 +1,29 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import componentStyles from '../../styles/componentStyles';
+import textStyles from '../../styles/textStyles';
+import TextThemed from '../TextThemed';
+import SelectButton from '../SelectButton';
 
 const AddExerciseModal = ({ visible, onClose, availableExercises, onAdd }) => {
   return (
-    <Modal visible={visible} transparent animationType="slide">
-      <View style={{ flex: 1, backgroundColor: '#000000aa', justifyContent: 'center' }}>
-        <View style={{ backgroundColor: '#fff', margin: 20, borderRadius: 12, padding: 16 }}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 12 }}>Lisää liike</Text>
-          <ScrollView style={{ maxHeight: 300 }}>
+    <Modal visible={visible} transparent  animationType="slide">
+      <View style={componentStyles.addExerciseModal}>
+        <View style={componentStyles.addExerciseModalContainer}>
+          <TextThemed style={textStyles.titleLargeBDark}>Lisää liike</TextThemed>
+          <ScrollView style={componentStyles.addExerciseModalList}>
             {availableExercises.map((exercise) => (
               <TouchableOpacity
                 key={exercise.id}
                 onPress={() => onAdd(exercise)}
-                style={{
-                  padding: 10,
-                  marginBottom: 8,
-                  borderWidth: 1,
-                  borderColor: '#ccc',
-                  borderRadius: 8
-                }}
+                style={componentStyles.listItem}
               >
                 <Text>{exercise.name}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
-          <TouchableOpacity onPress={onClose} style={{ marginTop: 12 }}>
-            <Text style={{ textAlign: 'center', color: 'red' }}>Sulje</Text>
-          </TouchableOpacity>
+          <SelectButton onPress={onClose} type='icon' iconName='close-circle' iconSize={40}  iconType='danger' />
+          
         </View>
       </View>
     </Modal>

@@ -4,6 +4,7 @@ import { Swipeable } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import TextThemed from "../TextThemed";
 import componentStyles from "../../styles/componentStyles";
+import MainTheme from "../../styles/mainTheme";
 import textStyles from "../../styles/textStyles";
 
 const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
@@ -20,7 +21,7 @@ const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
       <TouchableOpacity
         onPress={onDelete}
         style={{
-          backgroundColor: "red",
+          backgroundColor: MainTheme.colors.danger,
           justifyContent: "center",
           alignItems: "center",
           width: 64,
@@ -41,14 +42,32 @@ const ExerciseItem = ({ exercise, onPress, onLongPress, onDelete }) => {
         <View style={componentStyles.itemCardmd}>
           <Image
             source={{ uri: exercise.imgurl }}
-            style={{ width: 112, height: 96,  marginRight: 12, borderRadius: 8 }}
+            style={{
+              width: 100,
+              height: "auto",
+              aspectRatio: 1,
+              marginRight: 12,
+              borderRadius: 16,
+            }}
           />
-          <View style={{ flex: 1 }}>
-            <TextThemed style={textStyles.bodyLargeB}>{exercise.name}</TextThemed>
-            <TextThemed style={textStyles.bodySmall}>
-              {exercise.reps} x {exercise.sets}{" "}
-              {exercise.weight ? `- ${exercise.weight}kg` : ""}
+          <View style={componentStyles.itemCardText}>
+            <TextThemed style={textStyles.titleSmall}>
+              {exercise.name}
             </TextThemed>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-around",
+                width: "100%",
+              }}
+            >
+              <TextThemed style={textStyles.bodySmallBCaps}>
+                {exercise.reps} x {exercise.sets}{" "}
+              </TextThemed>
+              <TextThemed style={textStyles.bodySmallBCaps}>
+                {exercise.weight ? `${exercise.weight}kg` : ""}
+              </TextThemed>
+            </View>
           </View>
         </View>
       </TouchableOpacity>

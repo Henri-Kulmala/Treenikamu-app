@@ -9,6 +9,7 @@ import textStyles from "../../styles/textStyles";
 import TextThemed from "../TextThemed";
 import { ScrollView } from "react-native-gesture-handler";
 import componentStyles from "../../styles/componentStyles";
+import SelectButton from "../SelectButton";
 
 const GroupedExerciseSection = ({
   title,
@@ -34,15 +35,14 @@ const GroupedExerciseSection = ({
 
   return (
     <View style={componentStyles.exerciseListContainer}>
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "flex-end",
-          marginBottom: 8,
-          width: "100%",
-        }}
-      >
-        <TextThemed style={textStyles.titleSmallBCaps}>{title}</TextThemed>
+      <View style={componentStyles.groupedExerciseHeader}>
+        <TextThemed style={textStyles.titleSmallBCaps}>{title}</TextThemed>{" "}
+        <SelectButton
+          iconName="add-circle"
+          iconSize={32}
+          type="icon"
+          onPress={() => setShowAddModal(true)}
+        />
       </View>
 
       <DraggableFlatList
@@ -62,17 +62,6 @@ const GroupedExerciseSection = ({
           />
         )}
       />
-
-      <TouchableOpacity
-        onPress={() => setShowAddModal(true)}
-        style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}
-      >
-        <MaterialIcons
-          name="add-circle"
-          size={20}
-          color={MainTheme.colors.highlightGreen}
-        />
-      </TouchableOpacity>
 
       <AddExerciseModal
         visible={showAddModal}
