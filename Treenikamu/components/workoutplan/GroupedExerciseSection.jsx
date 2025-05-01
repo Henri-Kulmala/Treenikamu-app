@@ -34,7 +34,16 @@ const GroupedExerciseSection = ({
 
   return (
     <View style={componentStyles.exerciseListContainer}>
-      <TextThemed style={textStyles.titleSmall}>{title}</TextThemed>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "flex-end",
+          marginBottom: 8,
+          width: "100%",
+        }}
+      >
+        <TextThemed style={textStyles.titleSmallBCaps}>{title}</TextThemed>
+      </View>
 
       <DraggableFlatList
         data={currentExercises}

@@ -65,6 +65,13 @@ const textStyles = StyleSheet.create({
     fontSize: MainTheme.fontSizes.titleSmall,
     color: MainTheme.colors.text,
   },
+  titleSmallBCaps: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.titleSmall,
+    textTransform: "uppercase",
+    color: MainTheme.colors.text,
+  },
+
   titleSmallDark: {
     fontFamily: "Manrope-R",
     fontSize: MainTheme.fontSizes.titleSmall,

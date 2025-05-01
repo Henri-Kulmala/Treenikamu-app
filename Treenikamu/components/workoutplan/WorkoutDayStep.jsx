@@ -16,7 +16,6 @@ const WorkoutDayStep = ({
   onChangeDays,
   onChangeRepeatWeeks,
 }) => {
-
   const [showRepeatWeeksInput, setShowRepeatWeeksInput] = useState(true);
 
   const toggleDay = (day) => {
@@ -35,14 +34,15 @@ const WorkoutDayStep = ({
   };
 
   const toggleSelectInfinite = () => {
-    if (repeatWeeks === Infinity) {
-       onChangeRepeatWeeks(
-         repeatWeeks === Infinity ? 1 : Infinity
-       );
+    const isInfinite = repeatWeeks === Infinity;
+  
+    if (isInfinite) {
+      onChangeRepeatWeeks(1);
       setShowRepeatWeeksInput(true);
-      return;
+    } else {
+      onChangeRepeatWeeks(Infinity);
+      setShowRepeatWeeksInput(false);
     }
-    setShowRepeatWeeksInput(false);
   };
 
   const endDateFormatted = useMemo(() => {
@@ -67,7 +67,7 @@ const WorkoutDayStep = ({
   }, []);
 
   return (
-    <View>
+    <View style={componentStyles.workoutDayStepWrapper}>
       <View style={componentStyles.titleWithDescription}>
         <TextThemed style={textStyles.titleLargeB}>
           Valitse treenipäivät
@@ -121,7 +121,7 @@ const WorkoutDayStep = ({
                 onPress={toggleSelectInfinite}
                 type="icon"
                 iconName="infinite"
-                iconColor={MainTheme.colors.text}
+                iconType="disabled"
                 iconSize={32}
                 iconStyle={componentStyles.iconButtonDisabled}
               />
@@ -136,8 +136,8 @@ const WorkoutDayStep = ({
               onPress={toggleSelectInfinite}
               type="icon"
               iconName="infinite"
-              iconColor={MainTheme.colors.dark}
               iconSize={32}
+              iconType="danger"
               iconStyle={componentStyles.iconButtonEnabled}
             />
           </View>

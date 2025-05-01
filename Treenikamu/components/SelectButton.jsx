@@ -11,7 +11,6 @@ export default function SelectButton({
   iconName,
   iconSize,
   iconStyle,
-  iconColor,
   iconType,
   ...props
 }) {

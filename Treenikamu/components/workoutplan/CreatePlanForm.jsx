@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Button } from "react-native";
 import WorkoutSplitStep from "./WorkoutSplitStep";
-import WorkoutDaysStep from "./WorkoutDayStep";
+import WorkoutDayStep from "./WorkoutDayStep";
 import GeneratedPlanStep from "./GeneratedPlanStep";
 import StepControls from "../StepControls";
 import componentStyles from "../../styles/componentStyles";
@@ -20,7 +20,7 @@ const CreatePlanForm = ({ handleSave }) => {
       {step === 1 && (
         <View>
           <StepControls
-            onBack={handleBack}
+            backStyle="null"
             onNext={handleNext}
             nextStyle="enabled"
             deleteStyle="null"
@@ -33,7 +33,7 @@ const CreatePlanForm = ({ handleSave }) => {
         </View>
       )}
       {step === 2 && (
-        <View>
+        <View style={componentStyles.workoutDayStepWrapper}>
           <StepControls
             onBack={handleBack}
             onNext={handleNext}
@@ -41,7 +41,7 @@ const CreatePlanForm = ({ handleSave }) => {
             deleteStyle="null"
             saveStyle="null"
           />
-          <WorkoutDaysStep
+          <WorkoutDayStep
             selectedDays={selectedDays}
             repeatWeeks={repeatWeeks}
             onChangeDays={setSelectedDays}
@@ -53,7 +53,6 @@ const CreatePlanForm = ({ handleSave }) => {
         <View style={componentStyles.formContainer}>
           <StepControls
             onBack={handleBack}
-            handleSave={handleSave}
             nextStyle="null"
             deleteStyle="null"
             saveStyle="null"

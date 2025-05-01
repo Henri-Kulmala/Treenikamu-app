@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { View, ActivityIndicator, ScrollView } from "react-native";
+import {
+  View,
+  ActivityIndicator,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import { fetchAllExercises } from "../../configuration/fetchExercises";
 import WorkoutDaySection from "./WorkoutDaySection";
 import componentStyles from "../../styles/componentStyles";
 import textStyles from "../../styles/textStyles";
 import TextThemed from "../TextThemed";
+import ButtonComponent from "../ButtonComponent";
+import MainTheme from "../../styles/mainTheme";
 import StepControls from "../StepControls";
 import useCurrentUser from "../../configuration/useCurrentUser";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -116,49 +123,51 @@ const GeneratedPlanStep = ({ selectedSplit, selectedDays, repeatWeeks }) => {
 
   return (
     <>
-      <View style={componentStyles.stepTabTop}>
-        <StepControls
-          onSave={handleSaveProgram}
-          saveStyle="enabled"
-          nextStyle="null"
-          deleteStyle="null"
-          backStyle="null"
-        />
-      </View>
-      <ScrollView
-        contentContainerStyle={componentStyles.scrollView}
-        showsVerticalScrollIndicator={false}
-      >
-        {Object.entries(workoutPlan).map(([day, exercises]) => (
-          <WorkoutDaySection
-            key={day}
-            dayName={day}
-            exercises={exercises}
-            onEditExercise={setActiveExercise}
-            setExercises={(updater) =>
-              setWorkoutPlan((prev) => {
-                const prevExercises = Array.isArray(prev[day]) ? prev[day] : [];
-                const updated =
-                  typeof updater === "function"
-                    ? updater(prevExercises)
-                    : updater;
-                return {
-                  ...prev,
-                  [day]: updated,
-                };
-              })
-            }
-            exerciseData={exerciseData}
-          />
-        ))}
-      </ScrollView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView
+          contentContainerStyle={componentStyles.scrollView}
+          showsVerticalScrollIndicator={false}
+        >
+          {Object.entries(workoutPlan).map(([day, exercises]) => (
+            <WorkoutDaySection
+              key={day}
+              dayName={day}
+              exercises={exercises}
+              onEditExercise={setActiveExercise}
+              setExercises={(updater) =>
+                setWorkoutPlan((prev) => {
+                  const prevExercises = Array.isArray(prev[day])
+                    ? prev[day]
+                    : [];
+                  const updated =
+                    typeof updater === "function"
+                      ? updater(prevExercises)
+                      : updater;
+                  return {
+                    ...prev,
+                    [day]: updated,
+                  };
+                })
+              }
+              exerciseData={exerciseData}
+            />
+          ))}
+        </ScrollView>
 
-      <EditExerciseModal
-        visible={!!activeExercise}
-        exercise={activeExercise}
-        onSave={(updated) => handleUpdateExercise(updated.dayName, updated)}
-        onCancel={() => setActiveExercise(null)}
-      />
+        <ButtonComponent 
+          content="Tallenna ohjelma"
+          onPress={handleSaveProgram}
+          button="float"
+
+        />
+
+        <EditExerciseModal
+          visible={!!activeExercise}
+          exercise={activeExercise}
+          onSave={(updated) => handleUpdateExercise(updated.dayName, updated)}
+          onCancel={() => setActiveExercise(null)}
+        />
+      </SafeAreaView>
     </>
   );
 };

@@ -9,8 +9,10 @@ export default function WorkoutPlan({ days = {}, exerciseData = {}, onEditExerci
   return (
     <>
       {Object.entries(days).map(([dayName, exercises]) => (
-        <View key={dayName} style={{ marginBottom: 24 }}>
-          <TextThemed style={textStyles.titleLargeB}>{dayName}</TextThemed>
+        <View key={dayName} style={{}}>
+          <View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
+            <TextThemed style={textStyles.titleLarge}>{dayName}</TextThemed>
+          </View>
           <WorkoutDaySection
             exercises={exercises}
             exerciseData={exerciseData}

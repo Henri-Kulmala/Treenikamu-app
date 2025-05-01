@@ -96,8 +96,7 @@ export default function WorkoutPlanView() {
     });
   };
 
-    // Show Calendar function
-
+  // Show Calendar function
 
   const handleSavePlan = async () => {
     if (!userId || !plan) return;
@@ -172,17 +171,15 @@ export default function WorkoutPlanView() {
 
   return (
     <View style={screensStyles.workoutPlanView}>
-      <View>
-        <StepControls
-          onDelete={handleDeleteWorkoutPlan}
-          deleteStyle="danger"
-          saveStyle="null"
-          nextStyle="null"
-          backStyle="null"
+     {/*
+        <Calendar
+          markedDates={marked}
+          style={componentStyles.calendar}
+          theme={componentStyles.calendartheme}
+          enableSwipeMonths={true}
+          hideArrows={true}
         />
-        <Calendar markedDates={marked} />
-      </View>
-
+     */}
       <ScrollView
         contentContainerStyle={componentStyles.scrollView}
         nestedScrollEnabled={true}
@@ -198,7 +195,12 @@ export default function WorkoutPlanView() {
           onUpdateExercises={updateDay}
         />
       </ScrollView>
-
+      <ButtonComponent
+        content="Poista Ohjelma"
+        onPress={handleDeleteWorkoutPlan}
+        button="float"
+        type="danger"
+      />
       <EditExerciseModal
         visible={!!activeExercise}
         exercise={activeExercise}

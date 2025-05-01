@@ -16,7 +16,8 @@ const componentStyles = StyleSheet.create({
     paddingHorizontal: 0,
     backgroundColor: MainTheme.colors.dark,
   },
-  
+    
+
   childContainer: {
     alignContent: "center",
     alignItems: "center",
@@ -29,6 +30,7 @@ const componentStyles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 16,
   },
+
 
   // Button Groups
   buttonWrapper: {
@@ -70,6 +72,19 @@ const componentStyles = StyleSheet.create({
     textTransform: "uppercase",
     color: MainTheme.colors.text,
   },
+  floatingButton: {
+    position: "absolute",
+    bottom: 100,
+    width: 250,
+    height: 50,
+    left: 50,
+    right: 50,
+    justfifyContent: "center",
+    alignItems: "center",
+    borderRadius: 16,
+    padding: 16,
+    elevation: 5,
+  },
 
   // Button Color Variants
   dangerButton: {
@@ -78,7 +93,10 @@ const componentStyles = StyleSheet.create({
   defaultButton: {
     backgroundColor: MainTheme.colors.highlightGreen,
   },
-  weekdayButton: {},
+  saveButton: {
+    backgroundColor: MainTheme.colors.highli,
+
+  },
 
   logoutButton: {
     flexDirection: "row",
@@ -234,6 +252,8 @@ const componentStyles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 8,
   },
+
+
   itemCardmd: {
     flexDirection: "row",
     alignItems: "center",
@@ -251,9 +271,14 @@ const componentStyles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: MainTheme.colors.text,
   },
+  workoutDaySectionContainer: {
+    paddingHorizontal: 16,
+    marginBottom: 64,
+  },
+
   exerciseListContainer: {
-    gap: 8,
-    marginBottom: 16,
+    gap: 4,
+    marginTop: 16,
 
   },
  
@@ -307,13 +332,7 @@ const componentStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  stepTabTop: {
-    position: "absolute",
-    top: 0,
-    right: 0,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
+
 
   formContainer: {
     justifyContent: "center",
@@ -330,9 +349,32 @@ const componentStyles = StyleSheet.create({
     paddingHorizontal: 24,
     borderBottomWidth: 1,
     borderBottomColor: MainTheme.colors.text20,
-  }
-});
+  },
 
+  // Calendar 
+
+calendar: {
+  borderRadius: 16,
+
+  padding: 8,
+  marginVertical: 8,
+  width: "100%",
+},
+calendartheme: {
+  calendarBackground:MainTheme.colors.darkGreen,
+  textSectionTitleColor: MainTheme.colors.text,
+  selectedDayBackgroundColor: MainTheme.colors.highlightGreen,
+  selectedDayTextColor: MainTheme.colors.text,
+  todayTextColor: MainTheme.colors.highlightGreen,
+  monthTextColor: MainTheme.colors.text,
+  dayTextColor: MainTheme.colors.dark,
+  textDisabledColor: MainTheme.colors.darkGreen,
+
+},
+
+
+
+});
 
 
 
