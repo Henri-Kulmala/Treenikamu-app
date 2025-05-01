@@ -44,19 +44,32 @@ Jokaiset liikkeet ovat opastettuja ja jokaiselle liikkeelle voi erikseen valita 
 ---
 
 ## Sovelluksen toiminnot ja näkymät
-<details>
-<summary>Kuvaile kaikki sovelluksen näkymät ja niiden toiminnot</summary>
+
 
 Kirjoita tähän lyhyet kuvaukset ja liitä halutessasi kuvakaappauksia:
 
-- Kirjautumisnäkymä  
-- Profiilinäkymä  
-- Treeniohjelmanäkymä  
-- Liike- ja ohjenäkymät  
-- Tilastot ja seuranta  
+<details>
+<summary>Kirjautumisnäkymä</summary>
 
-Selitä, miten käyttäjä käyttää kutakin näkymää.
+
+
 </details>
+<details>
+<summary>Rekisteröitymisnäkyä</summary>
+</details>
+<details>
+<summary>Etusivu</summary>
+</details>
+<details>
+<summary>Treeniohjelman luonti</summary>
+</details>
+<details>
+<summary>Treeniohjelma</summary>
+</details>
+<details>
+<summary>Profiilinäkymä</summary>
+</details>
+
 
 ---
 
