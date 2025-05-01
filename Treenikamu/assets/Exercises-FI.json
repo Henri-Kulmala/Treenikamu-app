@@ -1,0 +1,372 @@
+{
+  "excercises": [
+    {
+      "vatsa": [
+        {
+          "name": "Rutistus",
+          "starting position": "Makuuasennossa lattialla selällään, polvet koukussa ja jalkapohjat maassa. Kädet voivat olla pään takana tai rinnalla.",
+          "execution": "Jännitä vatsalihaksia nostamalla hartioita ja yläselkää kohti polvia. Pidä alaselkä tiukasti lattiassa. Pysy yläasennossa hetken ja laskeudu sitten hitaasti takaisin alkuasentoon.",
+          "equipment": "",
+          "main muscles": "Vatsalihakset",
+          "secondary muscles": "",
+          "tips": "Vältä vetämästä niskasta. Tee liike rauhallisesti ja hallitusti.",
+          "imgurl": ""
+        },
+        {
+          "name": "Köysi-vatsarutistus",
+          "starting position": "Polviseisonta taljan edessä, köyden päät kummassakin kädessä pään korkeudella. Pidä ylävartalo hieman etunojassa.",
+          "execution": "Jännitä vatsalihaksia tuomalla kyynärpäitä kohti polvia. Pysy supistuksessa hetken ja palaa sitten rauhallisesti alkuasentoon.",
+          "equipment": "Kaapelilaite, köysi",
+          "main muscles": "Vatsalihakset",
+          "secondary muscles": "",
+          "tips": "Pidä keskivartalo tiukkana äläkä käytä liikaa vauhtia.",
+          "imgurl": ""
+        },
+        {
+          "name": "Lankku",
+          "starting position": "Makuuasento vatsallaan lattialla. Nojaa kyynärvarsien ja varpaiden varaan niin, että olkapäät ja pakarat ovat samalla korkeudella.",
+          "execution": "Pidä tätä asentoa halutun ajan samalla vatsalihaksia jännittäen.",
+          "equipment": "",
+          "main muscles": "Vatsalihakset",
+          "secondary muscles": "",
+          "tips": "Pidä vartalo suorana linjana; älä anna lantion pudota.",
+          "imgurl": ""
+        },
+        {
+          "name": "Vatsarutistuslaite",
+          "starting position": "Istu laitteessa pitäen kiinni kahvoista, selkä tukevasti selkänojaa vasten.",
+          "execution": "Jännitä vatsalihaksia ja pysy supistuksessa hetki ennen kuin palaat hitaasti alkuasentoon.",
+          "equipment": "Vatsarutistuslaite",
+          "main muscles": "Vatsalihakset",
+          "secondary muscles": "",
+          "tips": "Käytä rauhallista ja hallittua liikerataa. Vältä nykimistä.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "rinta": [
+        {
+          "name": "Punnerrus",
+          "starting position": "Asetu kasvot alaspäin lattialle, kädet leveästi rintakehän tasolla, jalat ojennettuina. Katse suoraan maahan.",
+          "execution": "Laskeudu hitaasti taivuttamalla käsivarsia, kunnes rinta on lähellä lattiaa (noin 90 asteen kulma kyynärpäissä). Työnnä itsesi takaisin ylös.",
+          "equipment": "",
+          "main muscles": "Rintalihakset",
+          "secondary muscles": "Olkapäät, ojentajat, hauikset",
+          "tips": "Pidä keskivartalo tiukkana ja selkä neutraalina koko liikkeen ajan.",
+          "imgurl": ""
+        },
+        {
+          "name": "Penkkipunnerrus tangolla",
+          "starting position": "Makuuasennossa penkillä jalat tukevasti maassa. Ote tangosta hartioita leveämpi. Kyynärvarret kohtisuorassa lattiaan nähden.",
+          "execution": "Nosta tanko telineestä ja laske se rintakehän alaosaan. Työnnä tanko ylös lähes suorille käsille rintalihaksia jännittäen.",
+          "equipment": "Tanko, penkki",
+          "main muscles": "Rintalihakset",
+          "secondary muscles": "Etuolkapäät, ojentajat",
+          "tips": "Pidä kyynärpäät ulkona, jotta rintalihakset aktivoituvat maksimaalisesti.",
+          "imgurl": ""
+        },
+        {
+          "name": "Vinopenkkipunnerrus käsipainoilla",
+          "starting position": "Vinopenkillä maaten, jalat lattialla. Käsipainot käsissä rinnan sivuilla, kyynärvarret kohtisuorassa lattiaan.",
+          "execution": "Jännitä rintalihaksia ja punnerra käsipainot ylös lähes suorille käsille, sitten palaa hitaasti alkuasentoon.",
+          "equipment": "Käsipainot, vinopenkki",
+          "main muscles": "Rintalihakset (erityisesti yläosa)",
+          "secondary muscles": "Etuolkapäät, ojentajat",
+          "tips": "Pidä hartiat penkissä ja kyynärpäät ulkona rasituksen pitämiseksi rintalihaksissa.",
+          "imgurl": ""
+        },
+        {
+          "name": "Pec Deck",
+          "starting position": "Istu Pec Deck -laitteessa, selkänojaa vasten. Kyynärvarret pehmusteita vasten, olkavarret vaakatasossa.",
+          "execution": "Tuo kyynärpäät yhteen rintalihakset supistaen. Pidä supistus hetken ja palaa sitten hitaasti alkuasentoon.",
+          "equipment": "Pec Deck -laite",
+          "main muscles": "Rintalihakset",
+          "secondary muscles": "Etuolkapäät",
+          "tips": "Älä nosta hartioita korviin; pidä ne alhaalla ja rintakehä auki.",
+          "imgurl": ""
+        },
+        {
+          "name": "Käsipainopenkkipunnerrus",
+          "starting position": "Makuuasennossa penkillä, jalat maassa, käsipaino jokaisessa kädessä rinnalla. Kyynärvarret kohtisuorassa lattiaan.",
+          "execution": "Punnerra käsipainot ylös lähes suorille käsille rintalihaksia jännittäen, palaa sitten hallitusti alas.",
+          "equipment": "Käsipainot, penkki",
+          "main muscles": "Rintalihakset",
+          "secondary muscles": "Etuolkapäät, ojentajat",
+          "tips": "Pidä kyynärpäät ulkona ja hartiat penkissä, jotta rasitus kohdistuu rintalihaksiin.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "ojentajat": [
+        {
+          "name": "Penkki-dippi",
+          "starting position": "Aseta kaksi penkkiä rinnakkain noin jalkojesi pituudelle. Kädet toisen penkin reunalla hartioiden leveydellä, kantapäät toisen penkin reunalla.",
+          "execution": "Pidä kyynärpäät lähellä kylkiä ja taivuta niitä 90° kulmaan. Palaa ylös ojentajia jännittäen.",
+          "equipment": "2 penkkiä",
+          "main muscles": "Ojentajat, etuolkapäät",
+          "secondary muscles": "",
+          "tips": "Pidä selkä suorana ja vältä kyynärpäiden levittämistä sivuille.",
+          "imgurl": ""
+        },
+        {
+          "name": "Ojentajapunnerrus taljassa (Triceps Pressdown)",
+          "starting position": "Seiso taljan edessä, tanko otteessa (pronaatio) hartioiden leveydeltä.",
+          "execution": "Punnerra tanko alas suorille käsille ojentajia jännittäen. Pidä hetki ja palaa sitten hitaasti alkuasentoon. Kyynärpäät pysyvät vartalon lähellä.",
+          "equipment": "Kaapelilaite, suora tanko",
+          "main muscles": "Ojentajat",
+          "secondary muscles": "",
+          "tips": "Pidä kyynärpäät paikallaan ja keskity ojentajien aktivointiin.",
+          "imgurl": ""
+        },
+        {
+          "name": "Köysi-ojentajapunnerrus (Cable Rope Pushdown)",
+          "starting position": "Seiso taljan edessä, köyden päät neutraalissa otteessa, kyynärpäät lähellä kylkiä.",
+          "execution": "Ojenna kyynärvarret levittämällä köyden päitä hieman sivuille. Pidä supistus hetken ja palaa hitaasti ylös.",
+          "equipment": "Kaapelilaite, köysi",
+          "main muscles": "Ojentajat",
+          "secondary muscles": "",
+          "tips": "Vältä ylävartalon heilumista ja pidä kyynärpäät lähellä kehoa.",
+          "imgurl": ""
+        },
+        {
+          "name": "Ranskalainen punnerrus EZ-tangolla",
+          "starting position": "Makuuasento penkillä, jalat lattialla tai penkillä. Pidä EZ-tanko rinnan yläpuolella, kädet hieman kapeammin kuin hartioiden leveys.",
+          "execution": "Taivuta kyynärvarret tuoden tangon lähelle pään yläosaa ilman, että kyynärpäät leviävät. Palaa alkuasentoon ojentajat halliten.",
+          "equipment": "EZ Bar, penkki",
+          "main muscles": "Ojentajat",
+          "secondary muscles": "",
+          "tips": "Säilytä kyynärpäät lähellä toisiaan koko liikkeen ajan.",
+          "imgurl": ""
+        },
+        {
+          "name": "Dippi",
+          "starting position": "Tartu kahteen yhdensuuntaiseen tankoon, kädet ojennettuina kehon sivuilla ja polvet koukussa ilmassa.",
+          "execution": "Pidä kyynärpäät lähellä vartaloa ja taivuta niitä 90° kulmaan. Palaa alkuasentoon ojentajat supistaen. Älä nojaa liikaa eteen.",
+          "equipment": "Dippitangot (rinnakkaistangot)",
+          "main muscles": "Ojentajat, etuolkapäät, rintalihaksen alaosa",
+          "secondary muscles": "",
+          "tips": "Huolehdi hyvästä hallinnasta koko liikkeen ajan; älä heijaa jalkoja.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "jalat": [
+        {
+          "name": "Istuva pohjenosto (Seated Calf Raise)",
+          "starting position": "Istu laitteessa niin, että jalkaterien etuosa on korokkeella ja reidet tuettuina pehmusteiden alle.",
+          "execution": "Jännitä pohkeita nostamalla kantapäitä mahdollisimman korkealle. Pidä supistus hetken ja laske sitten hitaasti.",
+          "equipment": "Istuva pohjenostolaite",
+          "main muscles": "Pohkeet",
+          "secondary muscles": "",
+          "tips": "Tee liike täydessä liikeradassa ja pidä lyhyt pysäytys yläasennossa.",
+          "imgurl": ""
+        },
+        {
+          "name": "Seisten tehtävä pohjenosto (Standing Calf Raise)",
+          "starting position": "Seiso niin, että jalkaterien etuosa on korokkeella ja hartiat pehmusteiden alla.",
+          "execution": "Nosta kantapäitä niin korkealle kuin mahdollista pohkeilla jännittäen. Pysy hetki yläasennossa ja laske rauhallisesti alas.",
+          "equipment": "Pohjenostolaite seisten",
+          "main muscles": "Pohkeet",
+          "secondary muscles": "",
+          "tips": "Pidä polvet kevyesti koukussa ja vältä pomppimista.",
+          "imgurl": ""
+        },
+        {
+          "name": "Jalkaprässi (Leg Press)",
+          "starting position": "Istu prässipenkin selkänojaa vasten, jalat hartioiden leveydellä prässilevyllä.",
+          "execution": "Avaa turvalukitus ja laske painoa taivuttamalla polvia noin 90° kulmaan. Työnnä sitten levyä takaisin ylös pysähtymättä lukitukseen saakka.",
+          "equipment": "Jalkaprässikone",
+          "main muscles": "Reidet ja pakarat",
+          "secondary muscles": "",
+          "tips": "Pidä alaselkä penkissä äläkä lukitse polvia täysin yläasennossa.",
+          "imgurl": ""
+        },
+        {
+          "name": "Reiden ojennus (Leg Extension)",
+          "starting position": "Säädä laite niin, että polvet ovat istuimen reunalla ja nilkat juuri jalkarullan alapuolella. Istu selkänoja vasten, pidä kiinni kahvoista.",
+          "execution": "Ojenna jalat täysin suoriksi ja jännitä etureisiä hetken. Palaa sitten rauhallisesti alas.",
+          "equipment": "Reiden ojennus -laite",
+          "main muscles": "Etureidet (quadriceps)",
+          "secondary muscles": "",
+          "tips": "Älä heijaa painoa, vaan tee liike hallitusti.",
+          "imgurl": ""
+        },
+        {
+          "name": "Kyykky (Squat)",
+          "starting position": "Seiso tanko niskassa trapezius-lihaksen päällä. Ote tangosta tasapainottamassa. Pidä pää pystyssä.",
+          "execution": "Laskeudu taivuttamalla polvia ja lantiota ikään kuin istuisit. Pidä selkä suorana. Kun reidet ovat lähes vaakatasossa, nouse takaisin ylös.",
+          "equipment": "Tanko",
+          "main muscles": "Reidet ja pakarat",
+          "secondary muscles": "Vatsalihakset, alaselkä",
+          "tips": "Säilytä luonnollinen selän kaari ja vältä polvien kääntymistä sisäänpäin.",
+          "imgurl": ""
+        },
+        {
+          "name": "Istuva reiden koukistus (Seated Leg Curl)",
+          "starting position": "Säädä laite niin, että polvien alaosa on istuimen reunalla ja nilkat ylittävät jalkarullan. Istu selkänojaa vasten pitäen kahvoista kiinni.",
+          "execution": "Koukista jalkoja niin pitkälle kuin pystyt, jännittäen takareisiä. Pidä hetki ja palaa hitaasti alkuasentoon.",
+          "equipment": "Istuva reiden koukistus -laite",
+          "main muscles": "Takareidet (hamstrings)",
+          "secondary muscles": "Pohkeet",
+          "tips": "Liike kannattaa tehdä rauhallisesti ja kontrolloidusti.",
+          "imgurl": ""
+        },
+        {
+          "name": "Lonkan loitonnuslaite (Seated Hip Abduction Machine)",
+          "starting position": "Istu laitteeseen niin, että polvet ovat pehmusteiden sisäpuolella. Vapauta säätövipu ja tartu sivukahvoista.",
+          "execution": "Työnnä polvia ulospäin loitontaen lantiota. Kun lantio on täysin loitonnettu, pidä hetki ja palaa alkuasentoon.",
+          "equipment": "Lonkan loitonnuslaite",
+          "main muscles": "Lonkan loitontajat",
+          "secondary muscles": "Pakaralihakset",
+          "tips": "Älä nojaa taakse liikaa; tee liike rauhallisesti.",
+          "imgurl": ""
+        },
+        {
+          "name": "Smith-laitteen lantionnosto (Hip Thrust)",
+          "starting position": "Aseta penkki Smith-laitteen eteen rinnakkain tangon kanssa. Asetu penkille niin, että yläselkä on penkkiä vasten ja tanko lepää lantiolla.",
+          "execution": "Paina lantiota ylös puristaen pakaroita. Anna lantion laskeutua hieman, mutta älä kosketa lattiaa, ja nosta takaisin ylös rinnakkain lattian kanssa.",
+          "equipment": "Smith-laite, penkki, pehmuste tai pyyhe",
+          "main muscles": "Reidet ja pakarat",
+          "secondary muscles": "Keskivartalo",
+          "tips": "Pidä leuka kevyesti rintaan vedettynä ja vältä yliojentamasta alaselkää.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "selkä": [
+        {
+          "name": "Leveä taljaveto (Wide Grip Pulldown)",
+          "starting position": "Istu taljan alle, reidet pehmusteiden alla. Ote tangosta pronaatiossa selvästi hartioita leveämmällä.",
+          "execution": "Vedä tanko rinnan tasolle. Pidä supistus hetken ja anna tangon sitten nousta rauhallisesti ylös. Älä anna kyynärpäiden tulla liikaa eteen.",
+          "equipment": "Lat-pulldown-laite, lat-tanko",
+          "main muscles": "Selkä",
+          "secondary muscles": "Hauikset",
+          "tips": "Pidä rinta ylhäällä ja vältä keinumista.",
+          "imgurl": ""
+        },
+        {
+          "name": "Käsipaino-olkienkohautus (Dumbbell Shrugs)",
+          "starting position": "Seiso käsipainot sivuilla, kädet suorina.",
+          "execution": "Kohota hartioita mahdollisimman korkealle. Supista yläasennossa ja laske hallitusti takaisin.",
+          "equipment": "Käsipainot",
+          "main muscles": "Epäkäslihakset (trapezius)",
+          "secondary muscles": "",
+          "tips": "Pidä kädet suorina ja vältä pyörittämästä olkapäitä.",
+          "imgurl": ""
+        },
+        {
+          "name": "Maastaveto tangolla (Barbell Deadlift)",
+          "starting position": "Tanko lattialla edessä, jalat hieman hartioita kapeammalla, polvet koukussa. Ote tangosta pronaatiossa hartioiden leveydeltä, selkä suorana.",
+          "execution": "Nosta tanko maasta ojentamalla jalat ja suoristamalla vartalo pystyyn. Laske hallitusti takaisin alkuasentoon.",
+          "equipment": "Tanko, levypainot",
+          "main muscles": "Selkä, jalat",
+          "secondary muscles": "",
+          "tips": "Pidä tanko lähellä vartaloa ja vältä pyöristämästä selkää.",
+          "imgurl": ""
+        },
+        {
+          "name": "Leuanveto (Pull Up)",
+          "starting position": "Tartu leuanvetotankoon pronaatiossa, kädet hartioita leveämmällä, kyynärpäät hieman koukussa.",
+          "execution": "Vedä ylävartaloa ylös kunnes leuka on tangon tasolla. Laske sitten hallitusti alas. Liikeradan laajuus riippuu voima- ja liikkuvuustasosta.",
+          "equipment": "Leuanvetotanko",
+          "main muscles": "Selkä",
+          "secondary muscles": "Hauikset",
+          "tips": "Vedä kyynärpäitä kohti kylkiä ja vältä heilumista.",
+          "imgurl": ""
+        },
+        {
+          "name": "Köysi-alasveto (Rope Pulldown)",
+          "starting position": "Seiso kasvot taljaan päin, polvet kevyesti koukussa, ylävartalo hieman etunojassa. Ote köyden päistä neutraalina.",
+          "execution": "Vedä köyttä lantiota kohti puolikaaren liikkeellä. Pidä kyynärpäät hieman koukussa. Supista selkää lopussa ja palaa hallitusti alkuasentoon.",
+          "equipment": "Kaapelilaite, köysi",
+          "main muscles": "Selkä",
+          "secondary muscles": "Ojentajat",
+          "tips": "Tunne veto latsissa ja vältä selän pyöristämistä.",
+          "imgurl": ""
+        },
+        {
+          "name": "Kapea taljaveto (Close Grip Pulldown)",
+          "starting position": "Istu taljan alle, reidet pehmusteiden alla, tuplaotekahva molemmissa käsissä. Selkä suorana.",
+          "execution": "Vedä kuorma ylärintaan pitäen kyynärpäät lähellä vartaloa. Pidä hetki supistusta ja palaa rauhassa alkuun.",
+          "equipment": "Lat-pulldown-laite, kapea kahva",
+          "main muscles": "Selkä",
+          "secondary muscles": "Hauikset",
+          "tips": "Pidä hartiat alhaalla ja vältä kyynerpäiden leviämistä sivuille.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "hauikset": [
+        {
+          "name": "Hauiskääntö EZ-tangolla",
+          "starting position": "Seiso polvet hieman koukussa, selkä suorana. Ote EZ-tangosta supinaatiossa.",
+          "execution": "Nosta tankoa koukistamalla kyynärvarsia. Supista hauiksia yläasennossa ja laske tanko hitaasti alas. Pidä kyynärpäät lähellä kehoa.",
+          "equipment": "EZ Bar",
+          "main muscles": "Hauikset",
+          "secondary muscles": "",
+          "tips": "Vältä kehon heijausta. Pidä ranne neutraalina.",
+          "imgurl": ""
+        },
+        {
+          "name": "Hauiskääntö alataljassa suoralla tangolla",
+          "starting position": "Seiso alataljan edessä, jalat hartianleveydellä. Ote suorasta tangosta supinaatiossa hartioiden leveydellä.",
+          "execution": "Pidä kyynärpäät kyljissä ja vedä tanko ylös kohti rintaa. Supista hauiksia hetki ja laske hitaasti alas.",
+          "equipment": "Suora tanko, alatalja",
+          "main muscles": "Hauikset",
+          "secondary muscles": "",
+          "tips": "Älä anna kyynärpäiden liikkua eteenpäin. Keskity hallittuun liikkeeseen.",
+          "imgurl": ""
+        },
+        {
+          "name": "Vuorotteleva käsipainokääntö",
+          "starting position": "Seiso polvet kevyesti koukussa, selkä suorana. Käsipaino kummassakin kädessä neutraalissa otteessa kehon sivuilla.",
+          "execution": "Nosta vuorotellen yhtä käsipainoa koukistamalla kyynärvarsi ja kiertämällä rannetta supinaatioon yläasennossa. Laske hallitusti alas ja toista toisella kädellä.",
+          "equipment": "Käsipainot",
+          "main muscles": "Hauikset",
+          "secondary muscles": "",
+          "tips": "Pidä kyynärpäät lähellä vartaloa ja vältä kehon heilumista.",
+          "imgurl": ""
+        }
+      ]
+    },
+    {
+      "olkapäät": [
+        {
+          "name": "Yhden käden sivunosto taljassa",
+          "starting position": "Seiso jalat hartioiden leveydellä, kylki taljaa kohti. Kahva vapaassa kädessä reiden edessä.",
+          "execution": "Nosta käsivartta sivulle puoliympyrän liikkeellä hartiatason korkeudelle, kyynärpää hieman koukussa. Pidä hetki ja palaa alas.",
+          "equipment": "Kaapelilaite",
+          "main muscles": "Olkapäät (lähinnä keskiosa)",
+          "secondary muscles": "",
+          "tips": "Älä kohauta olkapäätä korvaan, vaan pidä liike hallittuna.",
+          "imgurl": ""
+        },
+        {
+          "name": "Käsipaino-olkapunnerrus",
+          "starting position": "Istu penkillä, selkänoja pystyssä. Käsipainot hartioiden korkeudella, rystyset eteenpäin, kyynärpäät ulkona.",
+          "execution": "Punnerra käsipainot ylös suorille käsille. Laske hallitusti takaisin hartioiden tasolle.",
+          "equipment": "Käsipainot, penkki",
+          "main muscles": "Olkapäät",
+          "secondary muscles": "Ojentajat",
+          "tips": "Pidä keskivartalo tiukkana ja vältä alaselän yliojentumista.",
+          "imgurl": ""
+        },
+        {
+          "name": "Käsipaino-sivunosto",
+          "starting position": "Seiso jalat hartioiden leveydellä, käsipainot sivuilla kämmenet kohti vartaloa.",
+          "execution": "Nosta kädet sivuille hartioiden korkeudelle, kyynärpäät hieman koukussa. Pidä supistus hetken ja laske rauhallisesti.",
+          "equipment": "Käsipainot",
+          "main muscles": "Olkapäät (etenkin keskiosa)",
+          "secondary muscles": "Epäkäslihakset",
+          "tips": "Johda liikettä kyynärpäillä äläkä heijaa vartaloa.",
+          "imgurl": ""
+        }
+      ]
+    }
+  ]
+}
