@@ -4,14 +4,9 @@
 - [Yleiskuvaus](#yleiskuvaus)
 - [Käytetyt teknologiat](#käytetyt-teknologiat)
 - [Käyttäjätarinat](#käyttäjätarinat)
-- [Sprinttisuunnitelma ja eteneminen](#sprinttisuunnitelma-ja-eteneminen)
 - [Sovelluksen toiminnot ja näkymät](#sovelluksen-toiminnot-ja-näkymät)
 - [Tietokantarakenne](#tietokantarakenne)
 - [Arkkitehtuuri ja projektirakenne](#arkkitehtuuri-ja-projektirakenne)
-- [Testaus](#testaus)
-- [Deployment-ohjeet](#deployment-ohjeet)
-- [Käyttöohje](#käyttöohje)
-- [Lähteet ja lisämateriaali](#lähteet-ja-lisämateriaali)
 
 ---
 
@@ -51,106 +46,150 @@ Kirjoita tähän lyhyet kuvaukset ja liitä halutessasi kuvakaappauksia:
 <details>
 <summary>Kirjautumisnäkymä</summary>
 
-
+<img src="Treenikamu/assets/images/screenshots/login.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/login_error.png" width=300 >
 
 </details>
 <details>
 <summary>Rekisteröitymisnäkyä</summary>
+
+## Rekisteröitymisnäkymä
+Rekisteröitymisnäkymä koostuu kolmesta eri suoritettavasta lomakkeesta, jotka suoritettuaan käyttäjä voi rekisteröityä. 
+ 
+<br/>
+<img src="Treenikamu/assets/images/screenshots/register.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/register-form1.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/register-form2.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/register-form3.png" width=300 >
+
+---
+
+
 </details>
 <details>
 <summary>Etusivu</summary>
+
+## Etusivu
+Etusivulle tulee käyttäjän seuraavan treenin tiedot ja pikalinkit tilastotietoihin ja treeniohjelmaan
+
+<img src="Treenikamu/assets/images/screenshots/landing-page.png" width=300 >
+
 </details>
 <details>
 <summary>Treeniohjelman luonti</summary>
+
+## Treeniohjelman luonit
+
+Treeniohjelman voi luoda tällä hetkellä vain yhdellä tietyllä "splitillä", joka on kuvastettu näyttökuvassa. 
+
+<img src="Treenikamu/assets/images/screenshots/workoutplan-create.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-split.png.png" width=300 >
+
+### Valitse treenipäivät
+Treenipäivät kohdassa käyttäjä voi valita treenattavat päivät sekä kuinka useasti treenit toistetaan
+
+<img src="Treenikamu/assets/images/screenshots/workoutplan-day.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-day-repeatweeks-infinite.png" width=300 >
+
+### Liikkeet
+Tämä näkymä antaa käyttäjälle mahdollisuuden hallita treeniohjlmansa liikkeitä ennen ohjelman tallentamista. Liikkeitä voi klikata, jolloin käyttäjä näkee lisätietoja liikkeestä ja voi asettaa liikkeelle Toistomäärän, Sarjamääärän sekä Sarjapainot. Käyttäjä voi myös poistaa/lisätä liikkeitä treeniohjelmaansa. Tallenna-nappi tallentaa käyttäjän treeniohjelman tietokantaan ja ohjaa käyttäjän takaisin treeniohjelma-näkymään.
+
+<img src="Treenikamu/assets/images/screenshots/workoutplan-exercises.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-exercises-open-edit-weight.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-exercises-edited-weight.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-exercises-delete-exercise-by-swiping-left.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-exercises-add-exercise.png" width=300 >
+
+
+
+
 </details>
 <details>
 <summary>Treeniohjelma</summary>
+
+### Tallennettu treeniohjelma
+Tässä näkymässä on käyttäjän tallennettu treeniohjelma. Näkymässä voi toteuttaa samoja hallinnointiin liittyviä toimenpiteitä kuin treeniohjelman laatimisnäkymässä.
+
+<img src="Treenikamu/assets/images/screenshots/workoutplan-saved-plan.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/workoutplan-delete-saved-plan.png" width=300 >
 </details>
 <details>
 <summary>Profiilinäkymä</summary>
+
+### Profiilinäkymä
+Käyttäjä voi muokata tietojaan profiilinäkymässä rekisteröintilomakkeen tapaisesti.
+
+<img src="Treenikamu/assets/images/screenshots/profile-view.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/profile-view-form1.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/profile-view-form2.png" width=300 >
+<img src="Treenikamu/assets/images/screenshots/profile-view-form3.png" width=300 >
+
 </details>
 
 
 ---
 
-## Tietokantarakenne
-<details>
-<summary>Piirrä ja kuvaile tietokantarakenne</summary>
+## KESKENERÄINEN Tietokantarakenne
+Tietokanta on luotu käyttäen firebase realtime database- tietokantaa, joka on käytännössä suuri JSON-puu. Tietokantapalvelu tulee tulevaisuudessa vaihtumaan.
 
-Voit käyttää esimerkiksi PlantUML:ää, draw.io:ta tai lisätä kuvana.  
-Kuvaile myös:
-- Käyttäjätietojen tallennus
-- Treeniohjelmien tallennusrakenne
-- Liikkeiden ja laitteiden tietorakenne
-</details>
+### Realtime database -rakenne
+
+```
+database/
+    ├── liikkeet/
+        ├── hauikset/
+            ├── field/
+            ├── field/
+            ├── field/
+            ├── field/
+            ├── field/
+            └── field/
+        ├── jalat/
+        ├── ojentajat/
+        ├── olkapäät/
+        ├── rinta/
+        ├── selkä/
+        └── vatsa/
+    └── users/
+        ├── user/
+            ├── field/
+            ├── field/
+            ├── field/
+            ├── field/
+            ├── field/
+            ├── field/
+            └── workoutplan
+                ├── days/
+                    └── 
+                └── blaa
+ 
+```
 
 ---
 
-## Arkkitehtuuri ja projektirakenne
+## KESKENERÄINEN Arkkitehtuuri ja projektirakenne
 <details>
 <summary>Projektin hakemistorakenne ja arkkitehtuurikuvaus</summary>
 
-Kirjoita tähän projektin kansiorakenne ja lyhyt selitys:
 
 ```
 root/
  ├── assets/
  ├── components/
+ ├── configuration/
  ├── screens/
- ├── services/
- ├── firebase/
+ ├── styles/
  └── App.js
 ```
 
-Selitä, mitä kukin kansio sisältää.
+
 </details>
 
 ---
 
-## Testaus
-<details>
-<summary>Testausstrategia ja löydetyt bugit</summary>
+// Käyttöohje
 
-Kirjoita:
-- Millä laitteilla testattiin (Android/iOS)
-- Mitä toiminnot testattiin
-- Löydetyt virheet ja korjaustoimet
-- Mahdolliset tunnetut puutteet
-</details>
+// Lisenssi
 
 ---
 
-## Deployment-ohjeet
-<details>
-<summary>Vaiheittaiset ohjeet sovelluksen julkaisuun</summary>
-
-- Varmista, että projekti toimii local/dev -ympäristössä.
-- Luo build Expo EAS:llä tai julkaise Expo Go:n kautta.
-- Testaa buildin toimivuus ennen julkaisua.
-- Täydennä Play Store / App Store metadata ja kuvaukset.
-- Julkaise ja tarkista asennuslähteestä.
-</details>
-
----
-
-## Käyttöohje
-<details>
-<summary>Käyttäjän näkökulmasta selitetty käyttöönotto</summary>
-
-- Kuinka ladata ja asentaa sovellus
-- Miten luoda tili ja kirjautua sisään
-- Miten lisätä treeniohjelmia ja liikkeitä
-- Miten tarkastella tilastoja
-</details>
-
----
-
-## Lähteet ja lisämateriaali
-<details>
-<summary>Linkit, oppaat ja viitteet</summary>
-
-Lisää tänne:
-- Lähteet ja oppaat, joita käytit kehityksessä
-- Linkit dokumentaatioon, jos käytit ulkoisia kirjastoja
-- Mahdolliset tutoriaalit, joihin viittaat
-</details>
