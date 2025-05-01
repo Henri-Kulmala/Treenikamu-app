@@ -22,19 +22,41 @@ Jokaiset liikkeet ovat opastettuja ja jokaiselle liikkeelle voi erikseen valita 
 
 
 ## Käytetyt teknologiat
+
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://images.seeklogo.com/logo-png/45/1/expo-go-app-logo-png_seeklogo-457073.png" width=45 style="border-radius: 10px"/>
+    <img src="https://skillicons.dev/icons?i=github,figma,javascript,react,firebase,vscode,androidstudio,illustratorgit," />
+  </a>
+</p>
+
+<br/>
+
 <details>
-<summary>Lista käytetyistä teknologioista</summary>
-
-- React Native
-- Expo Go
-- Firebase Realtime Database  
-- Firebase Authentication
-- Figma (UI-suunnittelu)  
-- Adobe Illustrator (grafiikka)  
+<summary>Käytetyt kirjastot ja riippuvuudet:</summary>
 
 
+- expo/vector-icons
+- react-navigation/native
+- react-navigation/bottom-tabs
+- react-native-community/slider
+- react-native-picker/picker
+- react-native-calendars
+- react-native-async-storage/async-storage
+- react-native-element-dropdown
+- react-native-check-box
+- react-native-config
+- react-native-screens
+- react-native-safe-area-context
+- react-native-popup-menu
+- react-native-vector-icons
+- ionicons
+- expofont
 
 </details>
+
+
 
 ---
 
@@ -187,7 +209,12 @@ root/
 
 ---
 
+# Keskeneräistä
+
 // Käyttöohje
+
+// Lähteet
+
 
 // Lisenssi
 
