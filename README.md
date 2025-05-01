@@ -15,60 +15,30 @@
 
 ---
 
-## Yleiskuvaus
-<details>
-<summary>Kuvaus projektista ja sen päämääristä</summary>
+# Yleiskuvaus
 
-Kirjoita tähän yleiskatsaus sovelluksesta: mitä se tekee, kenelle se on tarkoitettu ja mikä ongelma sillä ratkaistaan.
+Treenikamu sovellus on kaikentasoisille kuntosaliliikkujille tarkoitettu apuväline, jonka avulla kuka tahansa voi aloittaa terveellisemmät elämäntavat! Treenikamun avulla voit luoda itsellesi treeniohjelman, johon saat lisättyä haluamiasi liikkeitä laajasta tietokannasta.
+Jokaiset liikkeet ovat opastettuja ja jokaiselle liikkeelle voi erikseen valita sarjapainot/sarjat/toistot, jotta voit pitää kirjaa kehittymisestäsi.  
 
-**Esimerkki:**
-"Treenikamu on mobiilisovellus, jonka avulla käyttäjä voi luoda ja seurata omia harjoitusohjelmiaan, asettaa tavoitteita ja tarkkailla kehitystään tilastojen avulla. Sovellus on suunnattu kuntosaliharjoittelijoille kaikilla taitotasoilla."
-</details>
+
+
 
 ---
 
 
 ## Käytetyt teknologiat
 <details>
-<summary>Lista käytetyistä teknologioista ja miksi ne on valittu</summary>
+<summary>Lista käytetyistä teknologioista</summary>
 
-- React Native + Expo Go  
+- React Native
+- Expo Go
 - Firebase Realtime Database  
+- Firebase Authentication
 - Figma (UI-suunnittelu)  
 - Adobe Illustrator (grafiikka)  
-- Muu kirjasto/teknologia (perustele, jos lisäät muita)  
 
-Kirjoita lisäksi lyhyet perustelut: miksi nämä teknologiat valittiin.
-</details>
 
----
 
-## Käyttäjätarinat
-<details>
-<summary>Listaa käyttäjätarinat tähän</summary>
-
-Voit liittää tähän suoraan käyttäjätarinat GitHubista.  
-Tarvittaessa kopioi ne myös markdownina:
-
-- Käyttäjänä haluan kirjautua sisään, jotta tietoni säilyvät.
-- Käyttäjänä haluan luoda oman treeniohjelman...
-
-Lisäksi voit liittää linkin GitHub-projektiin.
-</details>
-
----
-
-## Sprinttisuunnitelma ja eteneminen
-<details>
-<summary>Kirjoita sprinttien sisältö ja aikataulut</summary>
-
-| Sprintti | Aikaväli       | Sisältö                                          |
-|----------|----------------|--------------------------------------------------|
-| 1/3      | pvm - pvm      | Alustavat toiminnot, tietokanta, UI luonnokset  |
-| 2/3      | pvm - pvm      | CRUD-toiminnot, tietokantayhteydet              |
-| 3/3      | pvm - pvm      | Testaus, viimeistely, julkaisu                  |
-
-Päivitä taulukko omilla päivämäärilläsi ja tarkennuksillasi.
 </details>
 
 ---
@@ -80,6 +50,8 @@ Päivitä taulukko omilla päivämäärilläsi ja tarkennuksillasi.
 Kirjoita tähän lyhyet kuvaukset ja liitä halutessasi kuvakaappauksia:
 
 - Kirjautumisnäkymä  
+
+
 - Profiilinäkymä  
 - Treeniohjelmanäkymä  
 - Liike- ja ohjenäkymät  
