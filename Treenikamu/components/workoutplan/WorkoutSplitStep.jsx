@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text } from "react-native";
-import ButtonComponent from "../ButtonComponent";
 import textStyles from "../../styles/textStyles";
 import componentStyles from "../../styles/componentStyles";
 import TextThemed from "../TextThemed";
@@ -24,7 +23,7 @@ const splits = [
   },
 ];
 
-const WorkoutSplitStep = ({ selectedSplit, onSelectSplit, onNext }) => (
+const WorkoutSplitStep = ({ selectedSplit, onSelectSplit}) => (
   <View style={componentStyles.childContainer}>
     <TextThemed style={textStyles.titleLarge}>
       Valitse treeniohjelma valmiista malleista

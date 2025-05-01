@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import GroupedExerciseSection from "./GroupedExerciseSection";
 import TextThemed from "../TextThemed";
 import textStyles from "../../styles/textStyles";
+import componentStyles from "../../styles/componentStyles";
 
 const WorkoutDaySection = ({
   dayName,
@@ -41,10 +42,11 @@ const WorkoutDaySection = ({
   };
 
   return (
-    <View style={{ marginBottom: 24 }}>
-      <TextThemed style={textStyles.titleLargeB}>
-        {dayName}
-      </TextThemed>
+    <View style={componentStyles.workoutDaySectionContainer}>
+      <View View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
+        <TextThemed style={textStyles.titleLarge}>{dayName}</TextThemed>
+      </View>
+      
       {Object.entries(groups).map(([groupName, groupExercises]) => (
         <GroupedExerciseSection
           key={groupName}
@@ -60,6 +62,7 @@ const WorkoutDaySection = ({
         />
       ))}
     </View>
+    
   );
 };
 

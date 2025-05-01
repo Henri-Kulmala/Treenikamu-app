@@ -36,6 +36,14 @@ const screensStyles = StyleSheet.create({
     marginBottom: 4,
   },
   
+  workoutPlanView: {
+    flex: 1,
+    alignContent: "center",
+    justifyContent: "center",
+    padding: 24,
+    backgroundColor: MainTheme.colors.dark,
+  },
+  
 });
 
 export default screensStyles;

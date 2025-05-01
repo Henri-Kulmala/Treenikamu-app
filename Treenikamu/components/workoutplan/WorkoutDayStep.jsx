@@ -10,8 +10,12 @@ import SelectButton from "../SelectButton";
 
 const days = ["MA", "TI", "KE", "TO", "PE", "LA", "SU"];
 
-const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
-  const [repeatWeeks, setRepeatWeeks] = useState(1);
+const WorkoutDayStep = ({
+  selectedDays,
+  repeatWeeks,
+  onChangeDays,
+  onChangeRepeatWeeks,
+}) => {
   const [showRepeatWeeksInput, setShowRepeatWeeksInput] = useState(true);
 
   const toggleDay = (day) => {
@@ -25,25 +29,24 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
   const handleRepeatWeeksChange = (text) => {
     const weeks = parseInt(text);
     if (!isNaN(weeks)) {
-      setRepeatWeeks(weeks);
+      onChangeRepeatWeeks(weeks);
     }
   };
 
   const toggleSelectInfinite = () => {
-    if (repeatWeeks === Infinity) {
-      setRepeatWeeks(1);
+    const isInfinite = repeatWeeks === Infinity;
+  
+    if (isInfinite) {
+      onChangeRepeatWeeks(1);
       setShowRepeatWeeksInput(true);
-      return;
+    } else {
+      onChangeRepeatWeeks(Infinity);
+      setShowRepeatWeeksInput(false);
     }
-
-    setRepeatWeeks(Infinity);
-    setShowRepeatWeeksInput(false);
   };
 
-  //  Calculate end date when repeatWeeks changes
   const endDateFormatted = useMemo(() => {
     if (repeatWeeks === Infinity) return "toistaiseksi";
-
     const today = new Date();
     const endDate = new Date(today);
     endDate.setDate(today.getDate() + repeatWeeks * 7);
@@ -64,7 +67,7 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
   }, []);
 
   return (
-    <View>
+    <View style={componentStyles.workoutDayStepWrapper}>
       <View style={componentStyles.titleWithDescription}>
         <TextThemed style={textStyles.titleLargeB}>
           Valitse treenipäivät
@@ -80,14 +83,14 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
           <SelectButton
             key={day}
             onPress={() => toggleDay(day)}
-            type={selectedDays.includes(day) ? "enabled" : "disabled"} 
+            type={selectedDays.includes(day) ? "enabled" : "disabled"}
             content={day}
           />
         ))}
       </View>
 
       <View style={componentStyles.workoutWeekRepeatContainer}>
-        <TextThemed style={textStyles.bodyLargeBGreen} >
+        <TextThemed style={textStyles.bodyLargeBGreen}>
           Haluatko toistaa treenit viikottain?
         </TextThemed>
 
@@ -118,7 +121,7 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
                 onPress={toggleSelectInfinite}
                 type="icon"
                 iconName="infinite"
-                iconColor={MainTheme.colors.text}
+                iconType="disabled"
                 iconSize={32}
                 iconStyle={componentStyles.iconButtonDisabled}
               />
@@ -130,14 +133,13 @@ const WorkoutDayStep = ({ selectedDays, onChangeDays }) => {
               Tai jatka treenien toistoa, kunnes haluat lopettaa.
             </TextThemed>
             <SelectButton
-                onPress={toggleSelectInfinite}
-                type="icon"
-                iconName="infinite"
-                iconColor={MainTheme.colors.dark}
-                iconSize={32}
-                iconStyle={componentStyles.iconButtonEnabled}
-              />
-            
+              onPress={toggleSelectInfinite}
+              type="icon"
+              iconName="infinite"
+              iconSize={32}
+              iconType="danger"
+              iconStyle={componentStyles.iconButtonEnabled}
+            />
           </View>
         )}
       </View>

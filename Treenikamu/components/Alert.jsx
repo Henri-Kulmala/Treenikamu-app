@@ -1,30 +1,29 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Modal from 'react-native-modal';
-import TextThemed from './TextThemed';
-import ButtonComponent from './ButtonComponent';
-import componentStyles from '../styles/componentStyles';
-import MainTheme from '../styles/mainTheme';
-import textStyles from '../styles/textStyles';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import Modal from "react-native-modal";
+import TextThemed from "./TextThemed";
+import ButtonComponent from "./ButtonComponent";
+import componentStyles from "../styles/componentStyles";
+import MainTheme from "../styles/mainTheme";
+import textStyles from "../styles/textStyles";
 
-
-export default function Alert({
+export default function AlertComponent({
   isVisible,
   onRequestClose,
-  // content
+
   title,
   message,
-  renderContent,       // optional custom body
-  actions,             // array of { text, onPress, style }
-  // animation
-  animationIn     = 'zoomIn',
-  animationOut    = 'zoomOut',
-  animationInTiming  = 300,
-  animationOutTiming = 300,
-  // overlay
-  backdropColor   = 'rgba(0,0,0,0.5)',
-  backdropOpacity = 1.0,
+  renderContent,
+  actions,
+  actionStyle,
 
+  animationIn = "zoomIn",
+  animationOut = "zoomOut",
+  animationInTiming = 300,
+  animationOutTiming = 300,
+
+  backdropColor = "rgba(0,0,0,0.5)",
+  backdropOpacity = 1.0,
 }) {
   return (
     <Modal
@@ -40,12 +39,20 @@ export default function Alert({
       useNativeDriver
     >
       <View style={componentStyles.modalContainer}>
-        {title && <TextThemed style={textStyles.titleLargeBDark}>{title}</TextThemed>}
-        {message && <TextThemed style={textStyles.bodyLargeBDark}>{message}</TextThemed>}
-        {renderContent}
-        <View >
-          {actions.map(({ text, onPress, style }, i) => (
+        <View>
+          {title && (
+            <TextThemed style={textStyles.titleLargeBDark}>{title}</TextThemed>
+          )}
+          {message && (
+            <TextThemed style={textStyles.bodyLargeBDark}>{message}</TextThemed>
+          )}
+          {renderContent}
+        </View>
+
+        <View style={componentStyles.modalActions}>
+          {actions.map(({ text, onPress, actionStyle }, i) => (
             <ButtonComponent
+              type={actionStyle}
               key={i}
               content={text}
               onPress={onPress}
@@ -56,4 +63,3 @@ export default function Alert({
     </Modal>
   );
 }
-

@@ -1,57 +1,72 @@
-
+// ../configuration/useCurrentUser.jsx
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { ref, get, set } from "firebase/database";
+import { ref, onValue, set as firebaseSet } from "firebase/database";
 import { auth, database } from "./firebaseConfig";
 
-const useCurrentUser = () => {
-  const [user, setUser]       = useState(null);
-  const [userId, setUserId]   = useState(null);
-  const [loading, setLoading] = useState(true);
+const defaultUserData = {
+  name: "",
+  firstName: "",
+  lastName: "",
+  age: 0,
+  height: 0,
+  weight: 0,
+};
 
-  const defaultUserData = {
-    name: "",
-    firstName: "",
-    lastName: "",
-    age: 0,
-    height: 0,
-    weight: 0,
-    
-  };
+export default function useCurrentUser() {
+  const [userId, setUserId] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [workoutplan, setWorkoutplan] = useState(null);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      if (!currentUser) {
-        setUser(null);
-        setUserId(null);
-        setLoading(false);
-        return;
-      }
-
-      const uid     = currentUser.uid;
-      const userRef = ref(database, `users/${uid}`);
-      const snap    = await get(userRef);
-
-      if (!snap.exists()) {
-        const initData = {
-          ...defaultUserData,
-          email: currentUser.email || "",
-        };
-        await set(userRef, initData);
-        setUser(initData);
+    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUserId(currentUser.uid);
       } else {
-        setUser(snap.val());
+        setUserId(null);
+        setProfile(null);
+        setWorkoutplan(null);
+        setLoading(false);
       }
+    });
+    return unsubscribeAuth;
+  }, []);
 
-      setUserId(uid);
+
+  useEffect(() => {
+    if (!userId) return;
+    setLoading(true);
+
+    const userRef = ref(database, `users/${userId}`);
+    const unsubscribeData = onValue(userRef, (snapshot) => {
+      const data = snapshot.val();
+      if (!data) {
+  
+        const init = {
+          ...defaultUserData,
+          email: auth.currentUser?.email || "",
+        };
+        firebaseSet(userRef, init);
+        setProfile(init);
+        setWorkoutplan(null);
+      } else {
+
+        const { workoutplan: plan = null, ...rest } = data;
+        setProfile(rest);
+        setWorkoutplan(plan);
+      }
       setLoading(false);
     });
 
-    return unsubscribe;
-  }, []);
+    return () => unsubscribeData();
+  }, [userId]);
 
-  return { user, userId, loading };
-};
-
-export default useCurrentUser;
+  return {
+    user: profile,
+    userId,
+    workoutplan,
+    loading,
+  };
+}

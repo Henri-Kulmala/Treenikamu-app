@@ -18,19 +18,19 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [inputError, setInputError] = useState("false");
+  const [inputError, setInputError] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setInputError("true");
+      setInputError(true);
       setError("Sähköposti ja salasana vaaditaan.");
       setDeleteModalVisible(true);
       return;
     }
 
     try {
-      setInputError("false");
+      setInputError(false);
       setLoading(true);
       const response = await AuthContext.handleLogin(email, password);
       setLoading(false);
@@ -38,9 +38,9 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
       if (response.success) {
         setEmail("");
         setPassword("");
-        navigation.reset({ index: 0, routes: [{ name: "Landing" }] });
+        navigation.reset({ routes: [{ name: "Landing" }] });
       } else {
-        setInputError("true");
+        setInputError(true);
         setError("Väärä sähköposti tai salasana.");
         setDeleteModalVisible(true);
       }
@@ -56,13 +56,13 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
             <Alert
               title="Virhe"
               message={error}
-              isVisible={inputError === "true"}
-              onRequestClose={() => setInputError("false")}
-              actions={[{ text: "OK", onPress: () => setInputError("false") }]}
+              isVisible={inputError}
+              onRequestClose={() => setInputError(false)}
+              actions={[{ text: "OK", onPress: () => setInputError(false) }]}
             />
           <View style={componentStyles.loginInputWrapper}>
             <InputFieldComponent
-              onPress={() => setInputError("false")}
+              onPress={() => setInputError(false)}
               placeholder="Sähköposti"
               value={email}
               onChangeText={setEmail}
@@ -74,7 +74,7 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
               isError={inputError}
             />
             <InputFieldComponent
-              onPress={() => setInputError("false")}
+              onPress={() => setInputError(false)}
               placeholder="Salasana"
               value={password}
               onChangeText={setPassword}

@@ -1,70 +1,126 @@
-import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
-import WorkoutSplitStep from "./WorkoutSplitStep";
-import WorkoutDaysStep from "./WorkoutDayStep";
-import GeneratedPlanStep from "./GeneratedPlanStep";
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
 import StepControls from "../StepControls";
+import WorkoutSplitStep from "./WorkoutSplitStep";
+import WorkoutDayStep from "./WorkoutDayStep";
+import PlanDisplay from "./PlanDisplay";
+import { fetchAllExercises } from "../../configuration/fetchExercises";
 import componentStyles from "../../styles/componentStyles";
 
-const CreatePlanForm = () => {
-  const [step, setStep] = useState(1);
-  const [selectedSplit, setSelectedSplit] = useState(null);
-  const [selectedDays, setSelectedDays] = useState([]);
+const SPLIT_TEMPLATES = {
+  1: {
+    "Selkä ja hauikset": [
+      { group: "selkä", keys: ["leuanveto", "leveä_taljaveto"] },
+      { group: "hauikset", keys: ["hauiskääntö_ez_tangolla"] },
+    ],
+    "Rinta ja ojentajat": [
+      { group: "rinta", keys: ["penkkipunnerrus_tangolla"] },
+      { group: "ojentajat", keys: ["dippi"] },
+    ],
+    Jalat: [{ group: "jalat", keys: ["kyykky"] }],
+  },
+};
 
-  const handleNext = () => setStep(step + 1);
-  const handleBack = () => setStep(step - 1);
+export default function CreatePlanForm({
+ initialDays = null,
+ initialRepeatWeeks = 1,
+ onCancel = () => {},
+
+}) {
+  const [step, setStep] = useState(1);
+  const [split, setSplit] = useState(null);
+  const [selectedDays, setSelectedDays] = useState(
+  initialDays ? Object.keys(initialDays) : []
+);
+const [repeatWeeks, setRepeatWeeks] = useState(initialRepeatWeeks);
+  const [exerciseData, setExerciseData] = useState(null);
+  const [planDays, setPlanDays] = useState({});
+
+  useEffect(() => {
+    fetchAllExercises().then(setExerciseData);
+  }, []);
+
+  const buildPlan = () => {
+    const template = SPLIT_TEMPLATES[split] || {};
+    const plan = {};
+
+    Object.entries(template).forEach(([groupTitle, groupDefs]) => {
+      const all = [];
+
+      groupDefs.forEach(({ group, keys }) =>
+        keys.forEach((key, i) => {
+          const base = exerciseData?.[group]?.[key];
+          if (!base) return;
+          all.push({
+            ...base,
+            id: `${group}-${key}-${i}`,
+            reps: base.reps ?? 10,
+            sets: base.sets ?? 3,
+            weight: base.weight ?? 0,
+          });
+        })
+      );
+
+      plan[groupTitle] = all;
+    });
+
+    return plan;
+  };
+
+  const handleToPreview = () => {
+    setPlanDays(buildPlan());
+    setStep(3);
+  };
 
   return (
     <View style={componentStyles.formContainer}>
       {step === 1 && (
-        <View>
+        <>
           <StepControls
-            onBack={handleBack}
-            onNext={handleNext}
-            nextContent="Seuraava"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonContainer}
-            prevStyle={componentStyles.buttonContainer}
+            backStyle="null"
+            deleteStyle="null"
+            saveStyle="null"
+            nextStyle="enabled"
+            onNext={() => setStep(2)}
           />
-          <WorkoutSplitStep
-            selectedSplit={selectedSplit}
-            onSelectSplit={setSelectedSplit}
-          />
-        </View>
+          <WorkoutSplitStep selectedSplit={split} onSelectSplit={setSplit} />
+        </>
       )}
       {step === 2 && (
-        <View>
+        <>
           <StepControls
-            onBack={handleBack}
-            onNext={handleNext}
-            nextContent="Seuraava"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonWrapper}
-            prevStyle={componentStyles.buttonWrapper}
+            onBack={() => setStep(1)}
+            deleteStyle="null"
+            backStyle="enabled"
+            saveStyle="null"
+            nextStyle="enabled"
+            onNext={handleToPreview}
           />
-          <WorkoutDaysStep
+          <WorkoutDayStep
             selectedDays={selectedDays}
+            repeatWeeks={repeatWeeks}
             onChangeDays={setSelectedDays}
+            onChangeRepeatWeeks={setRepeatWeeks}
           />
-        </View>
+        </>
       )}
       {step === 3 && (
-        <View style={componentStyles.formContainer}>
+        <>
           <StepControls
-            onBack={handleBack}
-            nextContent="Tallenna"
-            prevContent="Takaisin"
-            nextStyle={componentStyles.buttonWrapper}
-            prevStyle={componentStyles.buttonWrapper}
+            onBack={() => setStep(2)}
+            deleteStyle="null"
+            nextStyle="null"
+            backStyle="enabled"
+            saveStyle="null"
           />
-          <GeneratedPlanStep
-            selectedSplit={selectedSplit}
-            selectedDays={selectedDays}
+          <PlanDisplay
+            days={planDays}
+            setDays={setPlanDays}
+            exerciseData={exerciseData}
+            repeatWeeks={repeatWeeks}
           />
-        </View>
+        </>
       )}
     </View>
   );
-};
-
-export default CreatePlanForm;
+}
