@@ -7,18 +7,25 @@ export default function PersonalSection({
   onToggle,
   form1,
   setForm1,
+  emailEditable = false,
 }) {
   return (
     <CollapsibleSection
       title="Käyttäjätiedot"
       isOpen={isOpen}
-      completed={!!form1.email}
+      completed={!!form1.email && !!form1.password && !!form1.confirm}
       onToggle={onToggle}
     >
       <InputFieldComponent
         header="Sähköposti"
+        placeholder="sähköpostiosoite"
+        autoCapitalize="none"
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        autoComplete="email"
         value={form1.email}
-        editable={false}
+        editable={emailEditable}
+        onChangeText={(email) => setForm1(prev => ({ ...prev, email }))}
       />
       <InputFieldComponent
         header="Salasana"
