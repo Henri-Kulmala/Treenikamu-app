@@ -3,10 +3,10 @@
 ## 📑 Sisällysluettelo
 - [Yleiskuvaus](#yleiskuvaus)
 - [Käytetyt teknologiat](#käytetyt-teknologiat)
-- [Käyttäjätarinat](#käyttäjätarinat)
 - [Sovelluksen toiminnot ja näkymät](#sovelluksen-toiminnot-ja-näkymät)
 - [Tietokantarakenne](#tietokantarakenne)
 - [Arkkitehtuuri ja projektirakenne](#arkkitehtuuri-ja-projektirakenne)
+- [Lähteet](#lähteet)
 
 ---
 
@@ -151,7 +151,8 @@ Käyttäjä voi muokata tietojaan profiilinäkymässä rekisteröintilomakkeen t
 
 ---
 
-## KESKENERÄINEN Tietokantarakenne
+## Tietokantarakenne
+### Tämä kappale on vielä kesken
 Tietokanta on luotu käyttäen firebase realtime database- tietokantaa, joka on käytännössä suuri JSON-puu. Tietokantapalvelu tulee tulevaisuudessa vaihtumaan.
 
 ### Realtime database -rakenne
@@ -189,7 +190,9 @@ database/
 
 ---
 
-## KESKENERÄINEN Arkkitehtuuri ja projektirakenne
+## Arkkitehtuuri ja projektirakenne
+
+### Tämä kappale on vielä kesken
 <details>
 <summary>Projektin hakemistorakenne ja arkkitehtuurikuvaus</summary>
 
@@ -209,11 +212,17 @@ root/
 
 ---
 
+# Lähteet
+
+### Treeniliikkeet ja niiden kuvat
+
+- [Free Illustrated Workout Exercise Guides - Simply Fitness](https://www.simplyfitness.com/pages/workout-exercise-guides)
+
 # Keskeneräistä
 
 // Käyttöohje
 
-// Lähteet
+
 
 
 // Lisenssi
