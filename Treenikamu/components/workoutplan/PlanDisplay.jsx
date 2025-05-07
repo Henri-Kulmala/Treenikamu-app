@@ -19,6 +19,7 @@ import componentStyles from "../../styles/componentStyles";
 import AlertComponent from "../Alert";
 import MainTheme from "../../styles/mainTheme";
 import TopBar from "../TopBar";
+import DrawerComponent from "../DrawerComponent";
 
 export default function PlanDisplay({
   days,
@@ -38,6 +39,7 @@ export default function PlanDisplay({
   const [title, setTitle] = useState(null);
   const [message, setMessage] = useState(null);
   const [alertVisible, setAlertVisible] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const allExercisesList = useMemo(() => {
     if (!exerciseData) return [];
@@ -118,9 +120,16 @@ export default function PlanDisplay({
         ]}
       />
       <TopBar 
-
+        rightIconPress={() => setOpenDrawer(true)}
 
       />
+      <DrawerComponent
+        title="Jalkapäivä"
+        isOpen={openDrawer}
+        isClosed={() => setOpenDrawer(false)}
+        onPressOffModal={() => setOpenDrawer(false)}
+      />
+      
       <ScrollView contentContainerStyle={componentStyles.scrollView}>
         {Object.entries(days).map(([dayName, exercises]) => (
           <WorkoutDaySection

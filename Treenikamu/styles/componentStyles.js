@@ -475,6 +475,49 @@ const componentStyles = StyleSheet.create({
     paddingHorizontal: 24,
     backgroundColor: MainTheme.colors.darkGreen20,
   },
+
+
+  // Drawer 
+
+  drawerContainer: {
+    justifyContent: "space-between",
+    backgroundColor: MainTheme.colors.text,
+  },
+  drawerItemList: {
+    marginLeft: "50%",
+    width: 220,
+    height: "100%",
+    padding: 24,
+    gap: 24,
+    backgroundColor: MainTheme.colors.text,
+    elevation: 5,
+    borderRadius: 16,
+  },
+
+
+  drawerItem: {
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 8,
+    paddingHorizontal: 24,
+
+  },
+
+  modalBackdrop: {
+    height: "120%",
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  linkList: {
+    marginTop: 24,
+    gap: 8,
+
+  },
+
 });
 
 export default componentStyles;
