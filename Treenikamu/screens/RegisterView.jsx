@@ -26,10 +26,6 @@ const RegisterView = ({ navigation }) => {
   const [form2, setForm2] = useState({
     first: "",
     last: "",
-    gender: "",
-    address: "",
-    zip: "",
-    city: "",
   });
   const [form3, setForm3] = useState({
     weight: "",
@@ -47,11 +43,7 @@ const RegisterView = ({ navigation }) => {
   const isForm1Complete = form1.email && form1.password && form1.confirm;
   const isForm2Complete =
     form2.first &&
-    form2.last &&
-    form2.gender &&
-    form2.address &&
-    form2.zip &&
-    form2.city;
+    form2.last 
   const isForm3Complete = form3.weight && form3.age && form3.height;
 
   const validateInputs = () => {
