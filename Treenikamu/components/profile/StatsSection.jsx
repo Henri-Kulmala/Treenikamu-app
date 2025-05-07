@@ -11,6 +11,7 @@ export default function StatsSection({
   onToggle,
   form3,
   setForm3,
+  hideIcon
 }) {
   return (
     <CollapsibleSection
@@ -18,6 +19,7 @@ export default function StatsSection({
       isOpen={isOpen}
       completed={!!(form3.weight && form3.age && form3.height)}
       onToggle={onToggle}
+      isHidden={hideIcon}
     >
       <InputFieldComponent
         header="Paino (kg)"

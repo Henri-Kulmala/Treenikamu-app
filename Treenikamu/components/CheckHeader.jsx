@@ -6,7 +6,19 @@ import textStyles from "../styles/textStyles";
 import componentStyles from '../styles/componentStyles';
 
 
-export default function CheckHeader({ title, isOpen, completed, toggleOpen }) {
+export default function CheckHeader({ title, isOpen, completed, toggleOpen, hide }) {
+
+  if (hide) {
+    return (
+      <TouchableOpacity
+      onPress={toggleOpen}
+      style={[componentStyles.headerProfile, { opacity: isOpen ? 1 : 0.4 }]}
+    >
+      <TextThemed style={textStyles.sliderLabel}>{title}</TextThemed>
+    </TouchableOpacity>
+    );
+  }
+
   return (
     <TouchableOpacity
     onPress={toggleOpen}
@@ -20,5 +32,8 @@ export default function CheckHeader({ title, isOpen, completed, toggleOpen }) {
       style={{ marginLeft: 10 }}
     />
   </TouchableOpacity>
-  )
+  );
+
+
+
 }

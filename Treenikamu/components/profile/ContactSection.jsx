@@ -7,6 +7,7 @@ export default function ContactSection({
   onToggle,
   form2,
   setForm2,
+  hideIcon 
 }) {
   return (
     <CollapsibleSection
@@ -14,6 +15,7 @@ export default function ContactSection({
       isOpen={isOpen}
       completed={!!(form2.firstName && form2.lastName)}
       onToggle={onToggle}
+      isHidden={hideIcon}
     >
       <InputFieldComponent
         placeholder="Etunimi"

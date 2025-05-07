@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, TouchableOpacity, LayoutAnimation, Alert } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  LayoutAnimation,
+  Alert,
+  ScrollView,
+} from "react-native";
 import TextThemed from "../components/TextThemed";
 import MainTheme from "../styles/mainTheme";
+import textStyles from "../styles/textStyles";
 
 import useCurrentUser from "../configuration/useCurrentUser";
 import { ref, set } from "firebase/database";
@@ -15,19 +22,17 @@ import SaveButton from "../components/profile/SaveButton";
 import componentStyles from "../styles/componentStyles";
 import ButtonComponent from "../components/ButtonComponent";
 import LogoutButton from "../components/LogoutButton";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SelectButton from "../components/SelectButton";
 
 export default function ProfileView({ navigation }) {
   const { userId, user, loading: authLoading } = useCurrentUser();
-  const [openSection, setOpenSection] = useState(null);
+  const [openSection, setOpenSection] = useState(true);
 
   const [form1, setForm1] = useState({ email: "", password: "", confirm: "" });
   const [form2, setForm2] = useState({
     firstName: "",
     lastName: "",
-    gender: "",
-    address: "",
-    zip: "",
-    city: "",
   });
   const [form3, setForm3] = useState({
     weight: "",
@@ -43,10 +48,6 @@ export default function ProfileView({ navigation }) {
       setForm2({
         firstName: user.firstName || "",
         lastName: user.lastName || "",
-        gender: user.gender || "",
-        address: user.address || "",
-        zip: user.zip || "",
-        city: user.city || "",
       });
       setForm3({
         weight: user.weight?.toString() || "",
@@ -80,10 +81,6 @@ export default function ProfileView({ navigation }) {
       email: form1.email,
       firstName: form2.firstName,
       lastName: form2.lastName,
-      gender: form2.gender,
-      address: form2.address,
-      zip: form2.zip,
-      city: form2.city,
       weight: Number(form3.weight),
       age: Number(form3.age),
       height: Number(form3.height),
@@ -104,12 +101,15 @@ export default function ProfileView({ navigation }) {
   }
 
   return (
-    <View style={componentStyles.mainContainer}>
-      <PersonalSection
+    <View style={componentStyles.profileContainer}>
+      <View  style={componentStyles.profileSectionContainer}>
+
+         <PersonalSection
         isOpen={openSection === 1}
         onToggle={() => toggleSection(1)}
         form1={form1}
         setForm1={setForm1}
+        hideIcon={true}
       />
 
       <ContactSection
@@ -117,6 +117,7 @@ export default function ProfileView({ navigation }) {
         onToggle={() => toggleSection(2)}
         form2={form2}
         setForm2={setForm2}
+        hideIcon={true}
       />
 
       <StatsSection
@@ -124,10 +125,26 @@ export default function ProfileView({ navigation }) {
         onToggle={() => toggleSection(3)}
         form3={form3}
         setForm3={setForm3}
+        hideIcon={true}
       />
-      <View style={componentStyles.buttonWrapper}>
-        <SaveButton onPress={handleSave} disabled={!userId} />
-        <LogoutButton content="Kirjaudu ulos" onPress={handleLogout} />
+      </View>
+     
+
+      <View style={componentStyles.profileFooter}>
+        <View style={componentStyles.itemCardText}>
+          <TextThemed style={textStyles.bodySmall}>
+            Poista tili ja kaikki tallentamasi tiedot.
+          </TextThemed>
+        </View>
+        <View style={componentStyles.footerSection}>
+          <SelectButton
+            onPress={handleLogout}
+            type="icon"
+            iconName="log-out"
+            iconSize={32}
+            iconType="danger"
+          />
+        </View>
       </View>
     </View>
   );

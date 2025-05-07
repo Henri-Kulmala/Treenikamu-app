@@ -18,6 +18,7 @@ import useCurrentUser from "../../configuration/useCurrentUser";
 import componentStyles from "../../styles/componentStyles";
 import AlertComponent from "../Alert";
 import MainTheme from "../../styles/mainTheme";
+import TopBar from "../TopBar";
 
 export default function PlanDisplay({
   days,
@@ -116,6 +117,10 @@ export default function PlanDisplay({
           { text: "Kyllä", onPress: handleDelete },
         ]}
       />
+      <TopBar 
+
+
+      />
       <ScrollView contentContainerStyle={componentStyles.scrollView}>
         {Object.entries(days).map(([dayName, exercises]) => (
           <WorkoutDaySection
@@ -130,38 +135,6 @@ export default function PlanDisplay({
         ))}
       </ScrollView>
 
-      {showSaveButton && (
-        <View >
-          <ButtonComponent
-            button="float"
-            content="Tallenna ohjelma"
-            onPress={handleSave}
-          />
-        </View>
-      )}
-      {showBothButtons && (
-        <View style={componentStyles.floatingButtonContainer}>
-          <ButtonComponent
-            button="float"
-            content="Tallenna ohjelma"
-            onPress={handleSave}
-          />
-          <ButtonComponent
-            button="float"
-            type="danger"
-            content="Poista ohjelma"
-            onPress={confirmDelete}
-          />
-        </View>
-      )}
-      {showDeleteButton && (
-        <ButtonComponent
-          button="float"
-          type="danger"
-          content="Poista ohjelma"
-          onPress={confirmDelete}
-        />
-      )}
 
       <EditExerciseModal
         visible={!!activeExercise}
