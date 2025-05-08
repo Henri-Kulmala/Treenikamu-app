@@ -16,21 +16,22 @@ import { ref, set } from "firebase/database";
 import { database } from "../../configuration/firebaseConfig";
 import useCurrentUser from "../../configuration/useCurrentUser";
 import componentStyles from "../../styles/componentStyles";
-import AlertComponent from "../Alert";
+import AlertComponent from "../AlertComponent";
 import MainTheme from "../../styles/mainTheme";
 import TopBar from "../TopBar";
 import DrawerComponent from "../DrawerComponent";
+import textStyles from "../../styles/textStyles";
+import ListItem from "../ListItem";
+import SavePlanButton from "./SavePlanButton";
 
 export default function PlanDisplay({
   days,
   setDays,
   exerciseData,
   repeatWeeks,
-  showSaveButton = true,
-  showBothButtons = false,
   onSaveOverride,
-  onDeleteOverride,
-  showDeleteButton = false,
+  onEnableDelete,
+  showDeleteButton,
 }) {
   const { userId, loading: authLoading } = useCurrentUser();
   const navigation = useNavigation();
@@ -52,7 +53,9 @@ export default function PlanDisplay({
   }, [exerciseData]);
 
   if (authLoading || !exerciseData) {
-    return <ActivityIndicator size="large" color={MainTheme.colors.highlightGreen}/>;
+    return (
+      <ActivityIndicator size="large" color={MainTheme.colors.highlightGreen} />
+    );
   }
 
   const updateDay = (dayName, updater) =>
@@ -74,7 +77,6 @@ export default function PlanDisplay({
       Alert.alert("Tallennettu", "Treeniohjelmasi on tallennettu.", [
         { text: "OK", onPress: () => navigation.navigate("Workout") },
       ]);
-
     } catch {
       Alert.alert("Virhe", "Tallenus epäonnistui.");
     }
@@ -87,6 +89,7 @@ export default function PlanDisplay({
     try {
       await set(ref(database, `users/${userId}/workoutplan`), null);
       navigation.navigate("Workout");
+      onEnableDelete?.();
     } catch {
       setTitle("Virhe");
       setMessage("Treeniohjelman poisto epäonnistui.");
@@ -105,8 +108,6 @@ export default function PlanDisplay({
     setAlertVisible(true);
   };
 
-  
-
   return (
     <SafeAreaView>
       <AlertComponent
@@ -119,17 +120,44 @@ export default function PlanDisplay({
           { text: "Kyllä", onPress: handleDelete },
         ]}
       />
-      <TopBar 
-        rightIconPress={() => setOpenDrawer(true)}
 
-      />
-      <DrawerComponent
-        title="Jalkapäivä"
-        isOpen={openDrawer}
-        isClosed={() => setOpenDrawer(false)}
-        onPressOffModal={() => setOpenDrawer(false)}
-      />
-      
+      {!showDeleteButton && (
+        <SavePlanButton
+          onPress={handleSave}
+        />
+      )}
+      {showDeleteButton && (
+        <View>
+          <TopBar rightIconPress={() => setOpenDrawer(true)} />
+          <DrawerComponent
+            title="Treeni"
+            isOpen={openDrawer}
+            isClosed={() => setOpenDrawer(false)}
+            onPressOffModal={() => setOpenDrawer(false)}>
+            <ListItem
+              icon="list"
+              textContent="Liikkeet"
+              iconType="custom"
+              iconColor={MainTheme.colors.text}
+            />
+            <ListItem
+              icon="save"
+              textContent="Tallenna"
+              iconType="custom"
+              iconColor={MainTheme.colors.highlightGreen}
+              action={handleSave}
+            />
+            <ListItem
+              icon="trash"
+              textContent="Poista ohjelma"
+              iconType="custom"
+              iconColor={MainTheme.colors.highlightDanger}
+              action={confirmDelete}
+            />
+          </DrawerComponent>
+        </View>
+      )}
+
       <ScrollView contentContainerStyle={componentStyles.scrollView}>
         {Object.entries(days).map(([dayName, exercises]) => (
           <WorkoutDaySection
@@ -143,7 +171,6 @@ export default function PlanDisplay({
           />
         ))}
       </ScrollView>
-
 
       <EditExerciseModal
         visible={!!activeExercise}

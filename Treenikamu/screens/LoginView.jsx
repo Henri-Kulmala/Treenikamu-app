@@ -10,7 +10,7 @@ import AuthContext from "../configuration/AuthContext";
 import LoginButton from "../components/LoginButton";
 import ThemedText from "../components/TextThemed";
 import textStyles from "../styles/textStyles";
-import Alert from "../components/Alert";
+import AlertComponent from "../components/AlertComponent";
 import MainTheme from "../styles/mainTheme";
 
 export default function LoginView({ navigation, setIsLoggedIn }) {
@@ -49,11 +49,21 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
     }
   };
 
+  const handlePasswordReset = async () => {
+    try {
+      await AuthContext.handleResetPassword(email);
+    } catch (err) {
+      setInputError(true);
+      setError("Tuntematon virhe");
+      setDeleteModalVisible(true);
+    }
+  };
+
   return (
     <TouchableWithoutFeedback>
       <View style={componentStyles.mainContainer}>
         <View style={screensStyles.loginView}>
-            <Alert
+            <AlertComponent
               title="Virhe"
               message={error}
               isVisible={inputError}
@@ -90,7 +100,7 @@ export default function LoginView({ navigation, setIsLoggedIn }) {
             <LoginButton content="Kirjaudu sisään" onPress={handleLogin} />
 
             <Frame />
-            <TextFrame navigation={navigation} />
+              <TextFrame navigation={navigation} onPress={handlePasswordReset}/>
           </View>
         </View>
       </View>

@@ -295,8 +295,6 @@ const componentStyles = StyleSheet.create({
   },
   itemCardText: {
     flex: 1,
-    height: "100%",
-    gap: 12,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -434,13 +432,22 @@ const componentStyles = StyleSheet.create({
     backgroundColor: MainTheme.colors.dark,
   },
   profileSectionContainer: {
-    flex: 3,
+    flex: 1,
     justifyContent: "center",
     backgroundColor: MainTheme.colors.dark,
   },
   profileFooter: {
-    height: 120,
+
+    justifyContent: "space-around",
+    alignContent: "center",
+    flexDirection: "row",
+    backgroundColor: MainTheme.colors.dark,
   },
+  footerSection: {  
+    paddingHorizontal: 24,
+    justifyContent: "space-between",
+  },
+  
 
   // Calendar
 
@@ -477,21 +484,31 @@ const componentStyles = StyleSheet.create({
   },
 
 
-  // Drawer 
+  //  Drawer 
 
   drawerContainer: {
     justifyContent: "space-between",
-    backgroundColor: MainTheme.colors.text,
   },
   drawerItemList: {
     marginLeft: "50%",
     width: 220,
     height: "100%",
-    padding: 24,
+    paddingVertical: 24,
+    paddingHorizontal: 16,
     gap: 24,
-    backgroundColor: MainTheme.colors.text,
+    backgroundColor: MainTheme.colors.darkBlue,
     elevation: 5,
     borderRadius: 16,
+  },
+  drawerHeader: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 16,
+
+    borderBottomWidth: 2,
+    borderBottomColor: MainTheme.colors.text20,
+    marginBottom: 8,
+
   },
 
 

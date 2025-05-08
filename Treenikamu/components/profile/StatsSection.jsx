@@ -24,7 +24,7 @@ export default function StatsSection({
       <InputFieldComponent
         header="Paino (kg)"
         inputStyle="number"
-        value={form3?.weight || ""}
+        value={form3?.weight || 80}
         onChangeText={(weight) => setForm3(prev => ({ ...prev, weight }))}
       />
       <InputFieldComponent
@@ -36,7 +36,7 @@ export default function StatsSection({
       <InputFieldComponent
         header="Pituus (cm)"
         inputStyle="number"
-        value={form3?.height || 170}
+        value={form3?.height || 180}
         onChangeText={(height) => setForm3(prev => ({ ...prev, height }))}
       />
 

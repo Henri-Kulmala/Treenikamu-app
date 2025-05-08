@@ -7,14 +7,18 @@ import textStyles from "../styles/textStyles";
 import SelectButton from "./SelectButton";
 import ButtonComponent from "./ButtonComponent";
 import ListItem from "./ListItem";
+import Alert from "./AlertComponent";
 
 export default function DrawerComponent({
-  onPress,
   title = "teksti",
   isOpen,
   isClosed,
   onPressOffModal,
+  children,
 }) {
+
+
+
   return (
     <Modal
       style={componentStyles.drawerContainer}
@@ -23,16 +27,16 @@ export default function DrawerComponent({
       animationType="fade"
       onRequestClose={isClosed}
     >
+
       <TouchableWithoutFeedback onPress={onPressOffModal}>
         <View style={componentStyles.modalBackdrop}>
           <TouchableWithoutFeedback>
             <View style={componentStyles.drawerItemList}>
-              <View>
-                <ThemedText style={textStyles.titleLargeBDark}>{title}</ThemedText>
+              <View style={componentStyles.drawerHeader}>
+                <ThemedText style={textStyles.titleLargeB}>{title}</ThemedText>
               </View>
               <View style={componentStyles.linkList}>
-                <ListItem icon="list" textContent="liikkeet" />
-                <ListItem icon="trash" textContent="poista" iconType="danger"/> 
+                  {children}
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -41,3 +45,7 @@ export default function DrawerComponent({
     </Modal>
   );
 }
+
+
+// <ListItem icon="list" textContent="Liikkeet" iconType="custom" iconColor={MainTheme.colors.text}  />
+// <ListItem icon="trash" textContent="Poista ohjelma" iconType="custom" iconColor={MainTheme.colors.highlightDanger} action={onDelete}/> 

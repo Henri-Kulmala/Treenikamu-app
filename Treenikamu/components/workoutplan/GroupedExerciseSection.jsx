@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import ExerciseItem from "./ExerciseItem";
@@ -20,7 +20,7 @@ const GroupedExerciseSection = ({
   onAddExercise,
   onReorder,
 }) => {
-  const [showAddModal, setShowAddModal] = React.useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const usedIds = currentExercises.map((ex) => ex.id);
   const addableExercises = Object.entries(allExercises[muscleGroup] || {})
@@ -36,7 +36,7 @@ const GroupedExerciseSection = ({
   return (
     <View style={componentStyles.exerciseListContainer}>
       <View style={componentStyles.groupedExerciseHeader}>
-        <TextThemed style={textStyles.titleSmallBCaps}>{title}</TextThemed>{" "}
+        <TextThemed style={textStyles.titleSmallBCaps}>{title}</TextThemed>
         <SelectButton
           iconName="add-circle"
           iconSize={32}

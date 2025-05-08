@@ -3,8 +3,9 @@ import {
   View,
   TouchableOpacity,
   LayoutAnimation,
-  Alert,
   ScrollView,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import TextThemed from "../components/TextThemed";
 import MainTheme from "../styles/mainTheme";
@@ -24,10 +25,19 @@ import ButtonComponent from "../components/ButtonComponent";
 import LogoutButton from "../components/LogoutButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SelectButton from "../components/SelectButton";
+import AlertComponent from "../components/AlertComponent";
 
 export default function ProfileView({ navigation }) {
   const { userId, user, loading: authLoading } = useCurrentUser();
   const [openSection, setOpenSection] = useState(true);
+  const [message, setMessage] = useState(null);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [title, setTitle] = useState(null);
+  const clearAlert = () => {
+    setTitle(null);
+    setMessage(null);
+    setAlertVisible(false);
+  };
 
   const [form1, setForm1] = useState({ email: "", password: "", confirm: "" });
   const [form2, setForm2] = useState({
@@ -75,6 +85,12 @@ export default function ProfileView({ navigation }) {
       });
   };
 
+  const confirmLogout = () => {
+    setTitle("Kirjaudu ulos");
+    setMessage("Oletko varma, että haluat kirjautua ulos?");
+    setAlertVisible(true);
+  };
+
   const handleSave = async () => {
     if (!userId) return;
     const updated = {
@@ -96,49 +112,64 @@ export default function ProfileView({ navigation }) {
     }
   };
 
-  if (authLoading) {
-    return <TextThemed>Loading profile…</TextThemed>;
-  }
+  if (authLoading)
+    return (
+      <ActivityIndicator size="large" color={MainTheme.colors.highlightGreen} />
+    );
 
   return (
     <View style={componentStyles.profileContainer}>
-      <View  style={componentStyles.profileSectionContainer}>
-
-         <PersonalSection
-        isOpen={openSection === 1}
-        onToggle={() => toggleSection(1)}
-        form1={form1}
-        setForm1={setForm1}
-        hideIcon={true}
+      <AlertComponent
+        title={title}
+        message={message}
+        isVisible={alertVisible}
+        onRequestClose={clearAlert}
+        actions={[
+          { text: "Peruuta", onPress: clearAlert },
+          { text: "Kyllä", onPress: handleLogout, actionStyle: "danger" },
+        ]}
       />
 
-      <ContactSection
-        isOpen={openSection === 2}
-        onToggle={() => toggleSection(2)}
-        form2={form2}
-        setForm2={setForm2}
-        hideIcon={true}
-      />
+      <View style={componentStyles.profileSectionContainer}>
+        <PersonalSection
+          isOpen={openSection === 1}
+          onToggle={() => toggleSection(1)}
+          form1={form1}
+          setForm1={setForm1}
+          hideIcon={true}
+        />
 
-      <StatsSection
-        isOpen={openSection === 3}
-        onToggle={() => toggleSection(3)}
-        form3={form3}
-        setForm3={setForm3}
-        hideIcon={true}
-      />
+        <ContactSection
+          isOpen={openSection === 2}
+          onToggle={() => toggleSection(2)}
+          form2={form2}
+          setForm2={setForm2}
+          hideIcon={true}
+        />
+
+        <StatsSection
+          isOpen={openSection === 3}
+          onToggle={() => toggleSection(3)}
+          form3={form3}
+          setForm3={setForm3}
+          hideIcon={true}
+        />
       </View>
-     
 
       <View style={componentStyles.profileFooter}>
         <View style={componentStyles.itemCardText}>
-          <TextThemed style={textStyles.bodySmall}>
-            Poista tili ja kaikki tallentamasi tiedot.
-          </TextThemed>
+          <SelectButton
+            onPress={handleSave}
+            type="icon"
+            iconName="save"
+            iconSize={32}
+            iconType="highlightGreen"
+          />
         </View>
+
         <View style={componentStyles.footerSection}>
           <SelectButton
-            onPress={handleLogout}
+            onPress={confirmLogout}
             type="icon"
             iconName="log-out"
             iconSize={32}

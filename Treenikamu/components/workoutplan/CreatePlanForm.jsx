@@ -24,7 +24,6 @@ const SPLIT_TEMPLATES = {
 export default function CreatePlanForm({
  initialDays = null,
  initialRepeatWeeks = 1,
- onCancel = () => {},
 
 }) {
   const [step, setStep] = useState(1);
@@ -32,9 +31,10 @@ export default function CreatePlanForm({
   const [selectedDays, setSelectedDays] = useState(
   initialDays ? Object.keys(initialDays) : []
 );
-const [repeatWeeks, setRepeatWeeks] = useState(initialRepeatWeeks);
+  const [repeatWeeks, setRepeatWeeks] = useState(initialRepeatWeeks);
   const [exerciseData, setExerciseData] = useState(null);
   const [planDays, setPlanDays] = useState({});
+  const [canDelete, setCandelete] = useState(false);
 
   useEffect(() => {
     fetchAllExercises().then(setExerciseData);
@@ -118,6 +118,8 @@ const [repeatWeeks, setRepeatWeeks] = useState(initialRepeatWeeks);
             setDays={setPlanDays}
             exerciseData={exerciseData}
             repeatWeeks={repeatWeeks}
+            showDeleteButton={canDelete}
+            onEnableDelete={() => setCandelete(true)}
           />
         </>
       )}
