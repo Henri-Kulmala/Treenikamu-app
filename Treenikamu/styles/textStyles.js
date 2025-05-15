@@ -123,6 +123,13 @@ const textStyles = StyleSheet.create({
     color: MainTheme.colors.highlightDanger,
   },
   
+  listItemLabel: {
+    fontFamily: "Manrope-B",
+    fontSize: MainTheme.fontSizes.titleSmall,
+    color: MainTheme.text,
+  },
+
+  
 });
 
 export default textStyles;

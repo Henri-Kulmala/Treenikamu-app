@@ -11,7 +11,7 @@ import textStyles from "../styles/textStyles";
 import ButtonComponent from "../components/ButtonComponent";
 import AuthContext from "../configuration/AuthContext";
 import CheckHeader from "../components/CheckHeader";
-import Alert from "../components/Alert";
+import AlertComponent from "../components/AlertComponent";
 import ContactSection from "../components/profile/ContactSection";
 import PersonalSection from "../components/profile/PersonalSection";
 import StatsSection from "../components/profile/StatsSection";
@@ -19,17 +19,12 @@ import StatsSection from "../components/profile/StatsSection";
 const RegisterView = ({ navigation }) => {
   const [openSection, setOpenSection] = useState(null);
   const [error, setError] = useState(null);
-  const [errorVisible, setErrorVisible] = useState(false);
   const [isInputError, setIsInputError] = useState(false);
 
   const [form1, setForm1] = useState({ email: "", password: "", confirm: "" });
   const [form2, setForm2] = useState({
     first: "",
     last: "",
-    gender: "",
-    address: "",
-    zip: "",
-    city: "",
   });
   const [form3, setForm3] = useState({
     weight: "",
@@ -44,21 +39,12 @@ const RegisterView = ({ navigation }) => {
     setOpenSection(openSection === index ? null : index);
   };
 
-  const isForm1Complete = form1.email && form1.password && form1.confirm;
-  const isForm2Complete =
-    form2.first &&
-    form2.last &&
-    form2.gender &&
-    form2.address &&
-    form2.zip &&
-    form2.city;
-  const isForm3Complete = form3.weight && form3.age && form3.height;
 
   const validateInputs = () => {
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,})/;
     const numberRegex = /^\d+$/;
-    const genderOptions = ["mies", "nainen", "muu"];
 
     if (!emailRegex.test(form1.email))
       setError("Virheellinen sähköpostiosoite."), setIsInputError(true);
@@ -76,23 +62,14 @@ const RegisterView = ({ navigation }) => {
       setError("Pituus pitää olla numero."), setIsInputError(true);
     if (!numberRegex.test(form3.weight))
       setError("Paino pitää olla numero."), setIsInputError(true);
-    if (!numberRegex.test(form2.zip))
-      setError("Postinumero pitää olla numero."), setIsInputError(true);
 
-    if (!genderOptions.includes(form2.gender.toLowerCase()))
-      setError("Sukupuolen tulee olla mies, nainen tai muu."),
-        setIsInputError(true);
-
-    return null;
+    return true;
   };
 
   const handleRegister = async () => {
-    const validationError = validateInputs();
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
+    let isValid = validateInputs();
 
+    if (!isValid) return;
     try {
       const newUser = {
         email: form1.email,
@@ -109,26 +86,31 @@ const RegisterView = ({ navigation }) => {
           "Rekisteröinti epäonnistui",
           response.error || "Tuntematon virhe"
         );
-        setErrorVisible(true);
+        setIsInputError(true);
       }
     } catch (err) {
       console.log(err);
       setError("Jotain meni pieleen. Yritä myöhemmin uudelleen.");
-      setErrorVisible(true);
+      setIsInputError(true);
     }
-  };
-
-  const updateForm3 = (field, value) => {
-    setForm3((prev) => ({ ...prev, [field]: value }));
   };
 
   const disableAlert = () => {
     setError(null);
-    setErrorVisible(false);
+    setIsInputError(false);
   };
 
   return (
     <View style={componentStyles.mainContainer}>
+
+      <AlertComponent 
+        isVisible={isInputError}
+        onRequestClose={disableAlert}
+        title="Virhe"
+        message={error}
+        actions={[{ text: "OK", onPress: disableAlert }]}
+      
+      />
       <PersonalSection
         isOpen={openSection === 1}
         onToggle={() => toggleSection(1)}

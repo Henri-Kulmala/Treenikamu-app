@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import GroupedExerciseSection from "./GroupedExerciseSection";
 import TextThemed from "../TextThemed";
 import textStyles from "../../styles/textStyles";
 import componentStyles from "../../styles/componentStyles";
+import SelectButton from "../SelectButton";
+import AddExerciseModal from "./AddExerciseModal";
 
 const WorkoutDaySection = ({
   dayName,
@@ -13,7 +15,8 @@ const WorkoutDaySection = ({
   exerciseData,
 }) => {
   const groups = {};
-
+  const [showAddModal, setShowAddModal] = useState(false);
+  
 
   if (!Array.isArray(exercises)) {
     console.warn(
@@ -45,8 +48,15 @@ const WorkoutDaySection = ({
     <View style={componentStyles.workoutDaySectionContainer}>
       <View View style={{justifyContent: 'center', alignItems: 'flex-end'}}>
         <TextThemed style={textStyles.titleLarge}>{dayName}</TextThemed>
+        <SelectButton 
+          iconName="add-circle"
+          iconSize={32}
+          type="icon"
+          onPress={() =>setShowAddModal(true)}
+        
+        />
       </View>
-      
+    
       {Object.entries(groups).map(([groupName, groupExercises]) => (
         <GroupedExerciseSection
           key={groupName}

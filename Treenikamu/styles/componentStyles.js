@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import MainTheme from "./mainTheme";
 
-
 const componentStyles = StyleSheet.create({
   // General Layouts
   mainContainer: {
@@ -12,12 +11,17 @@ const componentStyles = StyleSheet.create({
     backgroundColor: MainTheme.colors.dark,
   },
   scrollView: {
-    paddingTop: 0,
+    paddingTop: 64,
     paddingBottom: 120,
     paddingHorizontal: 36,
     backgroundColor: MainTheme.colors.dark,
   },
-    
+  scrollViewProfile: {
+    flex: 1,
+    paddingBottom: 160,
+    justifyContent: "center",
+    backgroundColor: MainTheme.colors.dark,
+  },
 
   childContainer: {
     alignContent: "center",
@@ -31,7 +35,6 @@ const componentStyles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 16,
   },
-
 
   // Button Groups
   buttonWrapper: {
@@ -75,7 +78,7 @@ const componentStyles = StyleSheet.create({
   },
   floatingButton: {
     position: "fixed",
-    bottom: 50,
+    bottom: 100,
     height: 60,
     left: 0,
     right: 0,
@@ -86,7 +89,7 @@ const componentStyles = StyleSheet.create({
     elevation: 5,
   },
   floatingButtonContainer: {
-    flexDirection: "row", 
+    flexDirection: "row",
     paddingBottom: 16,
     justifyContent: "space-between",
   },
@@ -100,7 +103,6 @@ const componentStyles = StyleSheet.create({
   },
   saveButton: {
     backgroundColor: MainTheme.colors.highli,
-
   },
 
   logoutButton: {
@@ -124,7 +126,6 @@ const componentStyles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: MainTheme.colors.highlightGreen60,
   },
-
 
   // Input Fields
   inputField: {
@@ -153,7 +154,6 @@ const componentStyles = StyleSheet.create({
     color: MainTheme.colors.text,
     backgroundColor: MainTheme.colors.dark40,
     borderRadius: 8,
-
   },
   selectableWithTitle: {
     justifyContent: "center",
@@ -167,14 +167,12 @@ const componentStyles = StyleSheet.create({
     padding: 12,
     marginVertical: 6,
     gap: 8,
-
   },
   loginFooterWrapper: {
     alignItems: "center",
     justifyContent: "center",
     padding: 12,
     marginVertical: 6,
-
   },
 
   // Number Picker
@@ -207,39 +205,44 @@ const componentStyles = StyleSheet.create({
     borderRadius: 50,
   },
   iconButtonDisabled: {
-    
     backgroundColor: MainTheme.colors.highlightGreenMuted,
     borderRadius: 50,
-
   },
   iconButtonEnabled: {
     backgroundColor: MainTheme.colors.highlightGreen,
     borderRadius: 50,
   },
 
-
-  // RegisterView
+  // User information
   header: {
     flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-    padding: 12,
-    marginVertical: 6,
-    borderRadius: 8,
-    backgroundColor: MainTheme.colors.darkGreen,
+    justifyContent: "center",
+    width: 240,
+    padding: 8,
+    marginVertical: 8,
+    borderRadius: 16,
   },
+
+  headerProfile: {
+    flexDirection: "row",
+    borderRightWidth: 5,
+
+    borderRightColor: MainTheme.colors.text,
+    padding: 2,
+    marginVertical: 8,
+    marginRight: 24,
+    paddingLeft: 24,
+  },
+
   section: {
-    width: "100%",
-    padding: 12,
-    marginBottom: 12,
+    padding: 16,
+    gap: 16,
     borderRadius: 8,
-    backgroundColor: MainTheme.colors.background,
+    backgroundColor: MainTheme.colors.green40,
   },
 
   // Exercise Styles
-  
-  
-  
+
   workoutDayStepContainer: {
     flexDirection: "row",
     justifyContent: "center",
@@ -247,24 +250,23 @@ const componentStyles = StyleSheet.create({
     marginVertical: 16,
   },
   addExerciseModal: {
-   flex: 1,
-   borderRadius: 16,
-   justifyContent: "center",
+    flex: 1,
+    borderRadius: 16,
+    justifyContent: "center",
   },
   addExerciseModalContainer: {
-   backgroundColor: MainTheme.colors.text,
-   padding: 16,
-   marginVertical: 16,
-   borderRadius: 16,
-   gap: 12,
-   justifyContent: "center",
+    backgroundColor: MainTheme.colors.text,
+    padding: 16,
+    marginVertical: 16,
+    borderRadius: 16,
+    gap: 12,
+    justifyContent: "center",
   },
   addExerciseModalList: {
     maxHeight: 300,
     padding: 16,
-    
   },
-  
+
   workoutWeekRepeatContainer: {
     backgroundColor: MainTheme.colors.darkGreen20,
     borderRadius: 16,
@@ -280,7 +282,6 @@ const componentStyles = StyleSheet.create({
     marginVertical: 8,
   },
 
-
   itemCardmd: {
     flexDirection: "row",
     justifyContent: "center",
@@ -294,8 +295,6 @@ const componentStyles = StyleSheet.create({
   },
   itemCardText: {
     flex: 1,
-    height: "100%",
-    gap: 12,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -322,7 +321,6 @@ const componentStyles = StyleSheet.create({
   exerciseListContainer: {
     gap: 4,
     marginTop: 16,
-
   },
 
   groupedExerciseHeader: {
@@ -346,29 +344,27 @@ const componentStyles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    flex:1,
+    flex: 1,
     gap: 8,
     backgroundColor: MainTheme.colors.dark,
   },
- 
-  modalImage:{
+
+  modalImage: {
     width: 250,
     height: "auto",
-    aspectRatio:1,
+    aspectRatio: 1,
     padding: 8,
     borderRadius: 24,
   },
-  modalImageWrapper:{
+  modalImageWrapper: {
     justifyContent: "center",
     alignItems: "center",
     padding: 8,
-
   },
   editExerciseModalContainer: {
     padding: 16,
     borderRadius: 16,
   },
-
 
   splitItemOpen: {
     width: 336,
@@ -407,7 +403,6 @@ const componentStyles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-
   formContainer: {
     height: "100%",
     paddingBottom: 120,
@@ -429,41 +424,117 @@ const componentStyles = StyleSheet.create({
 
   // Profile Styles
 
-  userInfoContainer: {
-    alignItems: "center",
-    marginVertical: 16,
-    paddingVertical: 16,
+  profileContainer: {
+    flex: 1,
+    paddingBottom: 120,
+    paddingTop: 40,
+    justifyContent: "space-between",
+    backgroundColor: MainTheme.colors.dark,
+  },
+  profileSectionContainer: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: MainTheme.colors.dark,
+  },
+  profileFooter: {
+
+    justifyContent: "space-around",
+    alignContent: "center",
+    flexDirection: "row",
+    backgroundColor: MainTheme.colors.dark,
+  },
+  footerSection: {  
     paddingHorizontal: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: MainTheme.colors.text20,
+    justifyContent: "space-between",
+  },
+  
+
+  // Calendar
+
+  calendar: {
+    borderRadius: 16,
+
+    padding: 8,
+    marginVertical: 8,
+    width: "100%",
+  },
+  calendartheme: {
+    calendarBackground: MainTheme.colors.darkGreen,
+    textSectionTitleColor: MainTheme.colors.text,
+    selectedDayBackgroundColor: MainTheme.colors.highlightGreen,
+    selectedDayTextColor: MainTheme.colors.text,
+    todayTextColor: MainTheme.colors.highlightGreen,
+    monthTextColor: MainTheme.colors.text,
+    dayTextColor: MainTheme.colors.dark,
+    textDisabledColor: MainTheme.colors.darkGreen,
   },
 
-  // Calendar 
-
-calendar: {
-  borderRadius: 16,
-
-  padding: 8,
-  marginVertical: 8,
-  width: "100%",
-},
-calendartheme: {
-  calendarBackground:MainTheme.colors.darkGreen,
-  textSectionTitleColor: MainTheme.colors.text,
-  selectedDayBackgroundColor: MainTheme.colors.highlightGreen,
-  selectedDayTextColor: MainTheme.colors.text,
-  todayTextColor: MainTheme.colors.highlightGreen,
-  monthTextColor: MainTheme.colors.text,
-  dayTextColor: MainTheme.colors.dark,
-  textDisabledColor: MainTheme.colors.darkGreen,
-
-},
 
 
+  // Top Bar
+
+  topBarContainer: {
+    width: "100%",
+    height: 80,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 24,
+    backgroundColor: MainTheme.colors.darkGreen20,
+  },
+
+
+  //  Drawer 
+
+  drawerContainer: {
+    justifyContent: "space-between",
+  },
+  drawerItemList: {
+    marginLeft: "50%",
+    width: 220,
+    height: "100%",
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    gap: 24,
+    backgroundColor: MainTheme.colors.darkBlue,
+    elevation: 5,
+    borderRadius: 16,
+  },
+  drawerHeader: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 16,
+
+    borderBottomWidth: 2,
+    borderBottomColor: MainTheme.colors.text20,
+    marginBottom: 8,
+
+  },
+
+
+  drawerItem: {
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 8,
+    paddingHorizontal: 24,
+
+  },
+
+  modalBackdrop: {
+    height: "120%",
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  linkList: {
+    marginTop: 24,
+    gap: 8,
+
+  },
 
 });
-
-
-
 
 export default componentStyles;

@@ -7,6 +7,7 @@ export default function ContactSection({
   onToggle,
   form2,
   setForm2,
+  hideIcon 
 }) {
   return (
     <CollapsibleSection
@@ -14,6 +15,7 @@ export default function ContactSection({
       isOpen={isOpen}
       completed={!!(form2.firstName && form2.lastName)}
       onToggle={onToggle}
+      isHidden={hideIcon}
     >
       <InputFieldComponent
         placeholder="Etunimi"
@@ -31,32 +33,7 @@ export default function ContactSection({
         value={form2.lastName}
         onChangeText={(lastName) => setForm2(prev => ({ ...prev, lastName }))}
       />
-      <InputFieldComponent
-        header="Sukupuoli"
-        placeholder="mies/nainen/muu"
-        value={form2.gender}
-        autoCapitalize="none"
-        onChangeText={(gender) => setForm2(prev => ({ ...prev, gender }))}
-      />
-      <InputFieldComponent
-        placeholder="Katuosoite"
-        header="Katuosoite"
-        value={form2.address}
-        onChangeText={(address) => setForm2(prev => ({ ...prev, address }))}
-      />
-      <InputFieldComponent
-        placeholder="Postinumero"
-        header="Postinumero"
-        keyboardType="numeric"
-        value={form2.zip}
-        onChangeText={(zip) => setForm2(prev => ({ ...prev, zip }))}
-      />
-      <InputFieldComponent
-        placeholder="Kaupunki"
-        header="Kaupunki"
-        value={form2.city}
-        onChangeText={(city) => setForm2(prev => ({ ...prev, city }))}
-      />
+
     </CollapsibleSection>
   );
 }

@@ -12,6 +12,7 @@ export default function SelectButton({
   iconSize,
   iconStyle,
   iconType,
+  iconColor,
   ...props
 }) {
   const getButtonStyle = () => {
@@ -35,6 +36,8 @@ export default function SelectButton({
         return MainTheme.colors.danger60;
       case "null":
         return "#00000000"
+      case "custom":
+        return iconColor;
       default:
         return MainTheme.colors.highlightGreen;
     }
@@ -53,7 +56,7 @@ export default function SelectButton({
     );
   }
   if (iconType === "null") {
-    return console.log("");
+    return;
   }
 
   return (

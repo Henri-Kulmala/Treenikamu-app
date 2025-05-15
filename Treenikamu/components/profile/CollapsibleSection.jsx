@@ -1,7 +1,7 @@
-import React from 'react';
-import { View } from 'react-native';
-import CheckHeader from '../CheckHeader';
-import componentStyles from '../../styles/componentStyles';
+import React, { useState } from "react";
+import { View } from "react-native";
+import CheckHeader from "../CheckHeader";
+import componentStyles from "../../styles/componentStyles";
 
 export default function CollapsibleSection({
   title,
@@ -9,6 +9,7 @@ export default function CollapsibleSection({
   completed,
   onToggle,
   children,
+  isHidden,
 }) {
   return (
     <>
@@ -17,6 +18,7 @@ export default function CollapsibleSection({
         isOpen={isOpen}
         completed={completed}
         toggleOpen={onToggle}
+        hide={isHidden}
       />
       {isOpen && <View style={componentStyles.section}>{children}</View>}
     </>

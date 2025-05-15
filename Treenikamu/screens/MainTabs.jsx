@@ -12,10 +12,10 @@ const Tab = createBottomTabNavigator();
 
 const TabBarIcon = ({ name, focused }) => (
   <Ionicons
-    name={name}
+    name={focused? name : `${name}-outline`}
     size={32}
     color={focused ? MainTheme.colors.highlightGreen : MainTheme.colors.highlightGreenMuted}
-    style={{ height: 32 }}
+    style={{ height: 32 , marginVertical: 8}}
   />
 );
 
@@ -40,21 +40,21 @@ const MainTabs = () => {
         name="Home"
         component={LandingView}
         options={{
-          tabBarIcon: ({ focused }) => <TabBarIcon name="home-outline" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="home" focused={focused} />,
         }}
       />
       <Tab.Screen
         name="Workout"
         component={WorkoutPlanView}
         options={{
-          tabBarIcon: ({ focused }) => <TabBarIcon name="barbell-outline" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="barbell" focused={focused} />,
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileView}
         options={{
-          tabBarIcon: ({ focused }) => <TabBarIcon name="person-outline" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabBarIcon name="person" focused={focused} />,
         }}
       />
     </Tab.Navigator>
