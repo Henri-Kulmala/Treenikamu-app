@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { View, TouchableOpacity, LayoutAnimation, Alert } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  LayoutAnimation,
+  ScrollView,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import TextThemed from "../components/TextThemed";
 import MainTheme from "../styles/mainTheme";
+import textStyles from "../styles/textStyles";
 
 import useCurrentUser from "../configuration/useCurrentUser";
 import { ref, set } from "firebase/database";
@@ -15,19 +23,26 @@ import SaveButton from "../components/profile/SaveButton";
 import componentStyles from "../styles/componentStyles";
 import ButtonComponent from "../components/ButtonComponent";
 import LogoutButton from "../components/LogoutButton";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SelectButton from "../components/SelectButton";
+import AlertComponent from "../components/AlertComponent";
 
 export default function ProfileView({ navigation }) {
   const { userId, user, loading: authLoading } = useCurrentUser();
-  const [openSection, setOpenSection] = useState(null);
+  const [openSection, setOpenSection] = useState(true);
+  const [message, setMessage] = useState(null);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [title, setTitle] = useState(null);
+  const clearAlert = () => {
+    setTitle(null);
+    setMessage(null);
+    setAlertVisible(false);
+  };
 
   const [form1, setForm1] = useState({ email: "", password: "", confirm: "" });
   const [form2, setForm2] = useState({
     firstName: "",
     lastName: "",
-    gender: "",
-    address: "",
-    zip: "",
-    city: "",
   });
   const [form3, setForm3] = useState({
     weight: "",
@@ -43,10 +58,6 @@ export default function ProfileView({ navigation }) {
       setForm2({
         firstName: user.firstName || "",
         lastName: user.lastName || "",
-        gender: user.gender || "",
-        address: user.address || "",
-        zip: user.zip || "",
-        city: user.city || "",
       });
       setForm3({
         weight: user.weight?.toString() || "",
@@ -74,16 +85,18 @@ export default function ProfileView({ navigation }) {
       });
   };
 
+  const confirmLogout = () => {
+    setTitle("Kirjaudu ulos");
+    setMessage("Oletko varma, että haluat kirjautua ulos?");
+    setAlertVisible(true);
+  };
+
   const handleSave = async () => {
     if (!userId) return;
     const updated = {
       email: form1.email,
       firstName: form2.firstName,
       lastName: form2.lastName,
-      gender: form2.gender,
-      address: form2.address,
-      zip: form2.zip,
-      city: form2.city,
       weight: Number(form3.weight),
       age: Number(form3.age),
       height: Number(form3.height),
@@ -99,35 +112,70 @@ export default function ProfileView({ navigation }) {
     }
   };
 
-  if (authLoading) {
-    return <TextThemed>Loading profile…</TextThemed>;
-  }
+  if (authLoading)
+    return (
+      <ActivityIndicator size="large" color={MainTheme.colors.highlightGreen} />
+    );
 
   return (
-    <View style={componentStyles.mainContainer}>
-      <PersonalSection
-        isOpen={openSection === 1}
-        onToggle={() => toggleSection(1)}
-        form1={form1}
-        setForm1={setForm1}
+    <View style={componentStyles.profileContainer}>
+      <AlertComponent
+        title={title}
+        message={message}
+        isVisible={alertVisible}
+        onRequestClose={clearAlert}
+        actions={[
+          { text: "Peruuta", onPress: clearAlert },
+          { text: "Kyllä", onPress: handleLogout, actionStyle: "danger" },
+        ]}
       />
 
-      <ContactSection
-        isOpen={openSection === 2}
-        onToggle={() => toggleSection(2)}
-        form2={form2}
-        setForm2={setForm2}
-      />
+      <View style={componentStyles.profileSectionContainer}>
+        <PersonalSection
+          isOpen={openSection === 1}
+          onToggle={() => toggleSection(1)}
+          form1={form1}
+          setForm1={setForm1}
+          hideIcon={true}
+        />
 
-      <StatsSection
-        isOpen={openSection === 3}
-        onToggle={() => toggleSection(3)}
-        form3={form3}
-        setForm3={setForm3}
-      />
-      <View style={componentStyles.buttonWrapper}>
-        <SaveButton onPress={handleSave} disabled={!userId} />
-        <LogoutButton content="Kirjaudu ulos" onPress={handleLogout} />
+        <ContactSection
+          isOpen={openSection === 2}
+          onToggle={() => toggleSection(2)}
+          form2={form2}
+          setForm2={setForm2}
+          hideIcon={true}
+        />
+
+        <StatsSection
+          isOpen={openSection === 3}
+          onToggle={() => toggleSection(3)}
+          form3={form3}
+          setForm3={setForm3}
+          hideIcon={true}
+        />
+      </View>
+
+      <View style={componentStyles.profileFooter}>
+        <View style={componentStyles.itemCardText}>
+          <SelectButton
+            onPress={handleSave}
+            type="icon"
+            iconName="save"
+            iconSize={32}
+            iconType="highlightGreen"
+          />
+        </View>
+
+        <View style={componentStyles.footerSection}>
+          <SelectButton
+            onPress={confirmLogout}
+            type="icon"
+            iconName="log-out"
+            iconSize={32}
+            iconType="danger"
+          />
+        </View>
       </View>
     </View>
   );

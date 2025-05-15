@@ -8,6 +8,7 @@ export default function PersonalSection({
   form1,
   setForm1,
   emailEditable = false,
+  hideIcon
 }) {
   return (
     <CollapsibleSection
@@ -15,6 +16,7 @@ export default function PersonalSection({
       isOpen={isOpen}
       completed={!!form1.email && !!form1.password && !!form1.confirm}
       onToggle={onToggle}
+      isHidden={hideIcon}
     >
       <InputFieldComponent
         header="Sähköposti"

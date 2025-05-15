@@ -60,6 +60,21 @@ const AuthContext = {
       };
     }
   },
+
+  handleResetPassword: async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      return {
+        success: true,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: error.message,
+      };
+    }
+  },
+  
 };
 
 export default AuthContext;
