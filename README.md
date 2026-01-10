@@ -149,66 +149,6 @@ Käyttäjä voi muokata tietojaan profiilinäkymässä rekisteröintilomakkeen t
 </details>
 
 
----
-
-## Tietokantarakenne
-### Tämä kappale on vielä kesken
-Tietokanta on luotu käyttäen firebase realtime database- tietokantaa, joka on käytännössä suuri JSON-puu. Tietokantapalvelu tulee tulevaisuudessa vaihtumaan.
-
-### Realtime database -rakenne
-
-```
-database/
-    ├── liikkeet/
-        ├── hauikset/
-            ├── field/
-            ├── field/
-            ├── field/
-            ├── field/
-            ├── field/
-            └── field/
-        ├── jalat/
-        ├── ojentajat/
-        ├── olkapäät/
-        ├── rinta/
-        ├── selkä/
-        └── vatsa/
-    └── users/
-        ├── user/
-            ├── field/
-            ├── field/
-            ├── field/
-            ├── field/
-            ├── field/
-            ├── field/
-            └── workoutplan
-                ├── days/
-                    └── 
-                └── blaa
- 
-```
-
----
-
-## Arkkitehtuuri ja projektirakenne
-
-### Tämä kappale on vielä kesken
-<details>
-<summary>Projektin hakemistorakenne ja arkkitehtuurikuvaus</summary>
-
-
-```
-root/
- ├── assets/
- ├── components/
- ├── configuration/
- ├── screens/
- ├── styles/
- └── App.js
-```
-
-
-</details>
 
 ---
 
@@ -218,14 +158,5 @@ root/
 
 - [Free Illustrated Workout Exercise Guides - Simply Fitness](https://www.simplyfitness.com/pages/workout-exercise-guides)
 
-# Keskeneräistä
 
-// Käyttöohje
-
-
-
-
-// Lisenssi
-
----
 
