@@ -4,8 +4,6 @@
 - [Yleiskuvaus](#yleiskuvaus)
 - [Käytetyt teknologiat](#käytetyt-teknologiat)
 - [Sovelluksen toiminnot ja näkymät](#sovelluksen-toiminnot-ja-näkymät)
-- [Tietokantarakenne](#tietokantarakenne)
-- [Arkkitehtuuri ja projektirakenne](#arkkitehtuuri-ja-projektirakenne)
 - [Lähteet](#lähteet)
 
 ---
